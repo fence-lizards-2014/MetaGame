@@ -72,7 +72,5 @@ Organizations
 * Admin can kick trolls
 * Admin can edit organization details
 * Organization admins can post messages
-* 
 
-* User can create a 
 
