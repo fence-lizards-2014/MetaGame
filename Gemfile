@@ -9,6 +9,10 @@ gem 'rails', '3.2.18'
 gem 'pg'
 
 
+
+gem 'rails_12factor', group: :production
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -50,3 +54,4 @@ end
 
 # To use debugger
 # gem 'debugger'
+gem 'unicorn'
