@@ -5,6 +5,7 @@ users -
 	birthday
 	email
 	bio
+	
 
 
 
@@ -23,6 +24,7 @@ events -
 
 groups
 	has users
+	has many admins as user
 	user has admin boolean
 	
 	group_name
