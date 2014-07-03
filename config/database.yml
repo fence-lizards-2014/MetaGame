@@ -1,4 +1,5 @@
 # PostgreSQL. Versions 8.2 and up are supported.
+
 #
 # Install the pg driver:
 #   gem install pg
@@ -17,7 +18,7 @@ development:
   encoding: unicode
   database: metagame_development
   pool: 5
-  username: metagame
+  username: 
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -43,7 +44,7 @@ test:
   encoding: unicode
   database: metagame_test
   pool: 5
-  username: metagame
+  username:
   password:
 
 production:
@@ -51,5 +52,5 @@ production:
   encoding: unicode
   database: metagame_production
   pool: 5
-  username: metagame
+  username:
   password:
