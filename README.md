@@ -49,5 +49,30 @@ MVP
 * User can opt in to location-based matching
 * User can create a specific event
 * User is notified of upcoming events
+* User has an avatar (Not a profile picture)
 * User can see a styled site 
+
+Events
+======
+* User can create an event
+	* Local events
+	* Recruitment event
+	* Organization events
+	* Pick-Up-Group events
+	* STRETCH: custom event types
+* An event is set to non-active after assigned date/time
+* Event has a date and a time
+
+Organizations
+=============
+* User can create an organization 
+* User can join an existing organization
+* Organization admins can invite people to org
+* User can leave an organization
+* Admin can kick trolls
+* Admin can edit organization details
+* Organization admins can post messages
+* 
+
+* User can create a 
 
