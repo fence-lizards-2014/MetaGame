@@ -42,7 +42,6 @@ MVP
 * User can create an account
 * User can sign in/sign out to an account
 * User can sign up with Steam account as an option
-* User can create a private/public organization
 * User can invite people to an organization
 * User has a profile page
 * User has a collection of games they play
