@@ -4,6 +4,8 @@ MetaGame
 Platform for Organizing Gamers
 '''http://metagame.herokuapp.com/'''
 
+[Project Workflow](https://github.com/fence-lizards-2014/MetaGame/blob/master/WorkFlow.md)
+
 ## Jake Persing 								"MisterDamon"
 ### Nadia Koroleva Gori 				"NadiaKG"
 ### Samuel Davis 								"davissamuel997"
