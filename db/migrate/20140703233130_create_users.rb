@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :user_email
       t.text :user_bio
       t.integer :user_zipcode
-
       t.timestamps
     end
   end
