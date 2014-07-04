@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game name:</b>
+  <%= @game.game_name %>
+</p>
+
+<p>
+  <b>Game img icon url:</b>
+  <%= @game.game_img_icon_url %>
+</p>
+
+<p>
+  <b>Game img logo url:</b>
+  <%= @game.game_img_logo_url %>
+</p>
+
+<p>
+  <b>Game playtime 2weeks:</b>
+  <%= @game.game_playtime_2weeks %>
+</p>
+
+<p>
+  <b>Game playtime forever:</b>
+  <%= @game.game_playtime_forever %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

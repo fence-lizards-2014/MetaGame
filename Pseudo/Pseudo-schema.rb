@@ -5,6 +5,10 @@ users -
 	birthday
 	email
 	bio
+
+	has many groups
+	has many games
+
 	
 
 
@@ -33,8 +37,21 @@ groups
 
 
 games
-	name
-	type
+	game_name
+	game_type
+	game_img
+
+
+
+
+	# "appid": 238460,
+	# 			"name": "BattleBlock Theater",
+	# 			"playtime_2weeks": 75,
+	# 			"playtime_forever": 75,
+	# 			"img_icon_url": "2f258aaff583d797812cdcf24830d5992f48733b",
+	# 			"img_logo_url": "13380473acaa95f843301b8a21a383790ae384de"
+	
+	game belongs to many users, groups
 
 
 
