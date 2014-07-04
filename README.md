@@ -1,14 +1,18 @@
+
 MetaGame
 ========
 
 Platform for Organizing Gamers
 '''http://metagame.herokuapp.com/'''
+=======
+[Project Workflow](https://github.com/fence-lizards-2014/MetaGame/blob/master/WorkFlow.md)
 
-## Jake Persing 		"MisterDamon"
-### Nadia KG 				"NadiaKG"
-### Samuel Davis 		"davissamuel997"
-### Hunter Chapman 	"Bootcoder"
-### Chris Aubuchon 	"Aubuchcl"
+
+## Jake Persing 								"MisterDamon"
+### Nadia Koroleva Gori 				"NadiaKG"
+### Samuel Davis 								"davissamuel997"
+### Hunter Chapman 							"Bootcoder"
+### Chris Aubuchon 							"Aubuchcl"
 
 Description of Project
 ======================
@@ -42,6 +46,7 @@ Goals
 MVP
 ===
 
+
 Users
 =====
 	* User can create an account
@@ -57,6 +62,7 @@ Users
 	* User has an avatar (Not a profile picture)
 	* User can see a styled site 
 
+
 Events
 ======
 	* User can create an event
@@ -67,6 +73,7 @@ Events
 		* STRETCH: custom event types
 	* An event is set to non-active after assigned date/time
 	* Event has a date and a time
+
 
 Organizations
 =============
