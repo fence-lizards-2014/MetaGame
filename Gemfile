@@ -11,7 +11,8 @@ gem 'nifty-generators'
 
 gem 'pg'
 gem 'bcrypt'
-
+gem 'omniauth-steam'
+gem 'figaro'
 
 group :production do
   gem 'newrelic_rpm'
