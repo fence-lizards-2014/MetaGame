@@ -1,7 +1,9 @@
 Metagame::Application.routes.draw do
   root to: 'users#index'
-  post "auth/steam/callback" => 'users#auth_callback', as: "steam_auth"
   resources :users
+
+  get 'exit', to: 'sessions#destroy', as: :logout
+  post "auth/steam/callback" => 'sessions#auth_callback', as: "steam_auth"
 
 
   # The priority is based upon order of creation:

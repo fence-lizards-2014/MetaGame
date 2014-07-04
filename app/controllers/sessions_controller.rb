@@ -8,6 +8,11 @@ class SessionsController < ApplicationController
 	  session[:current_user] = { :nickname => auth.info['nickname'],
 	                                        :image => auth.info['image'],
 	                                        :uid => auth.uid }
-	  redirect_to root_url
+	  redirect_to root_path
+	end
+
+	def destroy
+		session[:current_user] = nil
+		redirect_to root_path
 	end
 end
