@@ -4,9 +4,12 @@ class CreateGames < ActiveRecord::Migration
       t.string :game_name
       t.string :game_img_icon_url
       t.string :game_img_logo_url
+      t.integer :game_steam_appid
       t.integer :game_playtime_2weeks
       t.integer :game_playtime_forever
 
+      t.belongs_to :users
+      t.belongs_to :groups
       t.timestamps
     end
   end

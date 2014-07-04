@@ -43,7 +43,7 @@ games
 
 
 
-
+# SAMPLE PULL FROM STEAM
 	# "appid": 238460,
 	# 			"name": "BattleBlock Theater",
 	# 			"playtime_2weeks": 75,

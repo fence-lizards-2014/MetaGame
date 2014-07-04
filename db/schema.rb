@@ -11,9 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140703233130) do
+ActiveRecord::Schema.define(:version => 20140704210933) do
+
+  create_table "games", :force => true do |t|
+    t.string   "game_name"
+    t.string   "game_img_icon_url"
+    t.string   "game_img_logo_url"
+    t.integer  "game_steam_appid"
+    t.integer  "game_playtime_2weeks"
+    t.integer  "game_playtime_forever"
+    t.integer  "users_id"
+    t.integer  "groups_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "users", :force => true do |t|
+    t.string   "user_steam_id"
     t.string   "user_name"
     t.string   "password_hash"
     t.string   "user_email"
