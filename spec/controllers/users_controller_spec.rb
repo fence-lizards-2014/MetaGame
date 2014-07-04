@@ -49,7 +49,7 @@ describe UsersController do
   describe "GET new" do
     it "assigns a new user as @user" do
       get :new, {}, valid_session
-      assigns(:user).should_not be_a_new(User)
+      assigns(:user).should be_a_new(User)
     end
   end
 
