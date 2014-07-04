@@ -1,0 +1,41 @@
+Routes (to be compiled)
+
+V. 0.0.1
+
+########  -- Users -- ########
+
+###### -Routes- ########
+
+users#index (type: get)
+  -set to root_path alias
+  -allows a new user to create an account
+  -will check for current user
+  - "/"
+
+users#create  (type: post)
+  -set to users_path
+  -called from submit button on new_user_path(get route)
+  -params captured from form
+  -/users(params)
+
+users#new  (type: get)
+  -set to new_user_path
+  -reders a form that users can fill in with new account data
+  -holds submit button that sends information to post route(users_path)
+  - /users/new
+
+users#edit (type: get)
+  -set to edit_user(params)
+    -params represent :id
+      -:: /users/:id/edit
+  -reders user specific page with form
+      -form holds current user data
+      -if form is modified &&
+    ---update user button is pressed
+    ---routes to "/users/:id"(put route)
+
+users#destroy (type: delete)
+  -set to /users/:id
+  -just a button that deletes account and returns you to home.
+  -probably bad idea to press this if you care
+  about your account :).
