@@ -8,8 +8,8 @@ class CreateGames < ActiveRecord::Migration
       t.integer :game_playtime_2weeks
       t.integer :game_playtime_forever
 
-      t.belongs_to :users
-      t.belongs_to :groups
+      t.belongs_to :user
+      t.belongs_to :group
       t.timestamps
     end
   end

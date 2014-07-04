@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20140704210933) do
     t.integer  "game_steam_appid"
     t.integer  "game_playtime_2weeks"
     t.integer  "game_playtime_forever"
-    t.integer  "users_id"
-    t.integer  "groups_id"
+    t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
