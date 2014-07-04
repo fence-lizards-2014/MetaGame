@@ -13,6 +13,7 @@ gem 'pg'
 gem 'bcrypt'
 gem 'omniauth-steam'
 gem 'figaro'
+gem 'httparty'
 
 group :production do
   gem 'newrelic_rpm'
