@@ -62,6 +62,12 @@ describe UsersController do
 
   describe "POST create" do
     describe "with valid params" do
+      xit "properly encrypts a password with BCrypt" do
+      #PENDING figure out how to test bcrypt
+          post :create, {:user => valid_attributes}, valid_session
+          expect()
+      end
+
       it "creates a new User" do
         expect {
           post :create, {:user => valid_attributes}, valid_session

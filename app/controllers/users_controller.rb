@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -41,7 +40,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @user.password = params[:user][:password_hash]
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
