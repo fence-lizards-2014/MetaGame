@@ -1,5 +1,6 @@
 Metagame::Application.routes.draw do
   root to: 'users#index'
+  post "auth/steam/callback" => 'users#auth_callback', as: "steam_auth"
   resources :users
 
 
