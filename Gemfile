@@ -8,7 +8,8 @@ gem 'rails', '3.2.18'
 
 gem 'pg'
 gem 'bcrypt'
-
+gem 'omniauth-steam'
+gem 'figaro'
 
 group :production do
   gem 'newrelic_rpm'
