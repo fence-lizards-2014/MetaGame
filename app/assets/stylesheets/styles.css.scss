@@ -3,7 +3,8 @@ body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
+  background-color: grey;
+  /*line-height: 18px;*/
 }
 
 p, ol, ul, td {
@@ -20,11 +21,12 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none;
   &:visited {
-    color: #666;
+    color: #fff;
   }
   &:hover {
-    color: #fff;
+    color: #666;
     background-color: #000;
   }
 }
@@ -67,3 +69,48 @@ div {
     list-style: square;
   }
 }
+
+.navbar {
+  text-align: center;
+  background-color: black;
+}
+
+table {
+  /*margin: 1%;*/
+  max-width: 80%;
+}
+
+th {
+  margin: 0 2% 0 2%;
+}
+
+
+.nav-brand {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
