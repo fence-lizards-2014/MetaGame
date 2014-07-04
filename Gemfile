@@ -9,9 +9,11 @@ gem 'rails', '3.2.18'
 gem 'pg'
 
 
-
-gem 'rails_12factor', group: :production
-
+group :production do
+  gem 'newrelic_rpm'
+  gem 'unicorn'
+  gem 'rails_12factor'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -54,4 +56,3 @@ end
 
 # To use debugger
 # gem 'debugger'
-gem 'unicorn'
