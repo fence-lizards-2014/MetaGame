@@ -52,5 +52,5 @@ production:
   encoding: unicode
   database: metagame_production
   pool: 5
-  username:
-  password:
+  username: metagame_admin
+  password: igeekallweek
