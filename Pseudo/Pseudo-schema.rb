@@ -1,40 +1,66 @@
 users - 
+	use_steam_id
 	username
 	password_hash
 	zip_code
-	birthday
 	email
 	bio
-	
+
+	has many groups
+	has many games
 
 
-
-
-
-
-
-events - 
-	event name
-	event date time
-	event type_id
-	event active boolean
-	event location
+events
+	event_name
+	event_game
+	event_description
+	event_date time
+	event_type_id
+	event_active boolean
+	event_zip
+	event_location
 
 
 
 groups
-	has users
+	has many users
+	has many games
+	has many events
 	has many admins as user
-	user has admin boolean
 	
 	group_name
-	
+	group_description
+	group_tagline
+	group_logo_url
+
+
+games 
+  t.string   "game_name"
+  t.string   "game_img_icon_url"
+  t.string   "game_img_logo_url"
+  t.integer  "game_steam_appid"
+  t.integer  "game_playtime_2weeks"
+  t.integer  "game_playtime_forever"
+  t.integer  "user_id"
+  t.integer  "group_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+
+belongs to user
+belongs to group
 
 
 
-games
-	name
-	type
+
+
+
+# SAMPLE PULL FROM STEAM
+	# "appid": 238460,
+	# 			"name": "BattleBlock Theater",
+	# 			"playtime_2weeks": 75,
+	# 			"playtime_forever": 75,
+	# 			"img_icon_url": "2f258aaff583d797812cdcf24830d5992f48733b",
+	# 			"img_logo_url": "13380473acaa95f843301b8a21a383790ae384de"
 
 
 
