@@ -11,8 +11,17 @@ class SessionsController < ApplicationController
 	  redirect_to root_path
 	end
 
-	def destroy
-		session[:current_user] = nil
+	def logout
+		session[:id] = nil
 		redirect_to root_path
+	end
+
+	def signin
+	end
+
+	def signin_attempt
+		@user = User.find_by_user_name(params[:user][:user_name])
+		session[:id] = @user.id
+		redirect_to user_path(@user)
 	end
 end

@@ -1,0 +1,7 @@
+<%= form_for @user, url: sign_in_attempt_path, method: :post do |u| %>
+	<%= u.label "Username" %>
+	<%= u.text_field :user_name %>
+	<%= u.label :Password %>
+	<%= u.text_field :password_hash %>
+	<%= u.submit :Submit %>
+<% end %>

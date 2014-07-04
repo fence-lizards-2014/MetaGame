@@ -3,10 +3,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+    if current_user
+      @users = User.all
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @users }
+      end
+    else
+      @user = User.new
+      render "sessions/signin"
     end
   end
 
