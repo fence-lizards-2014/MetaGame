@@ -3,6 +3,7 @@ module SteamAdapter
 	attr_accessor :key
 
 	def setup
+		# need to make env
 		self.key = '2CA9866DD532D38F34B6B2CBBD968E92'
 	end
 
@@ -36,6 +37,7 @@ module SteamAdapter
 	end
 
 	def get_ids
+		# need to change steam id to user steam id from helper call
 		"?key=#{self.key}&steamids=76561198076227521"
 	end
 end

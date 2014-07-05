@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    # p session[:current_user]
     @user = User.find(params[:id])
     
     if session[:current_user]
