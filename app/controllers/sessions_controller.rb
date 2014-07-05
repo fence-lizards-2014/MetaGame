@@ -21,7 +21,11 @@ class SessionsController < ApplicationController
 
 	def signin_attempt
 		@user = User.find_by_user_name(params[:user][:user_name])
-		session[:id] = @user.id
-		redirect_to user_path(@user)
+		if @user.password == params[:user][:password_hash]
+			session[:id] = @user.id
+			redirect_to user_path(@user)
+		else
+			redirect_to signin_path, flash: { notice: "Your password was incorrect!" }
+		end
 	end
 end

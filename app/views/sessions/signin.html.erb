@@ -1,7 +1,9 @@
-<%= form_for @user, url: sign_in_attempt_path, method: :post do |u| %>
+<%= flash[:notice] %>
+<%= form_for User.new, url: sign_in_attempt_path, method: :post do |u| %>
 	<%= u.label "Username" %>
 	<%= u.text_field :user_name %>
 	<%= u.label :Password %>
 	<%= u.text_field :password_hash %>
 	<%= u.submit :Submit %>
 <% end %>
+<h4 class="nav-brand"><%= link_to "Create a new account", new_user_path %></h4>
