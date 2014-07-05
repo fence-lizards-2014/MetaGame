@@ -1,32 +1,32 @@
-module SteamAdapter
-	extend self
-	attr_accessor :key
+require 'ostruct'
 
-	def setup
+class SteamAdapter
+	include HTTParty
+	attr_accessor :key, :steam_id
+
+	base_uri 'http://api.steampowered.com'
+
+	def initialize steam_id
 		# need to make env
-		self.key = '2CA9866DD532D38F34B6B2CBBD968E92'
+		@key = '2CA9866DD532D38F34B6B2CBBD968E92'
+		@steam_id = steam_id
 	end
 
 	def get_player_summaries
-		response = HTTParty.get "#{get_base_uri}/#{get_type_user}/GetPlayerSummaries/v0002/#{get_ids}"
-		response.body
+		self.class.get "/#{get_type_user}/GetPlayerSummaries/v0002/#{get_ids}"
 	end
 
 	def get_friend_list
-		response = HTTParty.get "#{get_base_uri}/#{get_type_user}/GetFriendList/v0001/#{get_ids}&relationship=friend"
+		response = self.class.get "#{base_uri}/#{get_type_user}/GetFriendList/v0001/#{get_ids}&relationship=friend"
 		reponse.body
 	end
 
 	def get_games
-		response = HTTParty.get "#{get_base_uri}/#{get_type_player_service}/GetOwnedGames/v0001/#{get_ids}&format=json"
+		response = self.class.get "#{base_uri}/#{get_type_player_service}/GetOwnedGames/v0001/#{get_ids}&format=json"
 		response.body
 	end
 
 	private
-
-	def get_base_uri
-		"http://api.steampowered.com"
-	end
 
 	def get_type_player_service
 		"IPlayerService"
@@ -37,7 +37,6 @@ module SteamAdapter
 	end
 
 	def get_ids
-		# need to change steam id to user steam id from helper call
-		"?key=#{self.key}&steamids=76561198076227521"
+		"?key=#{@key}&steamids=#{@steam_id}"
 	end
 end
