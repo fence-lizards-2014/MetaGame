@@ -1,17 +1,18 @@
 class User < ActiveRecord::Base
-  attr_accessible :password_hash, :user_bio, :user_email, :user_name, :user_zipcode, :user_steam_id
-  
+  attr_accessible :password_hash, :user_bio, :user_email, :username, :user_zipcode, :user_steam_id, :user_avatar_url, :id, :created_at, :updated_at
 
+
+	has_many :friends, class_name: "User"
 
   has_many :games
-	has_many :games, through: :user_games
+	has_many :user_games, through: :games
 
 	has_many :groups
-  has_many :groups, through: :user_groups
+  has_many :user_groups, through: :groups
 	
   has_many :events
-  has_many :events, through: :user_events
-  has_many :events, through: :group_events
+  has_many :user_events, through: :events
+  has_many :group_events, through: :events
 
 
 
@@ -25,6 +26,3 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 end
-
-
-  has_many :posts, through: :readings

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140705195731) do
+ActiveRecord::Schema.define(:version => 20140705204822) do
 
   create_table "events", :force => true do |t|
     t.string   "event_name"
@@ -41,6 +41,21 @@ ActiveRecord::Schema.define(:version => 20140705195731) do
     t.datetime "updated_at",            :null => false
   end
 
+  create_table "group_events", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "event_id"
+  end
+
+  create_table "group_games", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "game_id"
+  end
+
+  create_table "group_users", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+  end
+
   create_table "groups", :force => true do |t|
     t.string   "group_name"
     t.text     "group_description"
@@ -51,16 +66,45 @@ ActiveRecord::Schema.define(:version => 20140705195731) do
     t.datetime "updated_at",        :null => false
   end
 
+  create_table "user_admins", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.integer "event_id"
+    t.boolean "admin"
+  end
+
+  create_table "user_events", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
+
+  create_table "user_friends", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.integer "admin_id"
+  end
+
+  create_table "user_games", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+  end
+
+  create_table "user_groups", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "user_steam_id"
-    t.string   "user_name"
+    t.string   "username"
     t.string   "password_hash"
     t.string   "user_email"
-    t.text     "user_bio"
+    t.string   "user_avatar_url"
     t.integer  "user_zipcode"
+    t.text     "user_bio"
     t.integer  "group_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
