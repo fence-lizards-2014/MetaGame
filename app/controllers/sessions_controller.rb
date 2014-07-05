@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 		render :signin
 	end
 
-	def signin_attempt
+	def sign_in_attempt
 		@user = User.find_by_user_name(params[:user][:user_name])
 		if @user.password == params[:user][:password_hash]
 			session[:id] = @user.id
