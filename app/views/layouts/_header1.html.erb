@@ -1,0 +1,25 @@
+<div class="navbar">
+
+    <h1 class="nav-brand"><%= link_to "MetaGame", root_path %></h1>
+
+  <div class="splash-buttons">
+    <% current_user = false %>
+    <% if current_user %>
+      <button class="user-button"><%= link_to "Username", root_path %></button>
+    <% else %>
+      <button class="sign-in-button"><%= link_to "Sign In", root_path %></button>
+
+      <button class="sign-up-button"><%= link_to "Sign Up", root_path %></button>
+    <% end %>
+  </div>
+
+</div>
+
+<div>
+		<h1 class="nav-brand"><%= link_to "MetaGame", root_path %></h1>
+		<% if current_user %>
+			<h1 class="nav-brand"><%= link_to "Logout", logout_path %></h1>
+		<% end %>
+	</div>
+</div>
+
