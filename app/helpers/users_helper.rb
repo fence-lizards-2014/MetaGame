@@ -2,11 +2,7 @@ require_relative '../models/steam_adapter'
 module UsersHelper
 
 	def current_user
-		if session[:id]
-			User.find(session[:id])
-		else
-			false
-		end
+		user ||= User.find(session[:id]) if session[:id]
 	end
 
 	def self.check_steam_id(user, steam_id)

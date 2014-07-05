@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 			session[:id] = @user.id
 			redirect_to user_path(@user)
 		else
-			redirect_to sign_in_path, flash: { notice: "Your password was incorrect!" }
+			redirect_to signin_path, flash: { notice: "Your password was incorrect!" }
 		end
 	end
 end
