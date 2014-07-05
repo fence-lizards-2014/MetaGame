@@ -11,8 +11,22 @@ class SessionsController < ApplicationController
 	  redirect_to root_path
 	end
 
-	def destroy
-		session[:current_user] = nil
+	def logout
+		session[:id] = nil
 		redirect_to root_path
+	end
+
+	def signin
+		render :signin
+	end
+
+	def signin_attempt
+		@user = User.find_by_user_name(params[:user][:user_name])
+		if @user.password == params[:user][:password_hash]
+			session[:id] = @user.id
+			redirect_to user_path(@user)
+		else
+			redirect_to sign_in_path, flash: { notice: "Your password was incorrect!" }
+		end
 	end
 end
