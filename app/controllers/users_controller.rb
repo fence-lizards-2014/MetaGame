@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    
+    if session[:current_user]
+      UsersHelper.check_steam_id(@user, session[:current_user][:uid])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,6 +53,7 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password_hash]
     respond_to do |format|
       if @user.save
+        session[:id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else

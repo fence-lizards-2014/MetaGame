@@ -4,14 +4,20 @@ class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :auth_callback
 
 	def auth_callback
+		user = User.find session[:id]
 	  auth = request.env['omniauth.auth']
 	  session[:current_user] = { :nickname => auth.info['nickname'],
 	                                        :image => auth.info['image'],
 	                                        :uid => auth.uid }
-	  redirect_to root_path
+	  redirect_to user_path(user)
 	end
 
+<<<<<<< HEAD
 	def logout
+=======
+	def destroy
+		session[:current_user] = nil
+>>>>>>> 631bcd6a25614d9289e927b7a56383c356f4e2de
 		session[:id] = nil
 		redirect_to root_path
 	end
