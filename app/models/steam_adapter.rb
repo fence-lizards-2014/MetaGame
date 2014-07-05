@@ -4,7 +4,6 @@ module SteamAdapter
 
 	def setup
 		self.key = '2CA9866DD532D38F34B6B2CBBD968E92'
-		self.base_uri = 'http://api.steampowered.com'
 	end
 
 	def get_player_summaries
