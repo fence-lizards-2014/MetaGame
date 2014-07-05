@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20140704210933) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "user_steam_id"
     t.string   "user_name"
     t.string   "password_hash"
     t.string   "user_email"
