@@ -5,13 +5,15 @@ describe SteamAdapter do
 
   USER_NAME = "misterdamon"
   STEAM_ID = '76561198076227521'
+  FRIEND_STEAM_ID = '76561197960265731'
+  RELATIONSHIP = 'friend'
 
-  context "when asking for a player summary with valid key and steam id" do
+  context "when asking for a player summary when valid key and steam id" do
 
-    let(:player) { SteamAdapter.new('76561198076227521').get_player_summaries }
+    let(:player) { SteamAdapter.new(STEAM_ID).get_player_summaries }
 
     before(:each) do
-      allow_any_instance_of(SteamAdapter).to receive(:get_player_summaries).and_return(OpenStruct.new(user_name: 'misterdamon', steam_id: "76561198076227521") )
+      allow_any_instance_of(SteamAdapter).to receive(:get_player_summaries).and_return(OpenStruct.new(user_name: USER_NAME, steam_id: STEAM_ID) )
     end
 
     it 'should return the correct user name from results' do
@@ -24,7 +26,7 @@ describe SteamAdapter do
 
   end
 
-  context "when asking for a player summary with invalid steam id" do
+  context "when asking for a player summary when invalid steam id" do
 
     let(:player) { SteamAdapter.new('XXXXXXXXXXXXXXXXX').get_player_summaries }
 
@@ -36,20 +38,28 @@ describe SteamAdapter do
       expect(player.user_name).to eq SteamAdapter::NOT_VALID_USER
     end
 
-    it 'should return the correct steamid from results' do
+    it 'should return the correct steam id from results' do
       expect(player.steam_id).to eq SteamAdapter::NOT_VALID_STEAM_ID
     end
 
   end
 
-  # context "when asking for a player's friend list" do
+  context "when asking for a user's friend list when valid steam id" do
 
-  #   let(:player) { SteamAdapter.new('76561198076227521').get_friend_list }
+    let(:player) { SteamAdapter.new(STEAM_ID).get_friend_list }
 
-  #   before(:each) do
-  #     allow_any_instance_of(SteamAdapter).to receive(:get_player_summaries).and_return(OpenStruct.new(user_name: 'misterdamon', steam_id: "76561198076227521") )
-  #   end
-  # end
+    before(:each) do
+      allow_any_instance_of(SteamAdapter).to receive(:get_friend_list).and_return(OpenStruct.new(steam_id: FRIEND_STEAM_ID, relationship: RELATIONSHIP) )
+    end
+
+    it "it should return a friend's steam id when valid steam id" do
+      expect(player.steam_id).to eq FRIEND_STEAM_ID
+    end
+
+    it "it should return a relationship value to the friend when valid steam id" do
+      expect(player.relationship).to eq RELATIONSHIP
+    end
+  end
 
 end
 
