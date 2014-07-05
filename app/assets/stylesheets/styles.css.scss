@@ -1,34 +1,14 @@
-body {
+/** {
+  border: 1px solid red;
+}*/
+
+.body-container {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  background-color: grey;
+  background-color: black;
   /*line-height: 18px;*/
-}
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-  text-decoration: none;
-  &:visited {
-    color: #fff;
-  }
-  &:hover {
-    color: #666;
-    background-color: #000;
-  }
 }
 
 div {
@@ -37,57 +17,70 @@ div {
   }
 }
 
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
-}
-
 .navbar {
   text-align: center;
   background-color: black;
+  padding: 1% 0 1% 0;
+  border-bottom: solid 3px purple;
 }
-
-table {
-  /*margin: 1%;*/
-  max-width: 80%;
-}
-
-th {
-  margin: 0 2% 0 2%;
-}
-
 
 .nav-brand {
-
+  /*border: solid purple;*/
+  margin: 0 220px 0 220px;
 }
+
+.nav-brand a {
+  color: #fff;
+  text-decoration: none;
+  color: purple;
+}
+
+.splash-buttons {
+  /*position: relative;*/
+  right: 6%;
+  float: right;
+  display: inline;
+  top: 3%;
+  position: absolute;
+  /*border: solid purple;*/
+}
+
+.splash-buttons a {
+  text-decoration: none;
+}
+
+.splash-buttons .user-button {
+  border-radius: 3px;
+}
+
+.splash-buttons .sign-in-button {
+  border-radius: 3px;
+}
+
+.splash-buttons .sign-up-button {
+  border-radius: 3px;
+}
+
+.feature {
+  margin: 5% 5% 5% 5%;
+  border-radius: 3px;
+  background-color: #B8B8B8;
+  /*background-color: rgba (80,80,80,0.5);*/
+  /*opacity: 0.8;*/
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  border-top: solid 3px purple;
+  text-align: center;
+  color: purple;
+  width: 100%;
+  /*margin-left: 10%;*/
+}
+
+
+
 
 
 
