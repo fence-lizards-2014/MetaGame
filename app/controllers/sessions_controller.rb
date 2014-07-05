@@ -12,12 +12,9 @@ class SessionsController < ApplicationController
 	  redirect_to user_path(user)
 	end
 
-<<<<<<< HEAD
+
 	def logout
-=======
-	def destroy
 		session[:current_user] = nil
->>>>>>> 631bcd6a25614d9289e927b7a56383c356f4e2de
 		session[:id] = nil
 		redirect_to root_path
 	end
