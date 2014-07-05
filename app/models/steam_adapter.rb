@@ -6,8 +6,8 @@ class SteamAdapter
 
 	base_uri 'http://api.steampowered.com'
 
-	NOT_VALID_KEY = 'KEY NOT VALID'
-	NOT_VALID_STEAM_ID = 'Unable to find steam user'
+	NOT_VALID_USER = 'UNABLE TO FIND STEAM USER'
+	NOT_VALID_STEAM_ID = 'INVALID STEAM ID'
 
 	def initialize steam_id
 		# need to make env
