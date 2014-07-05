@@ -9,7 +9,6 @@ describe SteamAdapter do
   RELATIONSHIP = 'friend'
 
   context "when asking for a player summary when valid key and steam id" do
-
     let(:player) { SteamAdapter.new(STEAM_ID).get_player_summaries }
 
     before(:each) do
@@ -27,25 +26,23 @@ describe SteamAdapter do
   end
 
   context "when asking for a player summary when invalid steam id" do
-
     let(:player) { SteamAdapter.new('XXXXXXXXXXXXXXXXX').get_player_summaries }
 
     before(:each) do
       allow_any_instance_of(SteamAdapter).to receive(:get_player_summaries).and_return(OpenStruct.new(user_name: SteamAdapter::NOT_VALID_USER, steam_id: SteamAdapter::NOT_VALID_STEAM_ID) )
     end
 
-    it 'should return the correct user name from results' do
+    it 'should return the null object pattern user' do
       expect(player.user_name).to eq SteamAdapter::NOT_VALID_USER
     end
 
-    it 'should return the correct steam id from results' do
+    it 'should return the null object pattern steam id' do
       expect(player.steam_id).to eq SteamAdapter::NOT_VALID_STEAM_ID
     end
 
   end
 
   context "when asking for a user's friend list when valid steam id" do
-
     let(:player) { SteamAdapter.new(STEAM_ID).get_friend_list }
 
     before(:each) do
@@ -58,6 +55,22 @@ describe SteamAdapter do
 
     it "it should return a relationship value to the friend when valid steam id" do
       expect(player.relationship).to eq RELATIONSHIP
+    end
+  end
+
+  context "when asking for a user's friend list when invalid steam id" do
+    let(:player) { SteamAdapter.new('XXXXXXXXXXXXXXXXX').get_friend_list }
+
+    before(:each) do
+      allow_any_instance_of(SteamAdapter).to receive(:get_friend_list).and_return(OpenStruct.new(user_name: SteamAdapter::NOT_VALID_USER, steam_id: SteamAdapter::NOT_VALID_STEAM_ID) )
+    end
+
+    it 'should return the null object pattern user' do
+      expect(player.user_name).to eq SteamAdapter::NOT_VALID_USER
+    end
+
+    it 'should return the null object pattern steam id' do
+      expect(player.steam_id).to eq SteamAdapter::NOT_VALID_STEAM_ID
     end
   end
 
