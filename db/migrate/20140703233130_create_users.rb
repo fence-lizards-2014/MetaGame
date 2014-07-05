@@ -8,9 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.text :user_bio
       t.integer :user_zipcode
 
-      # t.has_many :groups
-      # t.has_many :games
-      
+      t.belongs_to :group
+
       t.timestamps
     end
   end

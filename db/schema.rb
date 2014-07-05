@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140704210933) do
+ActiveRecord::Schema.define(:version => 20140705195731) do
+
+  create_table "events", :force => true do |t|
+    t.string   "event_name"
+    t.string   "event_game_title"
+    t.string   "event_description"
+    t.string   "event_location"
+    t.boolean  "event_active",      :default => true
+    t.datetime "event_date"
+    t.integer  "event_type_id"
+    t.integer  "event_zipcode"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
 
   create_table "games", :force => true do |t|
     t.string   "game_name"
@@ -26,12 +41,24 @@ ActiveRecord::Schema.define(:version => 20140704210933) do
     t.datetime "updated_at",            :null => false
   end
 
+  create_table "groups", :force => true do |t|
+    t.string   "group_name"
+    t.text     "group_description"
+    t.string   "group_logo_url"
+    t.string   "group_tagline"
+    t.integer  "user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "users", :force => true do |t|
+    t.string   "user_steam_id"
     t.string   "user_name"
     t.string   "password_hash"
     t.string   "user_email"
     t.text     "user_bio"
     t.integer  "user_zipcode"
+    t.integer  "group_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
