@@ -42,8 +42,8 @@ group :development, :test do
   gem 'rb-fsevent', require: false if RUBY_PLATFORM =~
    /darwin/i
   gem 'guard-rspec'
-  gem 'guard-livereload' 
-  gem 'guard-spork' 
+  gem 'guard-livereload'
+  gem 'guard-spork'
   gem 'ruby_gntp'
 end
 
@@ -70,5 +70,4 @@ end
 
 # To use debugger
 # gem 'debugger'
-# 
-
+#

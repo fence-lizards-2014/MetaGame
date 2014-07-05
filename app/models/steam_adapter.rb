@@ -41,4 +41,3 @@ module SteamAdapter
 		"?key=#{self.key}&steamids=76561198076227521"
 	end
 end
-
