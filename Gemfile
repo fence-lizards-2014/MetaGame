@@ -13,6 +13,8 @@ gem 'pg'
 gem 'bcrypt'
 gem 'omniauth-steam'
 gem 'figaro'
+gem 'httparty'
+gem 'json'
 
 group :production do
   gem 'newrelic_rpm'
@@ -40,11 +42,11 @@ group :development, :test do
   gem 'rb-fsevent', require: false if RUBY_PLATFORM =~
    /darwin/i
   gem 'guard-rspec'
-  gem 'guard-livereload' 
-  gem 'guard-spork' 
+  gem 'guard-livereload'
+  gem 'guard-spork'
   gem 'ruby_gntp'
 end
-
+ 
 group :test do
   gem 'faker'
   gem 'factory_girl_rails'
@@ -68,5 +70,4 @@ end
 
 # To use debugger
 # gem 'debugger'
-# 
-
+#
