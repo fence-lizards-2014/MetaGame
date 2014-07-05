@@ -1,4 +1,5 @@
 require_relative '../models/steam_adapter'
+
 module UsersHelper
 
 	def current_user

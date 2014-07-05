@@ -3,7 +3,7 @@ require 'ostruct'
 
 describe SteamAdapter do
 
-  context "when asking for a player summary" do
+  context "when asking for a player summary with valid key and steam id" do
 
     let(:player) { SteamAdapter.new('76561198076227521').get_player_summaries }
 
