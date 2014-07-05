@@ -7,6 +7,7 @@ describe SteamAdapter do
   STEAM_ID = '76561198076227521'
   FRIEND_STEAM_ID = '76561197960265731'
   RELATIONSHIP = 'friend'
+  GAME_COUNT = '415'
 
   context "when asking for a player summary when valid key and steam id" do
     let(:player) { SteamAdapter.new(STEAM_ID).get_player_summaries }
@@ -74,5 +75,32 @@ describe SteamAdapter do
     end
   end
 
+  context "when asking for a user's friend list when valid steam id" do
+    let(:player) { SteamAdapter.new(STEAM_ID).get_games }
+
+    before(:each) do
+      allow_any_instance_of(SteamAdapter).to receive(:get_games).and_return(OpenStruct.new(game_count: GAME_COUNT) )
+    end
+
+    it "it should return a total owned game count for the user when valid steam id" do
+      expect(player.game_count).to eq GAME_COUNT
+    end
+  end
+
+  context "when asking for a user's friend list when invalid steam id" do
+    let(:player) { SteamAdapter.new('XXXXXXXXXXXXXXXXX').get_games }
+
+    before(:each) do
+      allow_any_instance_of(SteamAdapter).to receive(:get_games).and_return(OpenStruct.new(user_name: SteamAdapter::NOT_VALID_USER, steam_id: SteamAdapter::NOT_VALID_STEAM_ID) )
+    end
+
+    it 'should return the null object pattern user' do
+      expect(player.user_name).to eq SteamAdapter::NOT_VALID_USER
+    end
+
+    it 'should return the null object pattern steam id' do
+      expect(player.steam_id).to eq SteamAdapter::NOT_VALID_STEAM_ID
+    end
+  end
 end
 
