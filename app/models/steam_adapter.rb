@@ -6,6 +6,9 @@ class SteamAdapter
 
 	base_uri 'http://api.steampowered.com'
 
+	NOT_VALID_KEY = 'KEY NOT VALID'
+	NOT_VALID_STEAM_ID = 'Unable to find steam user'
+
 	def initialize steam_id
 		# need to make env
 		@key = '2CA9866DD532D38F34B6B2CBBD968E92'
@@ -13,17 +16,15 @@ class SteamAdapter
 	end
 
 	def get_player_summaries
-		self.class.get "/#{get_type_user}/GetPlayerSummaries/v0002/#{get_ids}"
+		self.class.get "/#{get_type_user}/GetPlayerSummaries/v0002/#{get_ids}" || OpenStruct.new(key: NOT_VALID_KEY, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	def get_friend_list
-		response = self.class.get "#{base_uri}/#{get_type_user}/GetFriendList/v0001/#{get_ids}&relationship=friend"
-		reponse.body
+		self.class.get "/#{get_type_user}/GetFriendList/v0001/#{get_ids}&relationship=friend" || OpenStruct.new(key: NOT_VALID_KEY, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	def get_games
-		response = self.class.get "#{base_uri}/#{get_type_player_service}/GetOwnedGames/v0001/#{get_ids}&format=json"
-		response.body
+		self.class.get "/#{get_type_player_service}/GetOwnedGames/v0001/#{get_ids}&format=json" || OpenStruct.new(key: NOT_VALID_KEY, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	private
