@@ -42,7 +42,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-livereload' 
   gem 'guard-spork' 
-  gem 'ruby_gntp'
+  # gem 'ruby_gntp'
 end
 
 group :test do

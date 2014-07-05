@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 	end
 
 	def signin
+		render :signin
 	end
 
 	def signin_attempt
