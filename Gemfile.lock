@@ -242,6 +242,7 @@ DEPENDENCIES
   guard-spork
   httparty
   jquery-rails
+  json
   launchy
   newrelic_rpm
   nifty-generators

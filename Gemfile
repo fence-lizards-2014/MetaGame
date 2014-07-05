@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'omniauth-steam'
 gem 'figaro'
 gem 'httparty'
+gem 'json'
 
 group :production do
   gem 'newrelic_rpm'

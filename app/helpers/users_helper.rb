@@ -1,3 +1,4 @@
+require_relative '../models/steam_adapter'
 module UsersHelper
 
 	def self.check_steam_id(user, steam_id)
