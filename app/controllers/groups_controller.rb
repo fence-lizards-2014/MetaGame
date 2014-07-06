@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
+
     @groups = Group.all
 
     respond_to do |format|
@@ -39,12 +40,16 @@ class GroupsController < ApplicationController
 
   # POST /groups
   # POST /groups.json
+  # 
   def create
     @group = Group.new(params[:group])
-    # add cu to group as admin upon group save.
-    
+    current_user
     respond_to do |format|
       if @group.save
+        # add cu to group as admin upon group save.
+        @group.users << @current_user
+        # add group to cu groups
+        current_user_groups << @group
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else

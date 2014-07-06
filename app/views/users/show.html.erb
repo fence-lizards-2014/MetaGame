@@ -34,6 +34,17 @@
 
   <div class="feature" id="3">
     <h2>USERS GROUPS</h2>
+    <ul class="show-group-list">
+      <li>
+        <% current_user_groups.each do |group| %>
+        <h3><%= link_to "#{group.group_name}", group_path(group.id) %></h3>
+        <%= image_tag "http://www.controlyouraffliction.info/wp-content/uploads/2013/08/mac-icon.png", class: "group-logo" %>
+
+        <p><%= group.group_description %></p>
+        <p><%= group.group_tagline %></p>
+        <% end %>
+      </li>
+  </ul>
   </div>
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
