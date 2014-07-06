@@ -9,7 +9,7 @@ describe GiantBombAdapter do
   INVALID_PLATFORM_ID = ''
 
 	context "when searching for a game when valid title" do
-    let(:game) { GiantBombAdapter.new(GAME_TITLE, PLATFORM_ID).search }
+    let(:game) { GiantBombAdapter.new(GAME_TITLE).search }
 
     before(:each) do
       allow_any_instance_of(GiantBombAdapter).to receive(:search).and_return(OpenStruct.new title: GAME_TITLE )
@@ -22,7 +22,7 @@ describe GiantBombAdapter do
   end
 
   context "when searching for a game when invalid title" do
-    let(:game) { GiantBombAdapter.new(INVALID_GAME_TITLE, INVALID_PLATFORM_ID).search }
+    let(:game) { GiantBombAdapter.new(INVALID_GAME_TITLE).search }
 
     before(:each) do
       allow_any_instance_of(GiantBombAdapter).to receive(:search).and_return(OpenStruct.new title: GiantBombAdapter::INVALID_TITLE )
@@ -35,7 +35,7 @@ describe GiantBombAdapter do
   end
 
   context "when searching for a console's games when valid console_id" do
-    let(:game) { GiantBombAdapter.new(GAME_TITLE, PLATFORM_ID).get_games_by_console }
+    let(:game) { GiantBombAdapter.new(PLATFORM_ID).get_games_by_console }
 
     before(:each) do
       allow_any_instance_of(GiantBombAdapter).to receive(:get_games_by_console).and_return(OpenStruct.new platform_id: PLATFORM_ID )
@@ -48,7 +48,7 @@ describe GiantBombAdapter do
   end
 
   context "when searching for a console's games when invalid platform id" do
-    let(:game) { GiantBombAdapter.new(INVALID_GAME_TITLE, INVALID_PLATFORM_ID).get_games_by_console }
+    let(:game) { GiantBombAdapter.new(INVALID_PLATFORM_ID).get_games_by_console }
 
     before(:each) do
       allow_any_instance_of(GiantBombAdapter).to receive(:get_games_by_console).and_return(OpenStruct.new platform_id: GiantBombAdapter::INVALID_ID )

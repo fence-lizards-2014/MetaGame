@@ -2,17 +2,16 @@ require 'ostruct'
 
 class GiantBombAdapter
 	include HTTParty
-	attr_accessor :key, :title, :game_id
+	attr_accessor :key, :query_id
 
 	base_uri 'http://www.giantbomb.com/api'
 
 	INVALID_TITLE = 'No such game exists! Please try again!'
 	INVALID_ID = 'No such console exists!'
 
-	def initialize title, game_id
+	def initialize query_id
 		@key = '5a4c47474d09321305c85ae777a19fdf647d8257'
-		@title = URI.escape title
-		@game_id = game_id
+		@query_id = URI.escape query_id
 	end
 
 	def search
@@ -25,36 +24,36 @@ class GiantBombAdapter
 
 	private
 
-	def game_type
-		"games"
+	def field_list
+		"field_list=genres,name"
 	end
 
-	def get_type
-		'search'
-	end
-
-	def get_ids
-		"api_key=#{@key}"
+	def filter
+		"filter=platforms:#{@query_id}"
 	end
 
 	def format
 		'format=json'
 	end
 
+	def game_type
+		"games"
+	end
+
+	def get_ids
+		"api_key=#{@key}"
+	end
+
+	def get_type
+		'search'
+	end
+
 	def query
-		"query=#{@title}"
+		"query=#{@query_id}"
 	end
 
 	def resource
 		'resources=game'
-	end
-
-	def filter
-		"filter=platforms:#{@game_id}"
-	end
-
-	def field_list
-		"field_list=genres,name"
 	end
 
 end
