@@ -16,10 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    if session[:current_user]
-      UsersHelper.check_steam_id(@user, session[:current_user][:uid])
-    end
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -72,6 +69,22 @@ class UsersController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def new_password
+    @user = current_user
+    render partial: "users/changepw"
+  end
+
+  def update_password
+    @user = current_user
+    if params[:user][:password_hash] == params[:user][:confirm_pw]
+      @user.password = params[:user][:password_hash]
+      @user.save
+      redirect_to user_path(@user)
+    else
+      redirect_to new_password_path
     end
   end
 

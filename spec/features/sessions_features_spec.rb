@@ -14,3 +14,15 @@ feature "get Signin" do
 			expect(page).to have_content "Logout"
 	end
 end
+
+#replace with better test
+# feature 'change password', js: true do
+# 		scenario "User's password is properly changed with valid input" do
+# 			@user = User.create username: 'Jake', password_hash: "12345"
+# 			visit new_password_path
+# 			fill_in "user_password_hash", with: "123"
+# 			fill_in "user_confirm_pw", with: "123"
+# 			click_button "Submit"
+# 			expect(user.password).to eq(BCrypt::Password.create("123"))
+# 		end
+# end
