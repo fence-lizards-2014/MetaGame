@@ -24,7 +24,7 @@ class SteamAdapter
 	end
 
 	def get_games
-		self.class.get "/#{get_type_player_service}/GetOwnedGames/#{v1}/#{get_key}&#{format}&#{app_info}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
+		self.class.get "/#{get_type_player_service}/GetOwnedGames/#{v1}/#{get_single_id}&#{format}&#{app_info}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	private
@@ -39,6 +39,10 @@ class SteamAdapter
 
 	def get_ids
 		"?key=#{@key}&steamids=#{@steam_id}"
+	end
+
+	def get_single_id
+		"?key=#{@key}&steamid=#{@steam_id}"
 	end
 
 	def get_key
