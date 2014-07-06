@@ -15,11 +15,11 @@ class GiantBombAdapter
 	end
 
 	def search
-		self.class.get "/#{get_type}?#{get_ids}&#{format}&#{query}&#{resource}" || OpenStruct.new(title: INVALID_TITLE)
+		self.class.get "/#{get_type}?#{get_ids}&#{format}&#{query}&#{resource}" || OpenStruct.new(query_id: INVALID_TITLE)
 	end
 
 	def get_games_by_console
-		self.class.get "/#{game_type}/?#{format}&#{get_ids}&#{filter}&#{field_list}"
+		self.class.get "/#{game_type}/?#{format}&#{get_ids}&#{filter}&#{field_list}"  || OpenStruct.new(query_id: INVALID_ID)
 	end
 
 	private
