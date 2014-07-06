@@ -2,7 +2,7 @@ require 'ostruct'
 
 class GiantBombAdapter
 	include HTTParty
-	attr_accessor :key, :title
+	attr_accessor :key, :title, :game_id
 
 	base_uri 'http://www.giantbomb.com/api'
 
