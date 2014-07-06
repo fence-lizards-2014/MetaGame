@@ -24,7 +24,7 @@ class SteamAdapter
 	end
 
 	def get_games
-		self.class.get "/#{get_type_player_service}/GetOwnedGames/#{v1}/#{get_ids}&#{format}&#{app_info}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
+		self.class.get "/#{get_type_player_service}/GetOwnedGames/#{v1}/#{get_key}&#{format}&#{app_info}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	private
@@ -39,6 +39,10 @@ class SteamAdapter
 
 	def get_ids
 		"?key=#{@key}&steamids=#{@steam_id}"
+	end
+
+	def get_key
+		"?key=#{@key}"
 	end
 
 	def format
@@ -61,3 +65,5 @@ class SteamAdapter
 		"v0002"
 	end
 end
+
+#http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=2CA9866DD532D38F34B6B2CBBD968E92&format=json&steamids=76561198076227521&Include_appinfo=1"

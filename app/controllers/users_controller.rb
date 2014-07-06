@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if session[:current_user]
-      UsersHelper.check_steam_id(@user, session[:current_user][:uid])
+      UsersHelper.check_steam_id(@user, session[:current_user][:uid], session[:current_user][:image])
     end
 
     respond_to do |format|
