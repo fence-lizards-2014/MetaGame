@@ -58,7 +58,7 @@ class GiantBombAdapter
 
 end
 
-# http://www.giantbomb.com/api/games/?format=json&api_key=5a4c47474d09321305c85ae777a19fdf647d8257&filter=platforms:43&field_list=genres,name
+# http://www.giantbomb.com/api/games/?format=json&api_key=5a4c47474d09321305c85ae777a19fdf647d8257&filter=platforms:94&field_list=name&offset=100
 
 # nes - 21
 # snes - 9
@@ -69,7 +69,7 @@ end
 
 # ps1 - 22
 # ps2 - 19
-# ps3 - 88 
+# ps3 - 88
 # ps4 - 146
 
 # xbox - 32

@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(username: "Hunter", )
+Metagame::Game.parse_json('/Users/aubuchcl/desktop/MetaGame/db/new_games.json')
