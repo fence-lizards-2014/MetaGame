@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20140705204822) do
 
   create_table "games", :force => true do |t|
     t.string   "game_name"
-    t.string   "game_img_icon_url"
-    t.string   "game_img_logo_url"
+    t.text     "game_description"
+    t.text     "game_img_url"
     t.integer  "game_steam_appid"
     t.integer  "game_playtime_2weeks"
     t.integer  "game_playtime_forever"
