@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
 	  session[:current_user] = {  :nickname => auth.info['nickname'],
 																:image => auth.info['image'],
 																:uid => auth.uid }
+    UsersHelper.check_steam_id(user, session[:current_user][:uid], session[:current_user][:image])
+    responses = UsersHelper.make_api_data_calls user.user_steam_id
+    p responses
 	  redirect_to user_path(user)
 	end
 

@@ -16,10 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    if session[:current_user]
-      UsersHelper.check_steam_id(@user, session[:current_user][:uid], session[:current_user][:image])
-    end
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
