@@ -39,12 +39,14 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'rspec-rails', '=2.14'
   gem 'launchy'
-  gem 'rb-fsevent', require: false if RUBY_PLATFORM =~
-   /darwin/i
   gem 'guard-rspec'
   gem 'guard-livereload' 
   gem 'guard-spork' 
   gem 'ruby_gntp'
+end
+
+group :test, :darwin do
+  gem 'rb-fsevent'
 end
  
 group :test do
