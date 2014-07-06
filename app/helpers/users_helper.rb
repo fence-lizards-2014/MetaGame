@@ -12,8 +12,8 @@ module UsersHelper
       user.update_attributes user_steam_id: steam_id, user_avatar_url: image
 		end
 		user.update_attributes user_avatar_url: image
-		responses = { summary: (retrieve_player_summaries user.user_steam_id), 
-									games: (retrieve_player_games user.user_steam_id) }
+		responses = { summary: (retrieve_player_summaries user.user_steam_id).parsed_response, 
+									games: (retrieve_player_games user.user_steam_id).parsed_response }
 		p responses
 	end
 
