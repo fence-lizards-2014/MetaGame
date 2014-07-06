@@ -5,11 +5,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :password_hash
       t.string :user_email
-      t.text :user_bio
+      t.string :user_avatar_url
       t.integer :user_zipcode
+      t.text :user_bio
 
-      # t.has_many :groups
-      # t.has_many :games
+      t.belongs_to :group
 
       t.timestamps
     end
