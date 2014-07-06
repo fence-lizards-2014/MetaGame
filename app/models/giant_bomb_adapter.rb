@@ -77,3 +77,6 @@ end
 # xbox one - 145
 
 # pc - 94
+#to get games sorted by number of user reviews
+# http://www.giantbomb.com/api/games/?format=json&api_key=5a4c47474d09321305c85ae777a19fdf647d8257&filter=platforms:94&sort=number_of_user_reviews:desc&field_list=description,image,name&offset=100
+
