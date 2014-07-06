@@ -1,4 +1,34 @@
-users - 
+####################################
+####################################
+####################################
+#######     METAGAME     ###########
+#######     SCHEMAS      ###########
+#######                  ###########
+#######   Contributors   ###########
+#######                  ###########
+#######     BootCoder    ###########
+#######    MisterDamon   ###########
+####################################
+####################################
+####################################
+
+
+Link to shot of schema design
+
+https://www.dropbox.com/s/z4rvs4p8m017v69/metagame-sql.tiff
+
+
+
+####################################
+#########              #############
+########   1st Draft    ############
+#########              #############
+####################################
+####################################
+
+
+
+users
 	use_steam_id
 	username
 	password_hash
@@ -51,39 +81,12 @@ belongs to group
 
 
 
-
-
-
-# SAMPLE PULL FROM STEAM
-	# "appid": 238460,
-	# 			"name": "BattleBlock Theater",
-	# 			"playtime_2weeks": 75,
-	# 			"playtime_forever": 75,
-	# 			"img_icon_url": "2f258aaff583d797812cdcf24830d5992f48733b",
-	# 			"img_logo_url": "13380473acaa95f843301b8a21a383790ae384de"
-
-
-
-
-
-
-
-
-notes on Travis ci
-
-bake in travis after writing first spec
-
-make repo public and add travsCI under webhooks and services
-
-create travis.yml file
-
-reloase 0 by 530
-repo up and heroku
-
-
-as much project workflow as possible
-
-
+####################################
+#########              #############
+########   2nd Draft    ############
+#########              #############
+####################################
+####################################
 
 
 CREATE TABLE "Users" (
@@ -209,6 +212,223 @@ ALTER TABLE "GroupGames" ADD FOREIGN KEY ("game_id") REFERENCES "Games" ("id");
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+####################################
+#########              #############
+########   PRODUCTION   ############
+#######   table design   ###########
+####################################
+####################################
+
+
+ActiveRecord::Schema.define(:version => 20140705204822) do
+
+  create_table "events", :force => true do |t|
+    t.string   "event_name"
+    t.string   "event_game_title"
+    t.string   "event_description"
+    t.string   "event_location"
+    t.boolean  "event_active",      :default => true
+    t.datetime "event_date"
+    t.integer  "event_type_id"
+    t.integer  "event_zipcode"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "games", :force => true do |t|
+    t.string   "game_name"
+    t.string   "game_img_icon_url"
+    t.string   "game_img_logo_url"
+    t.integer  "game_steam_appid"
+    t.integer  "game_playtime_2weeks"
+    t.integer  "game_playtime_forever"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "group_events", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "event_id"
+  end
+
+  create_table "group_games", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "game_id"
+  end
+
+  create_table "group_users", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "group_name"
+    t.text     "group_description"
+    t.string   "group_logo_url"
+    t.string   "group_tagline"
+    t.integer  "user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "user_admins", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.integer "event_id"
+    t.boolean "admin"
+  end
+
+  create_table "user_events", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
+
+  create_table "user_friends", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.integer "admin_id"
+  end
+
+  create_table "user_games", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+  end
+
+  create_table "user_groups", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "user_steam_id"
+    t.string   "username"
+    t.string   "password_hash"
+    t.string   "user_email"
+    t.string   "user_avatar_url"
+    t.integer  "user_zipcode"
+    t.text     "user_bio"
+    t.integer  "group_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+end
+
+
+
+####################################
+#########              #############
+########   PRODUCTION   ############
+#######   model design   ###########
+####################################
+####################################
+
+
+class User < ActiveRecord::Base
+
+  attr_accessible :password_hash, :user_bio, :user_email, :username, :user_zipcode, :user_steam_id, :user_avatar_url, :id, :created_at, :updated_at
+
+	has_many :user_friends
+	has_many :friends, through: :user_friends, source: :user, class_name: "User"
+
+  has_many :games
+	has_many :user_games, through: :games
+
+	has_many :groups
+  has_many :user_groups, through: :groups
+
+  has_many :events
+  has_many :user_events, through: :events
+  has_many :group_events, through: :events
+
+
+  include BCrypt
+  def password
+    @password ||= Password.new(password_hash)
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
+end
+
+
+
+class Group < ActiveRecord::Base
+  attr_accessible :group_description, :group_logo_url, :group_name, :group_tagline
+  
+  has_many :users
+  has_many :group_users, through: :users
+
+	has_many :admins, class_name: "User"
+
+  has_many :events
+  has_many :group_events, through: :groups
+
+end
+
+
+
+
+
+
+class Event < ActiveRecord::Base
+  attr_accessible :event_active, :event_date, :event_description, :event_game_title, :event_location, :event_name, :event_type_id, :event_zipcode
+  
+  has_many :groups
+  has_many :groups_events, through: :events
+
+	has_many :admins
+  has_many :user_admins, through: :admins
+	
+  has_many :users
+  has_many :user_events, through: :events
+
+end
+
+
+
+
+
+
+class Game < ActiveRecord::Base
+  attr_accessible :game_img_icon_url, :game_img_logo_url, :game_name, :game_playtime_2weeks, :game_playtime_forever
+
+  has_many :users
+  has_many :user_games, through: :users
+
+  has_many :groups
+  has_many :group_games, through: :groups
+
+end
+
+
+
+
+
+
+class UserFriend < ActiveRecord::Base
+	
+	belongs_to :user
+	belongs_to :friend, class_name: "User"
+
+end
 
 
 
