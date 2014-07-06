@@ -47,9 +47,12 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         # add cu to group as admin upon group save.
-        @group.users << @current_user
         # add group to cu groups
+        
+        @group.users << @current_user
+        
         current_user_groups << @group
+
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
