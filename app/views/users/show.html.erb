@@ -1,32 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="body" style="overflow-y: scroll; height: 400px;">
+  <div class="feature" id="1">
+    <h3>Profile Info</h3>
 
-<p>
-  <b>User name:</b>
-  <%= @user.username %>
-</p>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Password hash:</b>
-  <%= @user.password_hash %>
-</p>
+    <p>
+      <b>User name:</b>
+      <%= @user.username %>
+    </p>
 
-<p>
-  <b>User email:</b>
-  <%= @user.user_email %>
-</p>
+    <p>
+      <b>User email:</b>
+      <%= @user.user_email %>
+    </p>
 
-<p>
-  <b>User bio:</b>
-  <%= @user.user_bio %>
-</p>
+    <p>
+      <b>User bio:</b>
+      <%= @user.user_bio %>
+    </p>
 
-<p>
-  <b>User zipcode:</b>
-  <%= @user.user_zipcode %>
-</p>
+    <p>
+      <b>User zipcode:</b>
+      <%= @user.user_zipcode %>
+    </p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <%= link_to image_tag("http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_large_noborder.png"), '/auth/steam' %>
+  </div>
 
-<%= link_to image_tag("http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_large_noborder.png"), '/auth/steam' %>
+  <div class="feature" id="2">
+    <h2>USERS GAMES</h2>
+  </div>
+
+  <div class="feature" id="3">
+    <h2>USERS GROUPS</h2>
+  </div>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+</div>
+

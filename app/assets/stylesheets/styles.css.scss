@@ -2,20 +2,23 @@
   border: 1px solid red;
 }*/
 
+.body {
+  padding-bottom: 15%;
+}
+
 .body-container {
-  background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   background-color: black;
-  /*line-height: 18px;*/
+  padding-bottom: auto;
 }
 
-div {
+/*div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
-}
+}*/
 
 .navbar {
   text-align: center;
@@ -37,7 +40,7 @@ div {
 
 .splash-buttons {
   /*position: relative;*/
-  right: 6%;
+  right: 4%;
   float: right;
   display: inline;
   top: 3%;
@@ -45,20 +48,12 @@ div {
   /*border: solid purple;*/
 }
 
+.signin-form {
+  margin: 20%;
+}
+
 .splash-buttons a {
   text-decoration: none;
-}
-
-.splash-buttons .user-button {
-  border-radius: 3px;
-}
-
-.splash-buttons .sign-in-button {
-  border-radius: 3px;
-}
-
-.splash-buttons .sign-up-button {
-  border-radius: 3px;
 }
 
 .feature {
