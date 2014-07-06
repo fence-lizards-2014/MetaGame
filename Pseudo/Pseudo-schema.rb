@@ -86,6 +86,129 @@ as much project workflow as possible
 
 
 
+CREATE TABLE "Users" (
+"id"  SERIAL ,
+"user_friends_id" INTEGER ,
+"user_zipcode" INTEGER ,
+"username" CHAR ,
+"user_steam_id" CHAR ,
+"password_hash" CHAR ,
+"user_email" CHAR ,
+"user_bio" MEDIUMTEXT ,
+"user_online" SET ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "Events" (
+"id"  SERIAL ,
+"event_name" CHAR ,
+"event_game_title" CHAR ,
+"event_description" CHAR ,
+"event_location" CHAR ,
+"event_active" SET ,
+"event_date" DATETIME ,
+"event_type_id" INTEGER ,
+"event_zipcode" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "Groups" (
+"id"  SERIAL ,
+"group_name" CHAR ,
+"group_description" CHAR ,
+"group_logo_url" CHAR ,
+"group_tagline" CHAR ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "Games" (
+"id"  SERIAL ,
+"game_name" CHAR ,
+"game_img_icon_url" CHAR ,
+"game_img_logo_url" CHAR ,
+"game_steam_appid" INTEGER ,
+"game_playtime_2weeks" INTEGER ,
+"game_playtime_forever" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "UserGroups" (
+"id"  SERIAL ,
+"user_id" INTEGER ,
+"group_id" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "UserGames" (
+"id"  SERIAL ,
+"user_id" INTEGER ,
+"game_id" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "UserEvents" (
+"id"  SERIAL ,
+"user_id" INTEGER ,
+"event_id" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "UserAdmins" (
+"id"  SERIAL ,
+"user_id" INTEGER ,
+"event_id" INTEGER ,
+"group_id" INTEGER ,
+"admin" SET ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "GroupUsers" (
+"id"  SERIAL ,
+"group_id" INTEGER ,
+"user_id" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "GroupEvents" (
+"id"  SERIAL ,
+"group_id" INTEGER ,
+"event_id" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "GroupGames" (
+"id"  SERIAL ,
+"group_id" INTEGER ,
+"game_id" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+CREATE TABLE "UserFriends" (
+"id"  SERIAL ,
+"admin_id" INTEGER ,
+PRIMARY KEY ("id")
+);
+
+ALTER TABLE "Users" ADD FOREIGN KEY ("user_friends_id") REFERENCES "UserFriends" ("id");
+ALTER TABLE "UserGroups" ADD FOREIGN KEY ("user_id") REFERENCES "Users" ("id");
+ALTER TABLE "UserGroups" ADD FOREIGN KEY ("group_id") REFERENCES "Groups" ("id");
+ALTER TABLE "UserGames" ADD FOREIGN KEY ("user_id") REFERENCES "Users" ("id");
+ALTER TABLE "UserGames" ADD FOREIGN KEY ("game_id") REFERENCES "Games" ("id");
+ALTER TABLE "UserEvents" ADD FOREIGN KEY ("user_id") REFERENCES "Users" ("id");
+ALTER TABLE "UserEvents" ADD FOREIGN KEY ("event_id") REFERENCES "Events" ("id");
+ALTER TABLE "UserAdmins" ADD FOREIGN KEY ("user_id") REFERENCES "Users" ("id");
+ALTER TABLE "UserAdmins" ADD FOREIGN KEY ("event_id") REFERENCES "Events" ("id");
+ALTER TABLE "UserAdmins" ADD FOREIGN KEY ("group_id") REFERENCES "Groups" ("id");
+ALTER TABLE "GroupUsers" ADD FOREIGN KEY ("group_id") REFERENCES "Groups" ("id");
+ALTER TABLE "GroupUsers" ADD FOREIGN KEY ("user_id") REFERENCES "Users" ("id");
+ALTER TABLE "GroupEvents" ADD FOREIGN KEY ("group_id") REFERENCES "Groups" ("id");
+ALTER TABLE "GroupEvents" ADD FOREIGN KEY ("event_id") REFERENCES "Events" ("id");
+ALTER TABLE "GroupGames" ADD FOREIGN KEY ("group_id") REFERENCES "Groups" ("id");
+ALTER TABLE "GroupGames" ADD FOREIGN KEY ("game_id") REFERENCES "Games" ("id");
+
+
+
+
 
 
 

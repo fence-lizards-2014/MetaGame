@@ -23,7 +23,7 @@ describe UsersController do
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "user_name" => "MyString" } }
+  let(:valid_attributes) { { "username" => "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -97,14 +97,14 @@ describe UsersController do
       it "assigns a newly created but unsaved user as @user" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => { "user_name" => "invalid value" }}, valid_session
+        post :create, {:user => { "username" => "invalid value" }}, valid_session
         assigns(:user).should be_a_new(User)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => { "user_name" => "invalid value" }}, valid_session
+        post :create, {:user => { "username" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -117,8 +117,8 @@ describe UsersController do
         # specifies that the User created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        User.any_instance.should_receive(:update_attributes).with({ "user_name" => "MyString" })
-        put :update, {:id => user.to_param, :user => { "user_name" => "MyString" }}, valid_session
+        User.any_instance.should_receive(:update_attributes).with({ "username" => "MyString" })
+        put :update, {:id => user.to_param, :user => { "username" => "MyString" }}, valid_session
       end
 
       it "assigns the requested user as @user" do
@@ -136,14 +136,14 @@ describe UsersController do
       it "assigns the user as @user" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => { "user_name" => "invalid value" }}, valid_session
+        put :update, {:id => user.to_param, :user => { "username" => "invalid value" }}, valid_session
         assigns(:user).should eq(user)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => { "user_name" => "invalid value" }}, valid_session
+        put :update, {:id => user.to_param, :user => { "username" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

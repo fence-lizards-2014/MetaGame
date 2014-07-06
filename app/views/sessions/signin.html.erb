@@ -1,7 +1,7 @@
 <%= flash[:notice] %>
 <%= form_for User.new, url: sign_in_attempt_path, method: :post do |u| %>
 	<%= u.label "Username" %>
-	<%= u.text_field :user_name %>
+	<%= u.text_field :username %>
 	<%= u.label :Password %>
 	<%= u.text_field :password_hash %>
 	<%= u.submit :Submit %>
