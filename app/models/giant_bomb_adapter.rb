@@ -24,7 +24,7 @@ class GiantBombAdapter
 	end
 
 	def get_ids
-		'?api_key=#{@key}'
+		"?api_key=#{@key}"
 	end
 
 	def format
@@ -32,7 +32,7 @@ class GiantBombAdapter
 	end
 
 	def query
-		'query=#{@title}'
+		"query=#{@title}"
 	end
 
 	def resource
@@ -43,5 +43,5 @@ end
 
 # http://www.giantbomb.com/api/search?api_key=5a4c47474d09321305c85ae777a19fdf647d8257&format=json&query=banjo-kazooie&resources=game
 
-# GiantBombAdapter.search params[:title]
+# GiantBombAdapter.new('some title').search
 

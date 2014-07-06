@@ -6,20 +6,20 @@ describe GiantBombAdapter do
 	GAME_TITLE = 'Banjo-Kazooie'
 	INVALID_GAME_TITLE = ''
 
-	context "when asking for a player summary when valid key and steam id" do
+	context "when searching for a game when valid title" do
     let(:game) { GiantBombAdapter.new(GAME_TITLE).search }
 
     before(:each) do
       allow_any_instance_of(GiantBombAdapter).to receive(:search).and_return(OpenStruct.new title: GAME_TITLE )
     end
 
-    it 'should return the correct user name from results' do
+    it 'should return the correct game title' do
       expect(game.title).to eq GAME_TITLE
     end
 
   end
 
-  context "when asking for a player summary when invalid steam id" do
+  context "when searching for a game when invalid title" do
     let(:game) { GiantBombAdapter.new(INVALID_GAME_TITLE).search }
 
     before(:each) do

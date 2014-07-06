@@ -16,15 +16,15 @@ class SteamAdapter
 	end
 
 	def get_player_summaries
-		self.class.get "/#{get_type_user}/GetPlayerSummaries/v0002/#{get_ids}" || OpenStruct.new(key: NOT_VALID_KEY, steam_id: NOT_VALID_STEAM_ID)
+		self.class.get "/#{get_type_user}/GetPlayerSummaries/#{v2}/#{get_ids}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	def get_friend_list
-		self.class.get "/#{get_type_user}/GetFriendList/v0001/#{get_ids}&relationship=friend" || OpenStruct.new(key: NOT_VALID_KEY, steam_id: NOT_VALID_STEAM_ID)
+		self.class.get "/#{get_type_user}/GetFriendList/#{v1}/#{get_ids}&#{relationship}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	def get_games
-		self.class.get "/#{get_type_player_service}/GetOwnedGames/v0001/#{get_ids}&format=json&Include_appinfo=1" || OpenStruct.new(key: NOT_VALID_KEY, steam_id: NOT_VALID_STEAM_ID)
+		self.class.get "/#{get_type_player_service}/GetOwnedGames/#{v1}/#{get_ids}&#{format}&#{app_info}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
 	end
 
 	private
@@ -39,5 +39,25 @@ class SteamAdapter
 
 	def get_ids
 		"?key=#{@key}&steamids=#{@steam_id}"
+	end
+
+	def format
+		"format=json"
+	end
+
+	def app_info
+		"Include_appinfo=1"
+	end
+
+	def relationship
+		"relationship=friend"
+	end
+
+	def v1
+		"v0001"
+	end
+
+	def v2
+		"v0002"
 	end
 end
