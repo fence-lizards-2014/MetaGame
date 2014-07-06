@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    p @user
     if session[:current_user]
       UsersHelper.check_steam_id(@user, session[:current_user][:uid])
     end
