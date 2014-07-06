@@ -75,6 +75,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_password
+    @user = current_user
+    render partial: "users/changepw"
+  end
+
+  def update_password
+    @user = current_user
+    if params[:user][:password_hash] == params[:user][:confirm_pw]
+      @user.password = params[:user][:password_hash]
+      @user.save
+      redirect_to user_path(@user)
+    else
+      redirect_to new_password_path
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

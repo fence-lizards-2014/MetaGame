@@ -3,7 +3,7 @@
 	<%= u.label "Username" %>
 	<%= u.text_field :username %>
 	<%= u.label :Password %>
-	<%= u.text_field :password_hash %>
+	<%= u.password_field :password_hash %>
 	<%= u.submit :Submit %>
 <% end %>
 <h4 class="nav-brand"><%= link_to "Create a new account", new_user_path %></h4>
