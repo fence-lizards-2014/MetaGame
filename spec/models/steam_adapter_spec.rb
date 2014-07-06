@@ -8,6 +8,7 @@ describe SteamAdapter do
   FRIEND_STEAM_ID = '76561197960265731'
   RELATIONSHIP = 'friend'
   GAME_COUNT = '415'
+  INVALID_ID = 'XXXXXXXXXXXXXXXXX'
 
   context "when asking for a player summary when valid key and steam id" do
     let(:player) { SteamAdapter.new(STEAM_ID).get_player_summaries }
@@ -27,7 +28,7 @@ describe SteamAdapter do
   end
 
   context "when asking for a player summary when invalid steam id" do
-    let(:player) { SteamAdapter.new('XXXXXXXXXXXXXXXXX').get_player_summaries }
+    let(:player) { SteamAdapter.new(INVALID_ID).get_player_summaries }
 
     before(:each) do
       allow_any_instance_of(SteamAdapter).to receive(:get_player_summaries).and_return(OpenStruct.new(user_name: SteamAdapter::NOT_VALID_USER, steam_id: SteamAdapter::NOT_VALID_STEAM_ID) )
@@ -60,7 +61,7 @@ describe SteamAdapter do
   end
 
   context "when asking for a user's friend list when invalid steam id" do
-    let(:player) { SteamAdapter.new('XXXXXXXXXXXXXXXXX').get_friend_list }
+    let(:player) { SteamAdapter.new(INVALID_ID).get_friend_list }
 
     before(:each) do
       allow_any_instance_of(SteamAdapter).to receive(:get_friend_list).and_return(OpenStruct.new(user_name: SteamAdapter::NOT_VALID_USER, steam_id: SteamAdapter::NOT_VALID_STEAM_ID) )
@@ -88,7 +89,7 @@ describe SteamAdapter do
   end
 
   context "when asking for a user's friend list when invalid steam id" do
-    let(:player) { SteamAdapter.new('XXXXXXXXXXXXXXXXX').get_games }
+    let(:player) { SteamAdapter.new(INVALID_ID).get_games }
 
     before(:each) do
       allow_any_instance_of(SteamAdapter).to receive(:get_games).and_return(OpenStruct.new(user_name: SteamAdapter::NOT_VALID_USER, steam_id: SteamAdapter::NOT_VALID_STEAM_ID) )
