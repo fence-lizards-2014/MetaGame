@@ -30,6 +30,7 @@
 
   <div class="feature" id="2">
     <h2>USERS GAMES</h2>
+    <p>STUB some stuff should really go here at some point!</p>
   </div>
 
   <div class="feature" id="3">
@@ -37,16 +38,19 @@
     <ul class="show-group-list">
       <li>
         <% current_user_groups.each do |group| %>
-        <h3><%= link_to "#{group.group_name}", group_path(group.id) %></h3>
-        <%= image_tag "http://www.controlyouraffliction.info/wp-content/uploads/2013/08/mac-icon.png", class: "group-logo" %>
-
+        <div class="group-header">
+          <%= link_to image_tag(group.group_logo_url, class: "group-logo"), group_path(group.id) %>
+          <h3><%= link_to "#{group.group_name}", group_path(group.id), class: "no-underline-link" %></h3>
+        <div>
         <p><%= group.group_description %></p>
         <p><%= group.group_tagline %></p>
         <% end %>
       </li>
   </ul>
   </div>
+  <div class="nav-options">
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
+  </div>
 </div>
 

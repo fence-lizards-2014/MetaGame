@@ -1,11 +1,12 @@
 
 <div class="body" style="overflow-y: scroll; height: 400px;">
   <div class="feature" id="1">
-    <h3>Profile Info</h3>
+    <h3>Group Info</h3>
 
 		<p id="notice"><%= notice %></p>
 	
 		<div class="feature">
+      <%= image_tag(@group.group_logo_url, class: "group-logo-large") %>
 			<p>
 			  <b>Group name:</b>
 			  <%= @group.group_name %>
@@ -32,6 +33,8 @@
 			  <%= @group.group_tagline %>
 			</p>
 		</div>
-
-		<%= link_to 'Edit', edit_group_path(@group) %> |
-		<%= link_to 'Back', groups_path %>
+	</div>
+	  <div class="nav-options">
+			<%= link_to 'Edit', edit_group_path(@group) %> |
+			<%= link_to 'Back', groups_path %>
+		</div>
