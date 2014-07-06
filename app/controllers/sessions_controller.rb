@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 	end
 
 	def sign_in_attempt
-		@user = User.find_by_user_name(params[:user][:user_name])
+		@user = User.find_by_username(params[:user][:username])
 		if @user.password == params[:user][:password_hash]
 			session[:id] = @user.id
 			redirect_to user_path(@user)
