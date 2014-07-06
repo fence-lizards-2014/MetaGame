@@ -3,7 +3,7 @@
 <head>
   <title>Metagame</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <% stylesheet_link_tag "vendor", :media => "all" %>
+  <%= stylesheet_link_tag "vendor", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -13,3 +13,10 @@
    <!-- render partial: "layouts/footer" -->
 </body>
 </html>
+
+
+bundle exec rake tmp:clear
+
+ bundle exec rake assets:clean RAILS_ENV=production
+
+ bundle exec rake assets:precompile RAILS_ENV=production
