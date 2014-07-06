@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 	  auth = request.env['omniauth.auth']
 	  session[:current_user] = { :nickname => auth.info['nickname'],
 	                                        :image => auth.info['image'],
-	                                        :uid => auth.uid }
+	                                      :uid => auth.uid }
 	  redirect_to user_path(user)
 	end
 
@@ -24,7 +24,9 @@ class SessionsController < ApplicationController
 	end
 
 	def sign_in_attempt
-		@user = User.find_by_user_name(params[:user][:user_name])
+		p "*" * 250
+		p params
+		@user = User.find_by_username(params[:user][:username])
 		if @user.password == params[:user][:password_hash]
 			session[:id] = @user.id
 			redirect_to user_path(@user)

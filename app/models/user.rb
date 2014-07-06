@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :password_hash, :user_bio, :user_email, :username, :user_zipcode, :user_steam_id, :user_avatar_url, :id, :created_at, :updated_at
 
-
-	has_many :friends, class_name: "User"
+	has_many :user_friends
+	has_many :friends, through: :user_friends, source: :user, class_name: "User"
 
   has_many :games
 	has_many :user_games, through: :games
