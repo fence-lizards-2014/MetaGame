@@ -1,7 +1,7 @@
 <div class="navbar">
 
 
-  <h1 class="nav-brand"><%= link_to "MetaGame", root_path %></h1>
+  <h1 class="nav-brand"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></h1>
 
   <div class="splash-buttons">
     <% if current_user %>
@@ -9,7 +9,7 @@
 			<%= link_to "Logout", logout_path %>
     <% else %>
       <%= render "sessions/signin" %>
-      <%= link_to "Sign Up", new_user_path %>
+      <%= link_to "Sign Up", new_user_path, id: "signup-button" %>
     <% end %>
   </div>
 

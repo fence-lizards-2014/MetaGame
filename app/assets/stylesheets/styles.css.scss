@@ -24,28 +24,28 @@
   text-align: center;
   background-color: black;
   padding: 1% 0 1% 0;
-  border-bottom: solid 3px purple;
+  border-bottom: solid 3px #1E1291;
 }
 
 .nav-brand {
-  /*border: solid purple;*/
+  /*border: solid #1E1291;*/
   margin: 0 220px 0 220px;
 }
 
 .nav-brand a {
   color: #fff;
   text-decoration: none;
-  color: purple;
+  color: #1E1291;
 }
 
 .splash-buttons {
   /*position: relative;*/
-  right: 4%;
-  float: right;
+  /*right: 5%*/;
+  /*margin-right: 30px;*/
+  /*float: right;*/
   display: inline;
-  top: 3%;
-  position: absolute;
-  /*border: solid purple;*/
+  top: 1%;
+  /*position: absolute;*/
 }
 
 .signin-form {
@@ -54,6 +54,12 @@
 
 .splash-buttons a {
   text-decoration: none;
+  text-shadow: 0.1em 0.1em 0.2em white;
+}
+
+#signup-button a {
+  margin-top: 10%;
+  text-shadow: 0.1em 0.1em 0.2em white;
 }
 
 .feature {
@@ -65,11 +71,12 @@
 }
 
 .footer {
+  text-shadow: 0.1em 0.1em 0.2em white;
   position: fixed;
   bottom: 0;
-  border-top: solid 3px purple;
+  border-top: solid 3px #1E1291;
   text-align: center;
-  color: purple;
+  color: #1E1291;
   width: 100%;
   /*margin-left: 10%;*/
 }
