@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 	end
 
 	def signin
-		render :signin
+		render partial: "/sessions/signin"
 	end
 
 	def sign_in_attempt
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 			session[:id] = @user.id
 			redirect_to user_path(@user)
 		else
-			redirect_to sign_in_path, flash: { notice: "Your password was incorrect!" }
+			redirect_to signin_path, flash: { notice: "Invalid Email-Password combination" }
 		end
 	end
 end

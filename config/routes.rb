@@ -9,6 +9,7 @@ Metagame::Application.routes.draw do
   post "auth/steam/callback" => 'sessions#auth_callback', as: "steam_auth"
   get '/signin', to: 'sessions#signin', as: :signin
   post '/sessions', to: "sessions#sign_in_attempt", as: :sign_in_attempt
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

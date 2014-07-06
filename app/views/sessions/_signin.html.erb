@@ -1,0 +1,6 @@
+<%= flash[:notice] %>
+<%= form_for User.new, url: sign_in_attempt_path, method: :post, id: "signin-form" do |u| %>
+	<%= u.text_field :user_name, placeholder: "Username" %>
+	<%= u.text_field :password_hash, placeholder: "Password" %>
+	<%= u.submit :Submit %>
+<% end %>
