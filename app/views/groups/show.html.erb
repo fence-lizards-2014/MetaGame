@@ -1,25 +1,37 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Group name:</b>
-  <%= @group.group_name %>
-</p>
+<div class="body" style="overflow-y: scroll; height: 400px;">
+  <div class="feature" id="1">
+    <h3>Profile Info</h3>
 
-<p>
-  <b>Group description:</b>
-  <%= @group.group_description %>
-</p>
+		<p id="notice"><%= notice %></p>
+	
+		<div class="feature">
+			<p>
+			  <b>Group name:</b>
+			  <%= @group.group_name %>
+			</p>
+		</div>
 
-<p>
-  <b>Group logo url:</b>
-  <%= @group.group_logo_url %>
-</p>
+		<div class="feature">
+			<p>
+			  <b>Group description:</b>
+			  <%= @group.group_description %>
+			</p>
+		</div>
 
-<p>
-  <b>Group tagline:</b>
-  <%= @group.group_tagline %>
-</p>
+		<div class="feature">
+			<p>
+			  <b>Group logo url:</b>
+			  <%= @group.group_logo_url %>
+			</p>
+		</div>
+		
+		<div class="feature">
+			<p>
+			  <b>Group tagline:</b>
+			  <%= @group.group_tagline %>
+			</p>
+		</div>
 
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+		<%= link_to 'Edit', edit_group_path(@group) %> |
+		<%= link_to 'Back', groups_path %>
