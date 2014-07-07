@@ -1,31 +1,25 @@
 <h1>Listing games</h1>
 
-<table>
-  <tr>
-    <th>Game name</th>
-    <th>Game img icon url</th>
-    <th>Game img logo url</th>
-    <th>Game playtime 2weeks</th>
-    <th>Game playtime forever</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="body" style="overflow-y: scroll; height: 400px;">
+  <div class="feature" id="1">
+    <h2>List of Games</h2>
+  </div>
 
-<% @games.each do |game| %>
-  <tr>
-    <td><%= game.game_name %></td>
-    <td><%= game.game_img_icon_url %></td>
-    <td><%= game.game_img_logo_url %></td>
-    <td><%= game.game_playtime_2weeks %></td>
-    <td><%= game.game_playtime_forever %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="feature">
+    <h2>List of Users Games</h2>
+        <% cache do %>
+      <% @games.each do |game| %>
+      <%= link_to image_tag(game.game_img_url), game_path(game) %>
+      <br />
+      <% game.game_name%>
+      <% end %>
+    <% end %>
+  </div>
 
-<br />
+  <div class="feature" id="3">
+    <h2>Other Stuff</h2>
+  </div>
+</div>
+
 
 <%= link_to 'New Game', new_game_path %>

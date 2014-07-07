@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "get Signin" do 
-	let(:user) { User.new username: 'Jake', password_hash: "12345" }
+	let(:user) { User.new username: 'Jake', password_hash: "12345", user_email: "example@gmail.com", user_zipcode: 12345 }
 	let(:input_password) { '12345' }
 		scenario "User is properly signed in when proper info is entered" do
 

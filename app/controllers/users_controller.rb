@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   def index
     # session[:id] = nil
     if current_user
-      # @users = User.all
+      @user = current_user
+      @games = @user.games
       render "users/user_index"
     else
       # @user = User.new
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    @games = @user.games
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -105,5 +107,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def addgame
+    current_user
+    @game = Game.find params[:id]
+    @current_user.games << @game
+    redirect_to user_path(current_user)
   end
 end

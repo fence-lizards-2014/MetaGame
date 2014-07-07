@@ -11,13 +11,5 @@ describe "games/show" do
     ))
   end
 
-  it "renders attributes in <p>" do
-    render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Game Name/)
-    rendered.should match(/Game Img Icon Url/)
-    rendered.should match(/Game Img Logo Url/)
-    rendered.should match(/1/)
-    rendered.should match(/2/)
-  end
+ #we will test this with a feature or model test
 end

@@ -23,7 +23,7 @@ describe GroupsController do
   # This should return the minimal set of attributes required to create a valid
   # Group. As you add validations to Group, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "group_name" => "MyString" } }
+  let(:valid_attributes) { { "group_name" => "MyString", "group_description" => "a description", "group_logo_url" => "www.google.com", "group_tagline" => "advanced" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

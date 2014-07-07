@@ -7,23 +7,9 @@
 
 <p>
   <b>Game img icon url:</b>
-  <%= @game.game_img_icon_url %>
+  <%= @game.game_img_url %>
 </p>
-
-<p>
-  <b>Game img logo url:</b>
-  <%= @game.game_img_logo_url %>
-</p>
-
-<p>
-  <b>Game playtime 2weeks:</b>
-  <%= @game.game_playtime_2weeks %>
-</p>
-
-<p>
-  <b>Game playtime forever:</b>
-  <%= @game.game_playtime_forever %>
-</p>
+<%= link_to 'Add Game', addgame_path(@game.id), method: "post" %>
 
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
