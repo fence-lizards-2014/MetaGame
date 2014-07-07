@@ -2,13 +2,8 @@ require 'spec_helper'
 
 describe Event do
 	let!(:user) { FactoryGirl.create :user }
-	# let!(:group) do
-
-	# end
-	let!(:event) do 
-		event = FactoryGirl.create :event
-		event.update_attributes user_id: user.id
-	end
+	let!(:group) { FactoryGirl.create :group }
+	let!(:event) { FactoryGirl.create :event }
 
 	context '#validations' do
 		it { should validate_presence_of :event_name }
@@ -20,15 +15,22 @@ describe Event do
 		it { should validate_presence_of :event_date }
 	end
 
-	context '#associations' do
-		xit { should have_many :groups }
-		xit { should have_many(:groups_events).through(:events) }
+	before(:each) do 
+		event.users << user
+		event.groups << group
+	end
 
-		xit { should have_many :admins }
-		xit { should have_many(:user_admins).through(:admins) }
+	context '#associations' do
+		it 'event has many users' do
+			expect(event.users).to include user
+		end
+
+		it 'event has many groups' do
+			expect(event.groups).to include group
+		end
 
 		it { should have_many :users }
-		xit { should have_many(:user_events).through(:events) }
+		it { should have_many :groups }
 	end
 
 	context '#mass assignment' do

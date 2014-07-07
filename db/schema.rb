@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20140705204822) do
     t.text     "group_logo_url"
     t.string   "group_tagline"
     t.integer  "user_id"
+    t.integer  "event_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
