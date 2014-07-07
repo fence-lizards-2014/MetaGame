@@ -3,15 +3,10 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    # session[:id] = nil
-    if current_user
-      @user = current_user
-      @games = @user.games
-      render "users/user_index"
-    else
-      # @user = User.new
-      render "users/index"
-    end
+    @user = current_user
+    @games = @user.games
+    # @user = User.new
+    render "users/index"
   end
 
   # GET /users/1
