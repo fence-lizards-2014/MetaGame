@@ -1,4 +1,7 @@
 class GamesController < ApplicationController
+
+  GAME_NOT_FOUND = "No Game Found"
+
   # GET /games
   # GET /games.json
   def index
@@ -82,7 +85,8 @@ class GamesController < ApplicationController
 
   def search
     #refactor for multiple game
-    @game =Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first
+    @game = Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first 
+    redrect_to if @game == nil 
     if session[:group_id]
       @group = Group.find(session[:group_id])
       @group.games << @game
@@ -90,7 +94,7 @@ class GamesController < ApplicationController
     else
       @user = User.find(session[:id])
       @user.games << @game
-      redirect_to user_path(@user)
+      redirect_to root_path
     end
   end
 end
