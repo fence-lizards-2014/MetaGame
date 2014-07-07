@@ -1,6 +1,4 @@
-require 'nokogiri'
 class GamesController < ApplicationController
-  include Nokogiri
   # GET /games
   # GET /games.json
   def index
