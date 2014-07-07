@@ -11,6 +11,10 @@ class Game < ActiveRecord::Base
 
   def self.parse_json(file)
     games_list = JSON.parse(File.open(file).read)
-    games_list['results'].each{ |result| Game.create( Hash[game_description: result['description'], game_img_url: result['image'], game_name: result['name']]) }
+    games_list['results'].each do |result| 
+    	Game.create( Hash[game_description: result['description'], 
+    										game_img_url: result['image']["icon_url"], 
+    										game_name: result['name']]) 
+    end
   end
 end
