@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe EventsController do
-
+   let!(:user) { FactoryGirl.create :user }
   
   let(:valid_attributes) { { "event_name" => "MyString", "event_game_title" => "example", "event_description" => "a description", "event_zipcode" => 12345, "event_date" => "3/3/2050", "event_location" => "San Francisco" } }
-  # let!(:valid_attributes) { FactoryGirl.create :event  }
   let(:valid_session) { {} }
 
   describe "GET index" do
@@ -13,7 +12,7 @@ describe EventsController do
       get :index, {}, valid_session
       assigns(:events).should eq([event])
     end
-  end
+  end 
 
   describe "GET show" do
     it "assigns the requested event as @event" do
@@ -38,12 +37,12 @@ describe EventsController do
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      xit "creates a new Event" do
-        expect {
-          post :create, {:event => valid_attributes}, valid_session
-        }.to change(Event, :count).by(1)
+    context 'POST create' do
+      it "creates a new Event" do
+      session[:id] = user.id
+        expect{
+          post :create, event: valid_attributes, current_user: user
+        }.to change{Event.count}.by(1)
       end
 
       xit "assigns a newly created event as @event" do
@@ -73,7 +72,7 @@ describe EventsController do
         response.should render_template("new")
       end
     end
-  end
+  
 
   describe "PUT update" do
     describe "with valid params" do
