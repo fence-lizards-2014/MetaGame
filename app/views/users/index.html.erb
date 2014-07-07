@@ -5,13 +5,13 @@
   <div class="body" style="overflow-y: scroll; height: 400px;">
     <div class="search-options">
       <%= form_tag("/searchgames") do |u| %>
-      <%= text_field_tag "search", nil, placeholder: "Search games..." %>
-      <%= submit_tag "Search" %>
+        <%= text_field_tag "search", nil, placeholder: "Search games..." %>
+        <%= submit_tag "Search" %>
       <% end %>
       <br>
       <%= form_tag("/searchevents") do |u| %>
-      <%= text_field_tag "search", nil, placeholder: "Search events..." %>
-      <%= submit_tag "Search" %>
+        <%= text_field_tag "search", nil, placeholder: "Search events..." %>
+        <%= submit_tag "Search" %>
       <% end %>
     </div>
     
