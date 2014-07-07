@@ -39,14 +39,17 @@
   <div class="feature" id="2">
     <h2>USERS GAMES</h2>
     <% cache do %>
-    <% @games.each do |game| %>
-      <%= image_tag(game.game_img_url) %>
-      <%= game.game_name %>
-      <br />
+      <% @games.each do |game| %>
+        <div class="one-third column feature">
+        <%= link_to image_tag(game.game_img_url), game_path(game) %>
+          <p><%= game.game_name %></p>
+          <!-- <p>Lorem ipsum dolor sit amet...</p> -->
+        </div>
       <% end %>
     <% end %>
   
   </div>
+</div>
 
   <div class="feature" id="3">
     <h2>USERS GROUPS</h2>
@@ -56,5 +59,4 @@
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
   </div>
-</div>
 
