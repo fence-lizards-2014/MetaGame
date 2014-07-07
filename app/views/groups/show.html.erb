@@ -1,4 +1,11 @@
 <h1 class="title">GROUPS#SHOW</h1>
+
+<%= form_tag("/searchgames") do |u| %>
+	<%= text_field_tag "search", nil, placeholder: "Search games..." %>
+	<%= submit_tag "Search" %>
+<% end %>
+
+
 <div class="body" style="overflow-y: scroll; height: 400px;">
   <div class="feature" id="1">
     <h3>Group Info</h3>
