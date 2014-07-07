@@ -18,4 +18,11 @@ describe Group do
 		it { should have_many :events }
 		xit { should have_many(:group_events).through(:groups) }
 	end
+
+	context '#mass assignment' do
+		it { should allow_mass_assignment_of :group_description }
+		it { should allow_mass_assignment_of :group_logo_url }
+		it { should allow_mass_assignment_of :group_name }
+		it { should allow_mass_assignment_of :group_tagline }
+	end
 end
