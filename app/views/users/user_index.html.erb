@@ -15,7 +15,7 @@
    <% non_null_games = @games.sort_by{|game| game.game_playtime_forever * -1 } %>
     <% non_null_games.each do |game| %>
 
-      <%= image_tag(game.game_icon_url) %>
+      <%= image_tag(game.game_img_url) %>
       <%= game.game_name %>
       <br />
       <% end %>

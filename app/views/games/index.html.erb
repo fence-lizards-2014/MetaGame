@@ -9,7 +9,8 @@
     <h2>List of Users Games</h2>
         <% cache do %>
       <% @games.each do |game| %>
-      <%= image_tag(game.game_img_url) %><br />
+      <%= link_to image_tag(game.game_img_url), game_path(game) %>
+      <br />
       <% game.game_name%>
       <% end %>
     <% end %>
