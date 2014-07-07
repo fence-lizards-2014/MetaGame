@@ -1,8 +1,9 @@
 <!-- display news for a specific user -->
+<h1 class="title">USERS#USER_INDEX</h1>
 <div class="body" style="overflow-y: scroll; height: 400px;">
 	<div class="nav-options">
-		<%= link_to "Create Group", new_group_path %>
-
+		<%= link_to "Create Group", new_group_path %><br>
+    <%= link_to "Browse Groups", groups_path %>
 	</div>
   <div class="feature" id="1">
     <h2>List of Users News</h2>
@@ -16,11 +17,24 @@
     <h2>Other Stuff</h2>
   </div>
 
-  <div class="feature" id="3">
-    <h2>SHOW GROUPS STUB</h2>
+  <div class="feature" id="4">
+    <h2>USER GROUPS</h2>
+    <%= render partial: '/groups/show_groups' %>
 
   </div>
 </div>
+
+<!--
+helper method to display top 10 groups that belong to the user.id
+
+groups#index will display all available groups
+groups should display all groups that a user is not a member of
+
+each group should have a join_group button (_partial)
+each group should be clickable to go a group_show
+NON-MVP: group show should have a join button if a user is not a memeber of that group
+ -->
+
 
 
 
