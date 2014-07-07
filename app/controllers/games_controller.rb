@@ -14,7 +14,6 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @game = Game.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @game }
@@ -79,5 +78,13 @@ class GamesController < ApplicationController
       format.html { redirect_to games_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    #refactor for multiple games
+    @game =Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first
+    @group = Group.find(session[:group_id])
+    @group.games << @game
+    redirect_to group_path(session[:group_id])
   end
 end
