@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -43,16 +43,22 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.password = params[:user][:password_hash]
-    respond_to do |format|
-      if @user.save
-        session[:id] = @user.id
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if params[:user][:password_hash] == params[:user][:confirm_pw]
+      @user.password = params[:user][:password_hash]
+
+      respond_to do |format|
+        if @user.save
+          session[:id] = @user.id
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.json { render json: @user, status: :created, location: @user }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:error] = "Username and Password do not match!"
+      render '/users/new'
     end
   end
 

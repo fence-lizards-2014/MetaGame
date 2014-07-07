@@ -20,7 +20,11 @@
   <% else %>
   <div class="field">
     <%= f.label :password_hash %><br />
-    <%= f.text_field :password_hash %>
+    <%= f.password_field :password_hash %>
+  </div>
+   <div class="field">
+    <%= f.label "confirm password" %><br />
+    <%= f.password_field :confirm_pw %>
   </div>
   <% end %>
   <div class="field">
