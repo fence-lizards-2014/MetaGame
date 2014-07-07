@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @group }
     end
+
   end
 
   # GET /groups/new

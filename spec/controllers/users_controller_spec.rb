@@ -91,7 +91,7 @@ describe UsersController do
       it "creates a new User" do
         expect {
           post :create, {:user => valid_attributes}, valid_session
-        }.to change(User, :count).by(1)
+        }.to change{User.count}.by(1)
       end
 
       it "assigns a newly created user as @user" do
@@ -102,7 +102,7 @@ describe UsersController do
 
       it "redirects to the created user" do
         post :create, {:user => valid_attributes}, valid_session
-        response.should redirect_to(User.last)
+        response.should redirect_to user_path user
       end
     end
 

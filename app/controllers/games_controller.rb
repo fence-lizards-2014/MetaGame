@@ -81,7 +81,7 @@ class GamesController < ApplicationController
   end
 
   def search
-    #refactor for multiple games
+    #refactor for multiple game
     @game =Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first
     @group = Group.find(session[:group_id])
     @group.games << @game

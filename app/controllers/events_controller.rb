@@ -40,10 +40,18 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    @group = Group.find(session[:group_id]) if session[:group_id]
+    current_user
     @event = Event.new(params[:event])
-
+    #REFACTOR
     respond_to do |format|
       if @event.save
+        if session[:group_id] == nil
+          @current_user.events << @event
+        end
+        if session[:group_id] && @group.admins.include?(@current_user)
+          @group.events << @event
+        end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
       else
