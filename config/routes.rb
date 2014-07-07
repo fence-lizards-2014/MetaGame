@@ -7,6 +7,7 @@ Metagame::Application.routes.draw do
   resources :events
 
   post '/addgame/:id', to: 'users#addgame', as: :addgame
+  post '/adduser/:id', to: 'groups#add_user', as: :add_user
 
   get '/logout', to: 'sessions#logout', as: :logout
   post "auth/steam/callback" => 'sessions#auth_callback', as: "steam_auth"
