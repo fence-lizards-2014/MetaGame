@@ -9,10 +9,9 @@
     <h2>List of Users Games</h2>
         <% cache do %>
       <% @games.each do |game| %>
-      <div class="one-third column feature">
+      <div class="one-third column">
         <%= link_to image_tag(game.game_img_url), game_path(game) %>
           <p><%= game.game_name %></p>
-          <!-- <p>Lorem ipsum dolor sit amet...</p> -->
         </div>
       <% end %>
     <% end %>
