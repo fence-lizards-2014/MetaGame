@@ -1,18 +1,23 @@
 require 'spec_helper'
 
 describe Event do
-	let!(:event) { FactoryGirl.create :event }
-	context '#validations' do
-		xit { should validate_presence_of :event_name }
-		xit { should validate_presence_of :event_game_title }
-		xit { should validate_presence_of :event_description }
-		xit { should validate_presence_of :event_location }
-		xit { should validate_presence_of :event_zipcode }
-		xit { should allow_value(55555).for(:event_zipcode) }
+	let!(:user) { FactoryGirl.create :user }
+	# let!(:group) do
 
-		it 'event created with valid date' do
-			expect(event.event_date).to eq '3/3/2060'
-		end
+	# end
+	let!(:event) do 
+		event = FactoryGirl.create :event
+		event.update_attributes user_id: user.id
+	end
+
+	context '#validations' do
+		it { should validate_presence_of :event_name }
+		it { should validate_presence_of :event_game_title }
+		it { should validate_presence_of :event_description }
+		it { should validate_presence_of :event_location }
+		it { should validate_presence_of :event_zipcode }
+		it { should allow_value(55555).for(:event_zipcode) }
+		it { should validate_presence_of :event_date }
 	end
 
 	context '#associations' do
@@ -22,7 +27,7 @@ describe Event do
 		xit { should have_many :admins }
 		xit { should have_many(:user_admins).through(:admins) }
 
-		xit { should have_many :users }
+		it { should have_many :users }
 		xit { should have_many(:user_events).through(:events) }
 	end
 
