@@ -77,6 +77,30 @@ class EventsController < ApplicationController
     end
   end
 
+  def search
+    #refactor for multiple event
+    @event = Event.find(:all, :conditions => ['event_name LIKE ?', "%#{params['search']}%"]).first
+    redirect_to events_path if @game == nil 
+    if session[:group_id]
+      @group = Group.find(session[:group_id])
+      @group.events << @event
+      redirect_to group_path(session[:group_id])
+    else
+      @user = User.find(session[:id])
+      @user.events << @event if @user
+      redirect_to root_path
+    end
+  end
+
+  def add_user_event
+    p params
+    @user = User.find(session[:id])
+    @event = Event.find(params[:id])
+    @event.users << @user
+    @user.events << @event
+    redirect_to root_path
+  end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
