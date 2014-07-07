@@ -23,7 +23,7 @@ describe EventsController do
   # This should return the minimal set of attributes required to create a valid
   # Event. As you add validations to Event, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "event_name" => "MyString" } }
+  let(:valid_attributes) { { "event_name" => "MyString", "event_game_title" => "example", "event_description" => "a description", "event_zipcode" => 12345, "event_date" => "3/3/2050", "event_location" => "San Francisco" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
