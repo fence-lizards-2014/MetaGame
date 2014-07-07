@@ -4,6 +4,7 @@ describe Game do
 	let!(:user) { FactoryGirl.create :user }
 	let!(:game) { FactoryGirl.create :game }
 	let!(:group) { FactoryGirl.create :group }
+	
 	before(:each) do 
 		user.games << game
 		group.games << game
