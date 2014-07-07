@@ -40,7 +40,7 @@ class GroupsController < ApplicationController
 
   # POST /groups
   # POST /groups.json
-  # 
+  #
   def create
     @group = Group.new(params[:group])
     current_user
@@ -48,9 +48,9 @@ class GroupsController < ApplicationController
       if @group.save
         # add cu to group as admin upon group save.
         # add group to cu groups
-        
+
         @group.users << @current_user
-        
+
         current_user_groups << @group
 
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
@@ -60,6 +60,17 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def add_user
+    group = Group.find(params[:id])
+    user = User.find(session[:id])
+    group.users << user
+    user.groups << group
+    group.save
+    user.save
+
+    redirect_to "/users"
   end
 
   # PUT /groups/1
