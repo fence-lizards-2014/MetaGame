@@ -4,8 +4,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @user = current_user
-    @games = @user.games
-    # @user = User.new
+    @games = @user.games if @user
     render "users/index"
   end
 

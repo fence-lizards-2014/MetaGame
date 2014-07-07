@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 		@user = User.find_by_username(params[:user][:username])
 		if @user.password == params[:user][:password_hash]
 			session[:id] = @user.id
-			redirect_to user_path @user
+			redirect_to root_path
 		else
 			redirect_to signin_path, flash: { notice: "Invalid Email-Password combination" }
 
