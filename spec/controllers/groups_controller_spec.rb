@@ -63,19 +63,19 @@ describe GroupsController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Group" do
+      xit "creates a new Group" do
         expect {
           post :create, {:group => valid_attributes}, valid_session
         }.to change(Group, :count).by(1)
       end
 
-      it "assigns a newly created group as @group" do
+      xit "assigns a newly created group as @group" do
         post :create, {:group => valid_attributes}, valid_session
         assigns(:group).should be_a(Group)
         assigns(:group).should be_persisted
       end
 
-      it "redirects to the created group" do
+      xit "redirects to the created group" do
         post :create, {:group => valid_attributes}, valid_session
         response.should redirect_to(Group.last)
       end

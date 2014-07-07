@@ -1,4 +1,10 @@
 <div class="body" style="overflow-y: scroll; height: 400px;">
+  
+  <div class="nav-options">
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+  </div>
+  
   <div class="feature" id="1">
     <h3>Profile Info</h3>
 
@@ -37,13 +43,27 @@
       <br />
       <% end %>
     <% end %>
-
+  
   </div>
 
   <div class="feature" id="3">
     <h2>USERS GROUPS</h2>
+    <ul class="show-group-list">
+      <li>
+        <% current_user_groups.each do |group| %>
+        <div class="group-header">
+          <%= link_to image_tag(group.group_logo_url, class: "group-logo"), group_path(group.id) %>
+          <h3><%= link_to "#{group.group_name}", group_path(group.id), class: "no-underline-link" %></h3>
+        <div>
+        <p><%= group.group_description %></p>
+        <p><%= group.group_tagline %></p>
+        <% end %>
+      </li>
+  </ul>
   </div>
+  <div class="nav-options">
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
+  </div>
 </div>
 

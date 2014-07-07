@@ -38,6 +38,20 @@
   color: #1E1291;
 }
 
+.nav-options {
+
+  text-align: center;
+  width: 15%;
+  margin: 5% 5% 5% 80%;
+  border-radius: 3px;
+  background-color: #B8B8B8;
+}
+
+.nav-options a {
+  text-decoration: none;
+  color: #1E1291;
+}
+
 .splash-buttons {
   /*position: relative;*/
   /*right: 5%*/;
@@ -81,8 +95,26 @@
   /*margin-left: 10%;*/
 }
 
+.group-logo {
+  width: 30px;
+}
 
+.group-logo-large {
+  width: 60px;
+}
 
+.show-group-list {
+  list-style: none;
+}
+
+.no-underline-link {
+  text-decoration: none;
+}
+
+.group-header {
+  /*Sure wish this worked. someone please show me what im doing wrong.*/
+  display: inline;
+}
 
 
 
