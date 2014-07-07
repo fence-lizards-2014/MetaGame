@@ -10,5 +10,7 @@ describe User do
     it { should allow_value('Ex123#45').for(:password_hash) }
     it { should validate_uniqueness_of :user_email }
     it { should validate_presence_of :user_email }
+    it { should allow_value('example@gmail.com').for(:username) }
+    it { should allow_value(55555).for(:user_zipcode) }
 	end
 end
