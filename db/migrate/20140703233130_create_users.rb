@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :user_bio
 
       t.belongs_to :group
+      t.belongs_to :event
 
       t.timestamps
     end
