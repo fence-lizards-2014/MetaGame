@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    session[:group_id] = nil
     @user = current_user
     @games = @user.games if @user
     render "users/index"

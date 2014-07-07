@@ -3,6 +3,12 @@
   <h1 class="title">USERS#INDEX</h1>
   <h1>User Dash-Board</h1>
   <div class="body" style="overflow-y: scroll; height: 400px;">
+    <div class="search-options">
+      <%= form_tag("/searchgames") do |u| %>
+      <%= text_field_tag "search", nil, placeholder: "Search games..." %>
+      <%= submit_tag "Search" %>
+      <% end %>
+    </div>
     
     <div class="feature" id="1">
       <h2>List of Users News</h2>
