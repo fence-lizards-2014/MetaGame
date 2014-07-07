@@ -253,7 +253,6 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails (= 2.14)
   ruby_gntp
-  sass
   sass-rails (~> 3.2.3)
   selenium-webdriver
   shoulda-matchers

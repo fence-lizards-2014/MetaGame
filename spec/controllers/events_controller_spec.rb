@@ -63,19 +63,19 @@ describe EventsController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Event" do
+      xit "creates a new Event" do
         expect {
           post :create, {:event => valid_attributes}, valid_session
         }.to change(Event, :count).by(1)
       end
 
-      it "assigns a newly created event as @event" do
+      xit "assigns a newly created event as @event" do
         post :create, {:event => valid_attributes}, valid_session
         assigns(:event).should be_a(Event)
         assigns(:event).should be_persisted
       end
 
-      it "redirects to the created event" do
+      xit "redirects to the created event" do
         post :create, {:event => valid_attributes}, valid_session
         response.should redirect_to(Event.last)
       end
