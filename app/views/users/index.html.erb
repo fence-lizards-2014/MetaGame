@@ -8,6 +8,11 @@
       <%= text_field_tag "search", nil, placeholder: "Search games..." %>
       <%= submit_tag "Search" %>
       <% end %>
+      <br>
+      <%= form_tag("/searchevents") do |u| %>
+      <%= text_field_tag "search", nil, placeholder: "Search events..." %>
+      <%= submit_tag "Search" %>
+      <% end %>
     </div>
     
     <div class="feature" id="1">
@@ -17,19 +22,22 @@
     <div class="feature" id="2">
       <h2>List of Users Games</h2>
       <% cache do %>
-    <% non_null = @games.map{|game| game.game_playtime_forever ||= 0 } %>
-     <% non_null_games = @games.sort_by{|game| game.game_playtime_forever * -1 } %>
-      <% non_null_games.each do |game| %>
-
-        <%= image_tag(game.game_img_url) %>
-        <%= game.game_name %>
-        <br />
+        <% non_null = @games.map{|game| game.game_playtime_forever ||= 0 } %>
+        <% non_null_games = @games.sort_by{|game| game.game_playtime_forever * -1 } %>
+        <% non_null_games.each do |game| %>
+          <%= image_tag(game.game_img_url) %>
+          <%= game.game_name %>
+          <br />
         <% end %>
       <% end %>
     </div>
 
     <div class="feature" id="3">
-      <h2>Other Stuff</h2>
+      <h2>User Events</h2>
+      <% current_user_events %>
+      <% @current_user_events.each do |event| %>
+        <h3><%= "#{event.event_name} : #{event.event_date}"%></h3>
+        <% end %>
     </div>
 
     <div class="feature" id="4">

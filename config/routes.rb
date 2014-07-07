@@ -16,4 +16,5 @@ Metagame::Application.routes.draw do
   get '/newpassword', to: "users#new_password", as: :new_password
   put "/changepw", to: "users#update_password", as: :change_pw
   post "/searchgames", to: "games#search", as: :search_games
+  post "/searchevents", to: "events#search", as: :search_events
 end
