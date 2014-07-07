@@ -13,4 +13,20 @@ describe User do
     it { should allow_value('example@gmail.com').for(:username) }
     it { should allow_value(55555).for(:user_zipcode) }
 	end
+
+	context '#associations' do
+		it { should have_many :user_friends }
+		it { should have_many(:friends).through(:user_friends) }
+
+		it { should have_many :games }
+		xit { should have_many(:user_games).through(:games) }
+
+		it { should have_many :groups }
+		xit { should have_many(:user_groups).through(:groups) }
+
+		it { should have_many :events }
+
+		xit { should have_many(:user_events).through(:events) }
+		xit { should have_many(:group_events).through(:events) }
+	end
 end
