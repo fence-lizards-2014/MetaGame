@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :group_events, through: :events
 
   validates :username, presence: true, uniqueness: true
+
   validates :password_hash, length: { minimum: 8, message: "Password must be at least 8 characters long." }, format: { with: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/,
             message: "Must contain at least one upper and lower case, one number, and one special character." }, presence: true
 
