@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
 	def signin
 		render partial: "/sessions/signin"
 	end
+	
 
 	def sign_in_attempt
 		@user = User.find_by_username(params[:user][:username])
