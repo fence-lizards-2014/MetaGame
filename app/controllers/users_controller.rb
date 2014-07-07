@@ -3,8 +3,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+
+
     if current_user
-      # @users = User.all
+      @user = current_user
+      @games = @user.games
       render "users/user_index"
     else
       # @user = User.new
@@ -16,7 +19,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    
+    @games = @user.games
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 																:uid => auth.uid }
     UsersHelper.check_steam_id(user, session[:current_user][:uid], session[:current_user][:image])
     responses = UsersHelper.make_api_data_calls user.user_steam_id
-    GamesHelper.parse_steam_games(responses)
+    GamesHelper.parse_steam_games(responses, user)
 	  redirect_to user_path(user)
 	end
 

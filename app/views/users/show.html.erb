@@ -30,6 +30,14 @@
 
   <div class="feature" id="2">
     <h2>USERS GAMES</h2>
+    <% cache do %>
+    <% @games.each do |game| %>
+      <%= image_tag(game.game_icon_url) %>
+      <%= game.game_name %>
+      <br />
+      <% end %>
+    <% end %>
+
   </div>
 
   <div class="feature" id="3">

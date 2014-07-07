@@ -8,8 +8,4 @@ class ApplicationController < ActionController::Base
 			false
 		end
 	end
-
-	def current_steam_user
-		session[:current_user]
-	end
 end
