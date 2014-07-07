@@ -4,15 +4,18 @@
   <h1>User Dash-Board</h1>
   <div class="body" style="overflow-y: scroll; height: 400px;">
     <div class="search-options">
-      <%= form_tag("/searchgames") do |u| %>
-        <%= text_field_tag "search", nil, placeholder: "Search games..." %>
-        <%= submit_tag "Search" %>
-      <% end %>
-      <br>
-      <%= form_tag("/searchevents") do |u| %>
-        <%= text_field_tag "search", nil, placeholder: "Search events..." %>
-        <%= submit_tag "Search" %>
-      <% end %>
+      <table>
+        <tr>
+          <td><%= form_tag("/searchgames") do |u| %></td>
+            <td><%= text_field_tag "search", nil, placeholder: "Search games..." %></td>
+            <td class="index-search-button"><%= submit_tag "Search" %></td>
+          <td><% end %></td>
+          <td><%= form_tag("/searchevents") do |u| %></td>
+            <td><%= text_field_tag "search", nil, placeholder: "Search events..." %></td>
+            <td class="index-search-button"><%= submit_tag "Search" %></td>
+          <td><% end %></td>
+        </tr>
+      </table>
     </div>
     
     <div class="feature" id="1">
@@ -53,7 +56,7 @@
   <div class="body" style="overflow-y: scroll; height: 400px;">
     <div class="feature" id="1">
       <h2>About Us</h2>
-      <p>Pudding ice cream candy canes halvah jelly-o cake. Applicake dragée pastry. Bear claw tiramisu candy candy canes. Lemon drops toffee pudding bear claw I love cotton candy brownie cookie gummi bears. Cake I love candy. Icing I love applicake croissant donut apple pie. Chupa chups oat cake soufflé candy. Pie apple pie donut unerdwear.com carrot cake cheesecake dessert carrot cake. Macaroon muffin I love I love toffee chocolate bar ice cream sesame snaps brownie. Macaroon apple pie cheesecake icing bonbon chocolate bar cake. Lemon drops croissant pastry croissant I love muffin. Marzipan applicake pudding candy canes fruitcake wafer oat cake gummi bears.
+      <p>
       </p>
     </div>
 

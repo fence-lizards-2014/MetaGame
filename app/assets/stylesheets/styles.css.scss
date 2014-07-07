@@ -1,6 +1,6 @@
-/** {
+* {
   border: 1px solid red;
-}*/
+}
 
 .body {
   padding-bottom: 15%;
@@ -62,6 +62,14 @@
   /*position: absolute;*/
 }
 
+.splash-buttons table {
+margin: auto auto;
+}
+
+.splash-buttons table tr td {
+  padding: 20px;
+}
+
 .signin-form {
   margin: 20%;
 }
@@ -116,6 +124,17 @@
   display: inline;
 }
 
+.search-options {
+  display: inline;
+}
+
+.search-options table tr td {
+  padding: 2%;
+}
+
+.index-search-button {
+  padding-top: 25%;
+}
 
 
 
