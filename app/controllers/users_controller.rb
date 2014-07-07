@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-
-
     if current_user
       @user = current_user
       @games = @user.games
@@ -101,5 +99,15 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def addgame
+    current_user
+    p params[:id]
+    p @current_user
+    #u.games << games
+    @game = Game.find params[:id]
+    @current_user.games << @game
+    redirect_to user_path(current_user)
   end
 end

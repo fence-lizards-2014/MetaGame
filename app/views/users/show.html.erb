@@ -38,7 +38,7 @@
     <h2>USERS GAMES</h2>
     <% cache do %>
     <% @games.each do |game| %>
-      <%= image_tag(game.game_icon_url) %>
+      <%= image_tag(game.game_img_url) %>
       <%= game.game_name %>
       <br />
       <% end %>
