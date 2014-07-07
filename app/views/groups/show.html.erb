@@ -4,6 +4,8 @@
 	<%= text_field_tag "search", nil, placeholder: "Search games..." %>
 	<%= submit_tag "Search" %>
 <% end %>
+<%= link_to 'Leave Group', remove_user_path(@group.id), method: :post %>
+
 <%= link_to "Create Event", new_event_path %>
 
 

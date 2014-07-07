@@ -26,6 +26,7 @@
     <td><%= event.event_type_id %></td>
     <td><%= event.event_zipcode %></td>
     <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Join', add_user_event_path(event.id), method: :post %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
