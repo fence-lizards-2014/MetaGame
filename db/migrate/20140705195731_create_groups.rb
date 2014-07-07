@@ -7,6 +7,7 @@ class CreateGroups < ActiveRecord::Migration
       t.string :group_tagline
 
       t.belongs_to :user
+      t.belongs_to :event
 
       t.timestamps
     end

@@ -1,29 +1,36 @@
 require 'spec_helper'
 
 describe Event do
+	let!(:user) { FactoryGirl.create :user }
+	let!(:group) { FactoryGirl.create :group }
 	let!(:event) { FactoryGirl.create :event }
-	context '#validations' do
-		xit { should validate_presence_of :event_name }
-		xit { should validate_presence_of :event_game_title }
-		xit { should validate_presence_of :event_description }
-		xit { should validate_presence_of :event_location }
-		xit { should validate_presence_of :event_zipcode }
-		xit { should allow_value(55555).for(:event_zipcode) }
 
-		it 'event created with valid date' do
-			expect(event.event_date).to eq '3/3/2060'
-		end
+	context '#validations' do
+		it { should validate_presence_of :event_name }
+		it { should validate_presence_of :event_game_title }
+		it { should validate_presence_of :event_description }
+		it { should validate_presence_of :event_location }
+		it { should validate_presence_of :event_zipcode }
+		it { should allow_value(55555).for(:event_zipcode) }
+		it { should validate_presence_of :event_date }
+	end
+
+	before(:each) do 
+		event.users << user
+		event.groups << group
 	end
 
 	context '#associations' do
-		xit { should have_many :groups }
-		xit { should have_many(:groups_events).through(:events) }
+		it 'event has many users' do
+			expect(event.users).to include user
+		end
 
-		xit { should have_many :admins }
-		xit { should have_many(:user_admins).through(:admins) }
+		it 'event has many groups' do
+			expect(event.groups).to include group
+		end
 
-		xit { should have_many :users }
-		xit { should have_many(:user_events).through(:events) }
+		it { should have_many :users }
+		it { should have_many :groups }
 	end
 
 	context '#mass assignment' do

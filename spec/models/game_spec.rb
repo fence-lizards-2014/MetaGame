@@ -1,12 +1,23 @@
 require 'spec_helper'
 
 describe Game do
+	let!(:user) { FactoryGirl.create :user }
+	let!(:game) { FactoryGirl.create :game }
+	let!(:group) { FactoryGirl.create :group }
+	
+	before(:each) do 
+		user.games << game
+		group.games << game
+	end
+	
 	context '#associations' do
-		xit { should have_many :users }
-		xit { should have_many(:user_games).through(:users) }
+		it 'game belongs to a user' do
+			expect(user.games).to include game
+		end
 
-		xit { should have_many :groups }
-		xit { should have_many(:group_games).through(:groups) }
+		it 'game belongs to a group' do
+			expect(group.games).to include game
+		end
 	end
 
 	context '#mass assignment' do

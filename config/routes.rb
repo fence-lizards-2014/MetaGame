@@ -6,8 +6,6 @@ Metagame::Application.routes.draw do
   resources :groups
   resources :events
 
-  post '/addgame/:id', to: 'users#addgame', as: :addgame
-  post '/adduser/:id', to: 'groups#add_user', as: :add_user
 
   get '/logout', to: 'sessions#logout', as: :logout
   post "auth/steam/callback" => 'sessions#auth_callback', as: "steam_auth"
@@ -15,5 +13,10 @@ Metagame::Application.routes.draw do
   post '/sessions', to: "sessions#sign_in_attempt", as: :sign_in_attempt
   get '/newpassword', to: "users#new_password", as: :new_password
   put "/changepw", to: "users#update_password", as: :change_pw
+  post '/addgame/:id', to: 'users#addgame', as: :addgame
+  post '/adduser/:id', to: 'groups#add_user', as: :add_user
+  post '/removeuser/:id', to: 'groups#remove_user', as: :remove_user
+  post '/adduserevent/:id', to: 'events#add_user_event', as: :add_user_event
   post "/searchgames", to: "games#search", as: :search_games
+  post "/searchevents", to: "events#search", as: :search_events
 end

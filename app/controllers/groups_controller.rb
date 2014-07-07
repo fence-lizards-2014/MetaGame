@@ -74,11 +74,19 @@ class GroupsController < ApplicationController
     redirect_to "/users"
   end
 
+  def remove_user
+    p "*" * 300
+    user = User.find(session[:id])
+    group = Group.find(params[:id])
+    group.users.delete(user)
+    user.groups.delete(group)
+    redirect_to root_path
+  end
+
   # PUT /groups/1
   # PUT /groups/1.json
   def update
     @group = Group.find(params[:id])
-
     respond_to do |format|
       if @group.update_attributes(params[:group])
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -95,7 +103,6 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :no_content }
