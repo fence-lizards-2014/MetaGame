@@ -9,7 +9,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :event_date
       t.integer :event_type_id
       t.integer :event_zipcode
-
+      
       t.belongs_to :user
       t.belongs_to :group
 
