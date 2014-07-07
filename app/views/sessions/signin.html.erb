@@ -1,3 +1,4 @@
+<h1 class="title">SESSIONS#SIGNIN</h1>
 <%= flash[:notice] %>
 <%= form_for User.new, url: sign_in_attempt_path, method: :post do |u| %>
 	<%= u.label "Username" %>
