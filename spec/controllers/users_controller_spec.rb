@@ -23,7 +23,7 @@ describe UsersController do
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "username" => "MyString" } }
+  let(:valid_attributes) { { "username" => "MyString", "password_hash" => "Ex123@123kdk", "user_email" => "example@gmail.com", "user_zipcode" => 12345 } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -31,7 +31,7 @@ describe UsersController do
   let(:valid_session) { {} }
 
   let!(:user) { FactoryGirl.create :user }
-  let!(:current_user){ FactoryGirl.create :user }
+  let!(:current_user){ User.create("username" => "dominate", "password_hash" => "Sdndk23@4(", "user_email" => "exe@gmail.com", "user_zipcode" => 54321) }
   describe "GET index" do
     xit "REPLACE WITH A VALID TEST!!!!!renders user index if there is a valid session" do
       session[:id] = current_user.id

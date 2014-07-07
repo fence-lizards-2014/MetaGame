@@ -3,7 +3,7 @@
 FactoryGirl.define do
  factory :user do
 		username { Faker::Lorem.word }
-		password_hash { Faker::Internet.password }
+		password_hash { 'Ex123@#$%123kdl' }
 		user_email { Faker::Internet.email }
 		user_bio { Faker::Lorem.sentence }
 		user_zipcode { Faker::Address.zip_code }

@@ -17,11 +17,14 @@ class Event < ActiveRecord::Base
   validates :event_zipcode, presence: true, format: { with: /(^\d{5}$)|(^\d{5}-\d{4}$)/, 
   																				message: "Must be a valid US zip code." }, length: 
   																				{ is: 5, message: "Must be 5 digits." }
-  validates :valid_date?, presence: true
+  validate :valid_date?
+  validates :event_date, presence: true
+
+  private
 
   def valid_date?
   	if event_date < Date.today
-      errors.add(:date, "date can't be in the past")
+      errors.add(:event_date, "date can't be in the past")
     end
   end
 
