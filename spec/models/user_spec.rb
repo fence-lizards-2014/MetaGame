@@ -29,4 +29,17 @@ describe User do
 		xit { should have_many(:user_events).through(:events) }
 		xit { should have_many(:group_events).through(:events) }
 	end
+
+	context '#mass assignment' do
+		it { should allow_mass_assignment_of :username }
+		it { should allow_mass_assignment_of :password_hash }
+		it { should allow_mass_assignment_of :user_bio }
+		it { should allow_mass_assignment_of :user_email }
+		it { should allow_mass_assignment_of :user_zipcode }
+		it { should allow_mass_assignment_of :user_steam_id }
+		it { should allow_mass_assignment_of :user_avatar_url }
+		it { should allow_mass_assignment_of :id }
+		it { should allow_mass_assignment_of :created_at }
+		it { should allow_mass_assignment_of :updated_at }
+	end
 end
