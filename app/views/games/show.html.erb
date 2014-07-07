@@ -10,7 +10,10 @@
   <%= @game.game_img_url %>
 </p>
 <%= link_to 'Add Game', addgame_path(@game.id), method: "post" %>
-
-
+<div class="game_info">
+	<% cache do %>
+		<p> <%= @response.html_safe %></p>
+	<% end %>
+</div>
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

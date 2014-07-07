@@ -1,4 +1,6 @@
+require 'nokogiri'
 class GamesController < ApplicationController
+  include Nokogiri
   # GET /games
   # GET /games.json
   def index
@@ -14,6 +16,7 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @game = Game.find(params[:id])
+    @response = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @game }

@@ -13,20 +13,23 @@
    <% non_null_games = @games.sort_by{|game| game.game_playtime_forever * -1 } %>
     <% non_null_games.each do |game| %>
 
-      <%= image_tag(game.game_img_url) %>
-      <%= game.game_name %>
-      <br />
+      <div class="one-third column feature">
+        <%= link_to image_tag(game.game_img_url), game_path(game) %>
+          <p><%= game.game_name %></p>
+          <!-- <p>Lorem ipsum dolor sit amet...</p> -->
+        </div>
+      
       <% end %>
     <% end %>
-  </div>
 
-  <div class="feature" id="3">
-    <h2>Other Stuff</h2>
   </div>
+</div>
+
+ <!--  <div class="feature" id="3">
+    <h2>Other Stuff</h2>
+  </div> -->
 
   <div class="feature" id="4">
     <h2>USER GROUPS</h2>
     <%= render partial: '/groups/show_groups' %>
-
   </div>
-</div>
