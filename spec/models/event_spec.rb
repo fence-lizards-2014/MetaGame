@@ -16,6 +16,24 @@ describe Event do
 	end
 
 	context '#associations' do
+		xit { should have_many :groups }
+		xit { should have_many(:groups_events).through(:events) }
 
+		xit { should have_many :admins }
+		xit { should have_many(:user_admins).through(:admins) }
+
+		xit { should have_many :users }
+		xit { should have_many(:user_events).through(:events) }
+	end
+
+	context '#mass assignment' do
+		it { should allow_mass_assignment_of :event_active }
+		it { should allow_mass_assignment_of :event_date }
+		it { should allow_mass_assignment_of :event_description }
+		it { should allow_mass_assignment_of :event_game_title }
+		it { should allow_mass_assignment_of :event_location }
+		it { should allow_mass_assignment_of :event_name }
+		it { should allow_mass_assignment_of :event_type_id }
+		it { should allow_mass_assignment_of :event_zipcode }
 	end
 end
