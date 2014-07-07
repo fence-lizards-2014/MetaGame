@@ -17,12 +17,4 @@ class ApplicationController < ActionController::Base
 			"NO GROUPS SELECTED"
 		end
 	end
-
-	# def show_current_user_groups
-	# 	current_user_groups
-	# 	@show_current_user_groups = []
-	# 	@current_user_groups.each do |group|
-	# 		@show_current_user_groups << group.name 
-	# 	end
-	# end
 end

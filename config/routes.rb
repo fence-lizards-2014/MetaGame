@@ -10,5 +10,6 @@ Metagame::Application.routes.draw do
   post "auth/steam/callback" => 'sessions#auth_callback', as: "steam_auth"
   get '/signin', to: 'sessions#signin', as: :signin
   post '/sessions', to: "sessions#sign_in_attempt", as: :sign_in_attempt
-
+  get '/newpassword', to: "users#new_password", as: :new_password
+  put "/changepw", to: "users#update_password", as: :change_pw
 end

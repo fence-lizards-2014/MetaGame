@@ -59,6 +59,19 @@ describe UsersController do
     end
   end
 
+  describe "GET new password" do
+    it "assigns @user to the current_user" do
+      session[:id] = 1
+      get :new_password
+      assigns(:user).should eq(User.find(session[:id]))
+    end
+
+    it "renders the new password template" do
+      get :new_password
+      expect(response).to render_template("users/_changepw")
+    end
+  end
+
   describe "GET edit" do
     it "assigns the requested user as @user" do
       get :edit, {:id => user.to_param}, valid_session

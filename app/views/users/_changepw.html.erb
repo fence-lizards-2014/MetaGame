@@ -1,0 +1,9 @@
+<div class="field">
+	<%= form_for(@user, url: change_pw_path) do |f| %>
+	  <%= f.label "New Password" %><br />
+	  <%= f.password_field :password_hash %>
+	  <%= f.label "Confirm Password" %><br />
+	  <%= f.password_field :confirm_pw %>
+	  <%= f.submit %>
+	<% end %>
+</div>
