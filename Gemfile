@@ -48,6 +48,8 @@ end
 group :test, :darwin do
   gem 'rb-fsevent'
 end
+
+gem 'sass'
  
 group :test do
   gem 'faker'
