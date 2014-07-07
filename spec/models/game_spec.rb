@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe Game do
-	context '#validations' do
-
-	end
-
 	context '#associations' do
 		xit { should have_many :users }
 		xit { should have_many(:user_games).through(:users) }

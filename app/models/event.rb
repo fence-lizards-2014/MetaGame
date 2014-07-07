@@ -10,4 +10,19 @@ class Event < ActiveRecord::Base
   has_many :users
   has_many :user_events, through: :events
 
+  validates :event_name, presence: true
+  validates :event_game_title, presence: true
+  validates :event_description, presence: true
+  validates :event_location, presence: true
+  validates :event_zipcode, presence: true, format: { with: /(^\d{5}$)|(^\d{5}-\d{4}$)/, 
+  																				message: "Must be a valid US zip code." }, length: 
+  																				{ is: 5, message: "Must be 5 digits." }
+  validates :valid_date?, presence: true
+
+  def valid_date?
+  	if event_date < Date.today
+      errors.add(:date, "date can't be in the past")
+    end
+  end
+
 end
