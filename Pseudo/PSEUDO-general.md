@@ -16,3 +16,10 @@ bundle exec rake tmp:clear
 
  also toggle aditioinal assets in production.rb
  FIND OUT ABOUT ENV variable
+
+
+NON-MVP: helper method to display top 10 groups that belong to the user.id
+
+NON-MVP: groups should display all groups that a user is not a member of
+
+NON-MVP: group show should have a join button if a user is not a memeber of that group
