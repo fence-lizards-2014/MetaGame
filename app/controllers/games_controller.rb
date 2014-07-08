@@ -17,7 +17,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new params[:game]
-    
+
     if @game.save
       flash[:notice] = "Game was successfully created!"
       redirect_to game_path @game
@@ -56,11 +56,11 @@ class GamesController < ApplicationController
     @game = Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first 
     redirect_to groups_path if @game == nil 
     if session[:group_id]
-      @group = Group.find(session[:group_id])
+      @group = Group.find session[:group_id]
       @group.games << @game
-      redirect_to group_path(session[:group_id])
+      redirect_to group_path session[:group_id]
     else
-      @user = User.find(session[:id])
+      @user = User.find session[:id]
       @user.games << @game
       redirect_to root_path
     end
