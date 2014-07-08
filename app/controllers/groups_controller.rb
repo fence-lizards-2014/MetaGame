@@ -56,22 +56,16 @@ class GroupsController < ApplicationController
   end
 
   def add_user
-    group = Group.find(params[:id])
-    user = User.find(session[:id])
-    group.users << user
-    user.groups << group
-    group.save
-    user.save
-
-    redirect_to "/users"
+    group = Group.find params[:id]
+    Group.assign_user_to_group group, current_user
+   
+    redirect_to users_path
   end
 
   def remove_user
-    p "*" * 300
-    user = User.find(session[:id])
-    group = Group.find(params[:id])
-    group.users.delete(user)
-    user.groups.delete(group)
+    group = Group.find params[:id]
+    Group.remove_user_to_group group, current_user
+   
     redirect_to root_path
   end
 end

@@ -48,9 +48,9 @@ class EventsController < ApplicationController
     @event = Event.find(:all, :conditions => ['event_name LIKE ?', "%#{params['search']}%"]).first
     redirect_to events_path if @game == nil 
     if session[:group_id]
-      @group = Group.find(session[:group_id])
+      @group = Group.find session[:group_id]
       @group.events << @event
-      redirect_to group_path(session[:group_id])
+      redirect_to group_path session[:group_id]
     else
       @user = User.find session[:id]
       @user.events << @event if @user
