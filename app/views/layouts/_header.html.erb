@@ -1,17 +1,26 @@
 <div class="navbar">
 
-  <h1 class="nav-brand"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></h1>
+  <h1 class="container"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></h1>
 
   <div class="splash-buttons">
     <% if current_user %>
-      <%= link_to "Username", user_path(current_user) %>
-      <%= link_to "Create Group", new_group_path %><br>
-      <%= link_to "Browse Groups", groups_path %>
-      <%= link_to "Browse Events", events_path %> <br>
-  		<%= link_to "Logout", logout_path %>
+      <table>
+        <tr>
+          <td><%= link_to "Username", user_path(current_user) %></td>
+          <td><%= link_to "Create Group", new_group_path %><br></td>
+          <td><%= link_to "Browse Groups", groups_path %></td>
+          <td><%= link_to "Browse Games", games_path %></td>
+          <td><%= link_to "Browse Events", events_path %> <br></td>
+      		<td><%= link_to "Logout", logout_path %></td>
+        </tr>
+      </table>
     <% else %>
-      <%= render "sessions/signin" %>
-      <%= link_to "Sign Up", new_user_path, id: "signup-button" %>
+      <table>
+        <tr>
+          <td><%= render "sessions/signin" %></td>
+          <td><%= link_to "Sign Up", new_user_path, id: "signup-button" %></td>
+        </tr>
+      </table>
     <% end %>
   </div>
 
