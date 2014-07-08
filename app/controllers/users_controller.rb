@@ -2,9 +2,7 @@ class UsersController < ApplicationController
 
   def index
     session[:group_id] = nil
-    @user = current_user
-    @games = @user.games if @user
-    render "users/index"
+    @games = current_user.games if current_user
   end
 
   def show
