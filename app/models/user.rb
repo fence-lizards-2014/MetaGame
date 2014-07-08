@@ -38,9 +38,9 @@ class User < ActiveRecord::Base
 
   def parse_zip zipcode, radius
     zipgroup = Zipcode.new(zipcode).by_radius(radius).parsed_response
-    y = []
+    ziparray = []
     zipgroup['zip_codes'].each {|zip| y << zip['zip_code'] }
-    return y
+    return ziparray
   end
 
 end
