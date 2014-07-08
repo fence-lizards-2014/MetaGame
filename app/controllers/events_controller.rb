@@ -13,16 +13,12 @@ class EventsController < ApplicationController
   end
 
   def create
-    @group = Group.find session[:group_id] if session[:group_id]
     @event = Event.new params[:event]
-    #REFACTOR
+    @group = Group.find session[:group_id] if session[:group_id]
+
     if @event.save
-      if session[:group_id] == nil
-        current_user.events << @event
-      end
-      if session[:group_id] && @group.admins.include?(current_user)
-        @group.events << @event
-      end
+      Event.assign_assoc_to_event @event, @group, current_user
+
       flash[:notice] = 'Event has successfully been created!'
       redirect_to event_path @event
     else
@@ -30,7 +26,7 @@ class EventsController < ApplicationController
       render 'events/new'
     end
   end
-  
+
   def edit
     @event = Event.find(params[:id])
   end
