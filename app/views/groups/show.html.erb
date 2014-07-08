@@ -46,7 +46,7 @@
 		</div>
 	</div>
 
-	<% if current_group.users.include?(current_user) %>
+	<% if @group.users.include?(current_user) %>
   	<%= render partial: "posts/form" %>
   <% end %>
 
