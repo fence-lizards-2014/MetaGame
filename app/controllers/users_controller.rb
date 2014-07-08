@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    # CR Use has_secure password
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
 
@@ -105,9 +106,9 @@ class UsersController < ApplicationController
   end
 
   def addgame
-    current_user
+    # CR current_user
     @game = Game.find params[:id]
-    @current_user.games << @game
+    current_user.games << @game
     redirect_to user_path(current_user)
   end
 end

@@ -3,6 +3,7 @@ require 'ostruct'
 
 describe SteamAdapter do
 
+# CR use a factory - use sequence to create multiple friends. DON'T use a real SteamID.
   USER_NAME = "misterdamon"
   STEAM_ID = '76561198076227521'
   FRIEND_STEAM_ID = '76561197960265731'

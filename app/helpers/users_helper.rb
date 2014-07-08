@@ -2,6 +2,7 @@ require_relative '../models/steam_adapter'
 
 module UsersHelper
 	extend self
+	# CR calls to API should be made from the model or the controller - not the view (which is accessing a view helper)
 
 	def self.check_steam_id(user, steam_id, image)
 		if user.user_steam_id != steam_id
@@ -12,7 +13,7 @@ module UsersHelper
 	end
 
 	def self.make_api_data_calls steam_id
-		{ summary: (retrieve_player_summaries steam_id).parsed_response, 
+		{ summary: (retrieve_player_summaries steam_id).parsed_response,
 			games: (retrieve_player_games steam_id).parsed_response }
 	end
 
@@ -38,7 +39,7 @@ module UsersHelper
 			@current_user_groups = ["NO GROUPS SELECTED"]
 		end
 	end
-	
+
 
 	def current_user_events
 		if session[:id]

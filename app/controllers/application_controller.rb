@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+  # CR refactor to one line
 	def current_user
 		if session[:id]
 			# User.find(session[:id])
@@ -17,4 +17,6 @@ class ApplicationController < ActionController::Base
 			"NO GROUPS SELECTED"
 		end
 	end
+	# CR
+	# helper_method :current_user
 end

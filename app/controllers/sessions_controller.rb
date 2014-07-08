@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
 																:image => auth.info['image'],
 																:uid => auth.uid }
     UsersHelper.check_steam_id(user, session[:current_user][:uid], session[:current_user][:image])
+    # CR don't use response(s) for variable name
     responses = UsersHelper.make_api_data_calls user.user_steam_id
     GamesHelper.parse_steam_games(responses, user)
 	  redirect_to user_path(user)
@@ -24,10 +25,11 @@ class SessionsController < ApplicationController
 	def signin
 		render partial: "/sessions/signin"
 	end
-	
+
 
 	def sign_in_attempt
 		@user = User.find_by_username(params[:user][:username])
+		# CR use has_secure_password
 		if @user.password == params[:user][:password_hash]
 			session[:id] = @user.id
 			redirect_to root_path

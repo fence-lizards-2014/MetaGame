@@ -25,6 +25,7 @@
     <td><%= event.event_date %></td>
     <td><%= event.event_type_id %></td>
     <td><%= event.event_zipcode %></td>
+    <!-- # CR this looks very generator-ey -->
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Join', add_user_event_path(event.id), method: :post %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>

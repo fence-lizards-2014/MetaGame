@@ -1,9 +1,10 @@
+# CR remove all comments from generators.
 class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
-
+# CR are you really degrading gracefully here? If not - remove the format.html portions / json portion
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -44,6 +45,7 @@ class EventsController < ApplicationController
     current_user
     @event = Event.new(params[:event])
     #REFACTOR
+    # CR move this logic to the model.
     respond_to do |format|
       if @event.save
         if session[:group_id] == nil
@@ -80,7 +82,7 @@ class EventsController < ApplicationController
   def search
     #refactor for multiple event
     @event = Event.find(:all, :conditions => ['event_name LIKE ?', "%#{params['search']}%"]).first
-    redirect_to events_path if @game == nil 
+    redirect_to events_path if @game == nil
     if session[:group_id]
       @group = Group.find(session[:group_id])
       @group.events << @event

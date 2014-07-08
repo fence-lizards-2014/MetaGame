@@ -49,6 +49,7 @@ class GroupsController < ApplicationController
       if @group.save
         # add cu to group as admin upon group save.
         # add group to cu groups
+        # CR refactor to model
 
         @group.users << @current_user
 
@@ -64,6 +65,8 @@ class GroupsController < ApplicationController
   end
 
   def add_user
+    # CR refactor
+    # current_user.group << group
     group = Group.find(params[:id])
     user = User.find(session[:id])
     group.users << user
@@ -79,6 +82,7 @@ class GroupsController < ApplicationController
     user = User.find(session[:id])
     group = Group.find(params[:id])
     group.users.delete(user)
+    # CR don't need to do this in both directions.
     user.groups.delete(group)
     redirect_to root_path
   end
