@@ -17,6 +17,7 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @game = Game.find(params[:id])
+    # CR don't call variables response (key word) - possibly use a model around this
     @response = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]
     respond_to do |format|
       format.html # show.html.erb
@@ -86,8 +87,9 @@ class GamesController < ApplicationController
 
   def search
     #refactor for multiple game
-    @game = Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first 
-    redirect_to groups_path if @game == nil 
+    # CR move to game model
+    @game = Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first
+    redirect_to groups_path if @game == nil
     if session[:group_id]
       @group = Group.find(session[:group_id])
       @group.games << @game

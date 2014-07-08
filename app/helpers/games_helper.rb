@@ -1,12 +1,12 @@
 module GamesHelper
-
+# CR Move to model
 	def self.parse_steam_games(response, user)
 		games = response[:games]["response"]["games"]
 		games.each do |game|
 			user.games << Game.create(game_name: game["name"],
-									game_steam_appid: game["appid"], 
-									game_img_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_logo_url"]}.jpg", 
-									game_icon_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_icon_url"]}.jpg", 
+									game_steam_appid: game["appid"],
+									game_img_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_logo_url"]}.jpg",
+									game_icon_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_icon_url"]}.jpg",
 									game_playtime_forever: game["playtime_forever"])
 		end
 	end

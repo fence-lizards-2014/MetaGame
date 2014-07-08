@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   validates :user_zipcode, format: { with: /(^\d{5}$)|(^\d{5}-\d{4}$)/, message: "Must be a valid US zip code." }, length: { is: 5, message: "Must be 5 digits." }
 
+# CR use has_secure_password
   include BCrypt
 
   def password

@@ -1,4 +1,5 @@
 <%= flash[:notice] %>
+ <!-- # CR don't access the model directly from the view -->
 <%= form_for User.new, url: sign_in_attempt_path, method: :post, id: "signin-form" do |u| %>
 	<%= u.text_field :username, placeholder: "Username" %>
 	<%= u.password_field :password_hash, placeholder: "Password" %>

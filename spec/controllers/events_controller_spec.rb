@@ -2,17 +2,18 @@ require 'spec_helper'
 
 describe EventsController do
    let!(:user) { FactoryGirl.create :user }
-  
+  # CR use attributes_for and valid / invalid factories
   let(:valid_attributes) { { "event_name" => "MyString", "event_game_title" => "example", "event_description" => "a description", "event_zipcode" => 12345, "event_date" => "3/3/2050", "event_location" => "San Francisco" } }
   let(:valid_session) { {} }
 
   describe "GET index" do
     it "assigns all events as @events" do
       event = Event.create! valid_attributes
+      # CR use a factory
       get :index, {}, valid_session
       assigns(:events).should eq([event])
     end
-  end 
+  end
 
   describe "GET show" do
     it "assigns the requested event as @event" do
@@ -59,7 +60,7 @@ describe EventsController do
         response.should render_template("new")
       end
     end
-  
+
 
   describe "PUT update" do
     describe "with valid params" do

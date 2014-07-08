@@ -11,6 +11,7 @@ class SteamAdapter
 
 	def initialize steam_id
 		# need to make env
+		# CR - yep to above
 		@key = '2CA9866DD532D38F34B6B2CBBD968E92'
 		@steam_id = steam_id
 	end
