@@ -5,8 +5,15 @@ class TournamentsController < ApplicationController
 	end
 
 	def create
-		p params
-		event = Event.find 27
-		redirect_to event_path event
+		event = Event.find params[:event_id]
+		tourney = Tournament.new params[:tournament]
+		
+		if tourney.save
+			tourney.users << event.users
+			event.tournaments << tourney
+			redirect_to event_path event, notice: 'Event was successfully created with a tournament.'
+		else
+			render action: 'new'
+		end
 	end
 end	
