@@ -10,6 +10,8 @@ class Event < ActiveRecord::Base
   has_many :users
   has_many :user_events, through: :events
 
+  has_many :tournaments
+
   validates :event_name, presence: true
   validates :event_game_title, presence: true
   validates :event_description, presence: true

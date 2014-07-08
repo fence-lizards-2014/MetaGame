@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.belongs_to :group
       t.belongs_to :event
+      t.belongs_to :tournament
 
       t.timestamps
     end
