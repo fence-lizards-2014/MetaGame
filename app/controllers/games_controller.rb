@@ -2,37 +2,19 @@ class GamesController < ApplicationController
 
   GAME_NOT_FOUND = "No Game Found"
 
-  # GET /games
-  # GET /games.json
   def index
     @games = Game.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @games }
-    end
   end
 
-  # GET /games/1
-  # GET /games/1.json
   def show
     @game = Game.find(params[:id])
-    @response = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @game }
-    end
+    @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]
+    
+    render '/games/show'
   end
 
-  # GET /games/new
-  # GET /games/new.json
   def new
     @game = Game.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @game }
-    end
   end
 
   # GET /games/1/edit
@@ -99,41 +81,4 @@ class GamesController < ApplicationController
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
