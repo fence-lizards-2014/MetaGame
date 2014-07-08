@@ -9,6 +9,10 @@ gem 'nifty-generators'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Private Messages
+gem 'simple-private-messages', '0.0.0', :git => 'git://github.com/jongilbraith/simple-private-messages.git'
+
+
 gem 'pg'
 gem 'bcrypt'
 gem 'omniauth-steam'
@@ -40,8 +44,8 @@ group :development, :test do
   gem 'rspec-rails', '=2.14'
   gem 'launchy'
   gem 'guard-rspec'
-  gem 'guard-livereload' 
-  gem 'guard-spork' 
+  gem 'guard-livereload'
+  gem 'guard-spork'
   gem 'ruby_gntp'
 end
 
@@ -49,7 +53,7 @@ group :test, :darwin do
   gem 'rb-fsevent'
 end
 
- 
+
 group :test do
   gem 'faker'
   gem 'factory_girl_rails'

@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20140708034047) do
     t.text     "user_bio"
     t.integer  "group_id"
     t.integer  "event_id"
+    t.integer  "tournament_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
