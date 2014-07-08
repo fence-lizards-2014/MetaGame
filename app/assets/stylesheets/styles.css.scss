@@ -20,6 +20,10 @@
   }
 }*/
 
+.container img {
+  max-width: 100%;
+}
+
 .navbar {
   text-align: center;
   background-color: black;
@@ -149,11 +153,6 @@ margin: auto auto;
 .index-search-button {
   margin-right: 5%;
 }
-
-
-
-
-
 
 .button-success,
 .button-error,
