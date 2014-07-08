@@ -9,6 +9,8 @@ class Game < ActiveRecord::Base
   has_many :groups
   has_many :group_games, through: :groups
 
+  has_many :tournaments
+
   def self.parse_json(file)
     games_list = JSON.parse(File.open(file).read)
     games_list['results'].each do |result| 

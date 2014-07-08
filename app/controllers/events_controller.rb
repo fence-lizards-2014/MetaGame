@@ -41,23 +41,27 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @group = Group.find(session[:group_id]) if session[:group_id]
-    current_user
     @event = Event.new(params[:event])
     #REFACTOR
-    respond_to do |format|
-      if @event.save
-        if session[:group_id] == nil
-          @current_user.events << @event
-        end
-        if session[:group_id] && @group.admins.include?(@current_user)
-          @group.events << @event
-        end
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render json: @event, status: :created, location: @event }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if @event.save
+      if session[:group_id] == nil
+        current_user.events << @event
+        @event.users << current_user
       end
+      if session[:group_id] && @group.admins.include?(@current_user)
+        @group.events << @event
+        @event.groups << @group
+      end
+      
+      if @event.event_type_id == 1
+        # @tournament = Tournament.new
+        redirect_to new_event_tournament_path @event
+      else
+        redirect_to @event, notice: 'Event was successfully created.'
+      end
+    
+    else
+      render action: "new"
     end
   end
 
