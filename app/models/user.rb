@@ -1,3 +1,5 @@
+require_relative 'steam_adapter'
+
 class User < ActiveRecord::Base
 
   attr_accessible :password_hash, :user_bio, :user_email, :username, :user_zipcode, :user_steam_id, :user_avatar_url, :id, :created_at, :updated_at, :confirm_pw
@@ -41,6 +43,19 @@ class User < ActiveRecord::Base
     ziparray = []
     zipgroup['zip_codes'].each {|zip| y << zip['zip_code'] }
     return ziparray
+  end
+
+  def self.check_steam_id(user, steam_id, image)
+    if user.user_steam_id != steam_id
+      user.update_attributes user_steam_id: steam_id, user_avatar_url: image
+    else
+      user.update_attributes user_avatar_url: image
+    end
+  end
+
+  def self.make_api_data_calls steam_id
+    { summary: (SteamAdapter.new(steam_id).get_player_summaries).parsed_response, 
+      games: (SteamAdapter.new(steam_id).get_games).parsed_response }
   end
 
 end
