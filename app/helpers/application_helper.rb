@@ -1,9 +1,5 @@
 module ApplicationHelper
-	 def current_user
-		if session[:id]
-			User.find(session[:id])
-		else
-			false
-		end
+	def current_user
+		@current_user ||= User.find_by_id(session[:id]) if session[:id]
 	end
 end

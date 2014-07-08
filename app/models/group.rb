@@ -17,4 +17,14 @@ class Group < ActiveRecord::Base
   validates :group_logo_url, presence: true
   validates :group_tagline, presence: true
 
+  def self.assign_user_to_group group, user
+    group.users << user
+    user.groups << group
+  end
+
+  def self.remove_user_to_group group, user
+    group.users.delete user
+    user.groups.delete group
+  end
+
 end

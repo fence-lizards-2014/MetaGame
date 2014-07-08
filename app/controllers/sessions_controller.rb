@@ -9,10 +9,11 @@ class SessionsController < ApplicationController
 	  session[:current_user] = {  :nickname => auth.info['nickname'],
 																:image => auth.info['image'],
 																:uid => auth.uid }
-    UsersHelper.check_steam_id(user, session[:current_user][:uid], session[:current_user][:image])
-    responses = UsersHelper.make_api_data_calls user.user_steam_id
-    GamesHelper.parse_steam_games(responses, user)
-	  redirect_to user_path(user)
+    User.check_steam_id user, session[:current_user][:uid], session[:current_user][:image]
+    return_responses = User.make_api_data_calls user.user_steam_id
+    Game.parse_steam_games(return_responses, user)
+	  
+	  redirect_to user_path user
 	end
 
 	def logout
