@@ -52,8 +52,15 @@ class EventsController < ApplicationController
         if session[:group_id] && @group.admins.include?(@current_user)
           @group.events << @event
         end
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render json: @event, status: :created, location: @event }
+        
+        if @event.event_type_id == 1
+          @tournament = @event.tournaments.build
+          format.html { redirect_to new_event_tournament_path @event, @tournament }
+        else
+          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.json { render json: @event, status: :created, location: @event }
+        end
+      
       else
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }

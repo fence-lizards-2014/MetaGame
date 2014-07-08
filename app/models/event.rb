@@ -22,6 +22,8 @@ class Event < ActiveRecord::Base
   before_save :valid_date?
   validates :event_date, presence: true
 
+  # after_save :check_type_id?
+
   private
 
   def valid_date?
@@ -29,5 +31,11 @@ class Event < ActiveRecord::Base
       errors.add(:event_date, "date can't be in the past")
     end
   end
+
+  # def check_type_id?
+  #   if event_type_id == 1
+  #     tourney_form
+  #   end
+  # end
 
 end

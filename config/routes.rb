@@ -4,8 +4,9 @@ Metagame::Application.routes.draw do
   resources :users
   resources :games
   resources :groups
-  resources :events
-
+  resources :events do
+    resources :tournaments, :only => [:create, :new]
+  end
 
   get '/logout', to: 'sessions#logout', as: :logout
   post "auth/steam/callback" => 'sessions#auth_callback', as: "steam_auth"
