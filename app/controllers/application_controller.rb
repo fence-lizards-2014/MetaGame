@@ -22,5 +22,7 @@ class ApplicationController < ActionController::Base
 	end
 	# helper_method :current_user, :current_user_groups
 
-	
+	def current_group
+		@current_group = Group.find(session[:group_id]) if session[:group_id]
+	end
 end
