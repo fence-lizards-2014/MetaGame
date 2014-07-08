@@ -8,9 +8,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find params[:id]
-    @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]
-    
-    render '/games/show'
+    @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]    
   end
 
   def new
