@@ -20,13 +20,18 @@ class Event < ActiveRecord::Base
   before_save :valid_date?
   validates :event_date, presence: true
 
-  def self.assign_assoc_to_event event, group, current_user
+  def self.assign_assoc_to_event event, group, user
     if group == nil
-      current_user.events << event
+      user.events << event
     end
-    if group && group.admins.include?(current_user)
+    if group && group.admins.include?(user)
       group.events << event
     end
+  end
+
+  def self.assign_user_to_event event, user
+    event.users << user
+    user.events << event
   end
 
   private

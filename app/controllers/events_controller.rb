@@ -59,10 +59,9 @@ class EventsController < ApplicationController
   end
 
   def add_user_event
-    @user = User.find session[:id]
-    @event = Event.find params[:id]
-    @event.users << @user
-    @user.events << @event
+    event = Event.find params[:id]
+    Event.assign_user_to_event event, current_user
+
     redirect_to root_path
   end
 
