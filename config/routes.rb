@@ -5,7 +5,7 @@ Metagame::Application.routes.draw do
   resources :games
   resources :groups
   resources :events do
-    resources :tournaments, :only => [:create, :new]
+    resources :tournaments, only: [:new, :create]
   end
 
   get '/logout', to: 'sessions#logout', as: :logout

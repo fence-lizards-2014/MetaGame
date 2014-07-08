@@ -1,12 +1,12 @@
 class TournamentsController < ApplicationController
 	def new
-		p 'wassabe'
+		@event = Event.find params[:event_id]
 		@tournament = Tournament.new
 	end
 
 	def create
-		# @tournament = Tournament.new params[:tournament]
 		p params
-		"You are at a route"
+		event = Event.find 27
+		redirect_to event_path event
 	end
 end	
