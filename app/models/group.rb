@@ -10,6 +10,8 @@ class Group < ActiveRecord::Base
   has_many :group_events, through: :groups
 
   has_many :games
+  has_many :posts
+  
   validates :group_name, presence: true, uniqueness: true
   validates :group_description, presence: true
   validates :group_logo_url, presence: true

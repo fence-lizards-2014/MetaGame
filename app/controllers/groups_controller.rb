@@ -5,7 +5,10 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find params[:id]
+    @post = Post.new
+    @group = Group.find(params[:id])
+    @poster = current_user
+    @posts = @group.posts if @group.posts
     session[:group_id] = @group.id
   end
 

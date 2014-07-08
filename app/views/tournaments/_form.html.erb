@@ -1,0 +1,19 @@
+<h1>Let's get started!</h1>
+
+<%= form_for [@event, @tournament] do |f| %>
+	<div class="field">
+    <%= f.label :tourney_name %><br />
+    <%= f.text_field :tourney_name %>
+  </div>
+  <div class="field">
+    <%= f.label :tourney_rules %><br />
+    <%= f.text_field :tourney_rules %>
+  </div>
+  <div class="field">
+    <%= f.label :tourney_max_players %><br />
+    <%= f.text_field :tourney_max_players %>
+  </div> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -7,8 +7,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    session[:group_id] = nil
-    @games = @user.games
+    if current_user.id == @user.id
+      session[:group_id] = nil
+      @games = @user.games
+    else
+      render :error
+    end
   end
 
   def new
