@@ -6,7 +6,7 @@
     <% if current_user %>
       <table>
         <tr>
-          <td><%= link_to "Username", user_path(current_user) %></td>
+          <td><%= link_to "#{@current_user.username}", user_path(current_user) %></td>
           <td><%= link_to "Create Group", new_group_path %><br></td>
           <td><%= link_to "Browse Groups", groups_path %></td>
           <td><%= link_to "Browse Games", games_path %></td>
