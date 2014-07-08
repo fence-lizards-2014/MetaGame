@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20140708001055) do
 
   create_table "events", :force => true do |t|
@@ -75,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20140708001055) do
     t.boolean "winner",              :default => false
     t.integer "event_id"
     t.integer "game_id"
+
+  create_table "posts", :force => true do |t|
+    t.text     "post_content"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "user_admins", :id => false, :force => true do |t|

@@ -20,6 +20,10 @@
   }
 }*/
 
+.container img {
+  max-width: 100%;
+}
+
 .navbar {
   text-align: center;
   background-color: black;
@@ -67,7 +71,7 @@ margin: auto auto;
 }
 
 .splash-buttons table tr td {
-  padding: 20px;
+  padding: 7px;
 }
 
 .signin-form {
@@ -76,8 +80,14 @@ margin: auto auto;
 
 .splash-buttons a {
   text-decoration: none;
-  text-shadow: 0.1em 0.1em 0.2em white;
+  font-size: 1.25em;
+  text-shadow: 0.05em 0.05em 0.05em gray;
 }
+
+.splash-buttons a:hover{
+  color: red;
+}
+
 
 #signup-button a {
   margin-top: 10%;
@@ -143,11 +153,6 @@ margin: auto auto;
 .index-search-button {
   margin-right: 5%;
 }
-
-
-
-
-
 
 .button-success,
 .button-error,

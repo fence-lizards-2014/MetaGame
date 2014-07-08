@@ -45,6 +45,17 @@
 			</p>
 		</div>
 	</div>
+
+	<% if current_group.users.include?(current_user) %>
+  	<%= render partial: "posts/form" %>
+  <% end %>
+
+  <% @posts.each do |post| %>
+  	<%= @poster.username %>
+  	<div class="post_content">
+  		<p> <%= post.post_content %> </p>
+  	</div>
+  <% end %>
 	  <div class="nav-options">
 			<%= link_to 'Edit', edit_group_path(@group) %> |
 			<%= link_to 'Back', groups_path %>
