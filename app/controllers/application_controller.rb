@@ -2,12 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
 	def current_user
-		if session[:id]
-			# User.find(session[:id])
-			@current_user ||= User.find_by_id(session[:id])
-		else
-			false
-		end
+		@current_user ||= User.find_by_id(session[:id]) if session[:id]
 	end
 
 	def current_user_groups
@@ -17,4 +12,6 @@ class ApplicationController < ActionController::Base
 			"NO GROUPS SELECTED"
 		end
 	end
+
+	helper_method :current_user, :current_user_groups
 end

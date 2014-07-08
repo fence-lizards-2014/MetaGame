@@ -6,7 +6,7 @@ module UsersHelper
 	private
 
 	def current_user
-			@current_user ||= User.find_by_id(session[:id]) if session[:id]
+		@current_user ||= User.find_by_id(session[:id]) if session[:id]
 	end
 
 	def current_user_groups
