@@ -36,4 +36,11 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
+  def parse_zip zipcode, radius
+    zipgroup = Zipcode.new(zipcode).by_radius(radius).parsed_response
+    y = []
+    zipgroup['zip_codes'].each {|zip| y << zip['zip_code'] }
+    return y
+  end
+
 end
