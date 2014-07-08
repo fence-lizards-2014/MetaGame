@@ -19,16 +19,11 @@ class EventsController < ApplicationController
     if @event.save
       Event.assign_assoc_to_event @event, @group, current_user
       flash[:notice] = 'Event has successfully been created!'
-      if @event.event_type == 1
-        redirect_to new_event_tournament(@event)
-      end
-      redirect_to event_path @event
+      Event.check_event_type @event.event_type_id ? (redirect_to new_event_tournament_path @event) : (redirect_to event_path @event)
     else
       flash[:error] = 'Something went wrong!'
       render 'events/new'
     end
-
-
   end
 
   def edit

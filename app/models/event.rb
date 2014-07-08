@@ -36,6 +36,10 @@ class Event < ActiveRecord::Base
     user.events << event
   end
 
+  def self.check_event_type id
+    id == 1
+  end
+
   private
 
   def valid_date?
