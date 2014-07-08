@@ -3,8 +3,6 @@ require_relative '../models/steam_adapter'
 module UsersHelper
 	extend self
 
-	private
-
 	def current_user
 		@current_user ||= User.find_by_id(session[:id]) if session[:id]
 	end

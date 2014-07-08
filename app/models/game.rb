@@ -9,12 +9,23 @@ class Game < ActiveRecord::Base
   has_many :groups
   has_many :group_games, through: :groups
 
-  def self.parse_json(file)
+  def self.parse_json file
     games_list = JSON.parse(File.open(file).read)
     games_list['results'].each do |result| 
     	Game.create( Hash[game_description: result['description'], 
     										game_img_url: result['image']["icon_url"], 
     										game_name: result['name']]) 
+    end
+  end
+
+  def self.parse_steam_games response, user
+    games = response[:games]["response"]["games"]
+    games.each do |game|
+      user.games << Game.create(game_name: game["name"],
+                  game_steam_appid: game["appid"], 
+                  game_img_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_logo_url"]}.jpg", 
+                  game_icon_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_icon_url"]}.jpg", 
+                  game_playtime_forever: game["playtime_forever"])
     end
   end
 end

@@ -13,5 +13,12 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	helper_method :current_user, :current_user_groups
+	def current_user_events
+		if session[:id]
+			@current_user_events = current_user.events
+		else
+			@current_user_events = ["No Events Listed"]
+		end
+	end
+	# helper_method :current_user, :current_user_groups
 end
