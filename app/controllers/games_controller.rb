@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+    @game = Game.find params[:id]
     @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]
     
     render '/games/show'
@@ -17,53 +17,40 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
-  # GET /games/1/edit
   def edit
-    @game = Game.find(params[:id])
+    @game = Game.find params[:id] 
   end
 
-  # POST /games
-  # POST /games.json
   def create
-    @game = Game.new(params[:game])
+    @game = Game.new params[:game]
 
-    respond_to do |format|
-      if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
-        format.json { render json: @game, status: :created, location: @game }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
-      end
+    if @game.save
+      flash[:notice] = "Game was successfully created!"
+      redirect_to game_path @game
+    else
+      flash[:error] = "Please enter a valid game!"
+      render 'games/new'
     end
+
   end
 
-  # PUT /games/1
-  # PUT /games/1.json
   def update
-    @game = Game.find(params[:id])
+    @game = Game.find params[:id]
 
-    respond_to do |format|
-      if @game.update_attributes(params[:game])
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
-      end
+    if @game.update_attributes params[:game]
+      flash[:notice] = "Game has been successfully updated!"
+      redirect_to game_path @game
+    else
+      flash[:error] = "Something went wrong!"
+      render 'games/edit'
     end
   end
 
-  # DELETE /games/1
-  # DELETE /games/1.json
   def destroy
-    @game = Game.find(params[:id])
+    @game = Game.find params[:id]
     @game.destroy
 
-    respond_to do |format|
-      format.html { redirect_to games_url }
-      format.json { head :no_content }
-    end
+    redirect_to games_path
   end
 
   def search

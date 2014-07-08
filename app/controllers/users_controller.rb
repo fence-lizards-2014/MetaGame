@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
     session[:group_id] = nil
     @games = @user.games
   end
@@ -18,11 +18,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new params[:user]
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
 
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
     
     if @user.update_attributes params[:user]
       flash[:notice] = "User has been successfully updated!"
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
     @user.destroy
 
     redirect_to users_path
