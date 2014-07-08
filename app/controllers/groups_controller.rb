@@ -4,7 +4,6 @@ class GroupsController < ApplicationController
   def index
 
     @groups = Group.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups }
@@ -14,7 +13,10 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @post = Post.new
     @group = Group.find(params[:id])
+    @poster = current_user
+    @posts = @group.posts if @group.posts
     session[:group_id] = @group.id
     respond_to do |format|
       format.html # show.html.erb
@@ -49,11 +51,8 @@ class GroupsController < ApplicationController
       if @group.save
         # add cu to group as admin upon group save.
         # add group to cu groups
-
         @group.users << @current_user
-
         current_user_groups << @group
-
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else

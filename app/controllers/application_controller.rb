@@ -17,4 +17,10 @@ class ApplicationController < ActionController::Base
 			"NO GROUPS SELECTED"
 		end
 	end
+
+	def current_group
+		@current_group ||= Group.find(session[:group_id]) if session[:group_id]
+	end
+
+	helper_method :current_group, :current_user_groups
 end
