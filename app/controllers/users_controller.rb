@@ -17,10 +17,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-    @user = User.find params[:id]
-  end
-
   def create
     @user = User.new params[:user]
     if params[:user][:password_hash] == params[:user][:confirm_pw]
@@ -41,6 +37,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find params[:id]
+  end
+
   def update
     @user = User.find params[:id]
     
@@ -51,6 +51,13 @@ class UsersController < ApplicationController
       flash[:error] = "Something went wrong!"
       render 'users/edit'
     end
+  end
+
+  def destroy
+    @user = User.find params[:id]
+    @user.destroy
+
+    redirect_to users_path
   end
 
   def new_password
@@ -67,13 +74,6 @@ class UsersController < ApplicationController
     else
       redirect_to new_password_path
     end
-  end
-
-  def destroy
-    @user = User.find params[:id]
-    @user.destroy
-
-    redirect_to users_path
   end
 
   def addgame

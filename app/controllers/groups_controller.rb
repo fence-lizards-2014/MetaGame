@@ -13,10 +13,6 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def edit
-    @group = Group.find params[:id]
-  end
-
   def create
     @group = Group.new params[:group]
     current_user
@@ -34,6 +30,29 @@ class GroupsController < ApplicationController
       flash[:error] = 'Something went wrong!'
       render 'groups/new'
     end
+  end
+
+  def edit
+    @group = Group.find params[:id]
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    
+    if @group.update_attributes params[:group]
+      flash[:notice] = 'Group was successfully updated!'
+      redirect_to group_path @group
+    else
+      flash[:error] = 'Something went wrong!'
+      render 'groups/edit'
+    end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    
+    redirect_to groups_path
   end
 
   def add_user
@@ -54,24 +73,5 @@ class GroupsController < ApplicationController
     group.users.delete(user)
     user.groups.delete(group)
     redirect_to root_path
-  end
-
-  def update
-    @group = Group.find(params[:id])
-    
-    if @group.update_attributes params[:group]
-      flash[:notice] = 'Group was successfully updated!'
-      redirect_to group_path @group
-    else
-      flash[:error] = 'Something went wrong!'
-      render 'groups/edit'
-    end
-  end
-
-  def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
-    
-    redirect_to groups_path
   end
 end

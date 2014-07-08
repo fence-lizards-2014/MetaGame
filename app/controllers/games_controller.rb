@@ -15,13 +15,9 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
-  def edit
-    @game = Game.find params[:id] 
-  end
-
   def create
     @game = Game.new params[:game]
-
+    
     if @game.save
       flash[:notice] = "Game was successfully created!"
       redirect_to game_path @game
@@ -30,6 +26,10 @@ class GamesController < ApplicationController
       render 'games/new'
     end
 
+  end
+
+  def edit
+    @game = Game.find params[:id] 
   end
 
   def update
