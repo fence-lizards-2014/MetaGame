@@ -14,14 +14,6 @@ $(document).ready( function() {
 
 
 
-//////////////////////////////////
-/////////// FireChat   ///////////
-//////////////////////////////////
-
-// var firechatRef = new Firebase('https://<your-firebase>.firebaseio.com');
-// firechatRef.auth(<token>);
-
-
 
 
 

@@ -145,20 +145,4 @@
 
 
 
-//////////////////////////////////
-/////////// FIRECHAT   ///////////
-//////////////////////////////////
-
-
-
-<!-- FIRECHAT -->
-
-		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-
-<!-- Download from https://github.com/firebase/Firechat -->
-<link rel="stylesheet" href="/assets/firechat-default.css" />
-<script src="/assets/firechat-default.js"></script>
-
-
 
