@@ -1,15 +1,95 @@
+<h1 class="title">USERS#SHOW</h1>
+<div class="body" style="overflow-y: scroll; height: 400px;">
+
+  <div class="nav-options">
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to "Create Event", new_event_path %> |
+    <%= link_to 'Back', users_path %> 
+  </div>
+  <div class="old-profile">
+	  <div class="feature" id="1">
+	    <h3>Profile Info</h3>
+
+	    <p id="notice"><%= notice %></p>
+
+	    <p>
+	      <b>User name:</b>
+	      <%= @user.username %>
+	    </p>
+
+	    <p>
+	      <b>User email:</b>
+	      <%= @user.user_email %>
+	    </p>
+
+	    <p>
+	      <b>User bio:</b>
+	      <%= @user.user_bio %>
+	    </p>
+
+	    <p>
+	      <b>User zipcode:</b>
+	      <%= @user.user_zipcode %>
+	    </p>
+
+
+	    <%= link_to image_tag("http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_large_noborder.png"), '/auth/steam' %>
+	  </div>
+
+  <div class="feature" id="2">
+    <h2>USERS GAMES</h2>
+    <% cache do %>
+      <% @games.each do |game| %>
+        <div class="one-third column feature">
+        <%= link_to image_tag(game.game_img_url), game_path(game) %>
+          <p><%= game.game_name %></p>
+          <!-- <p>Lorem ipsum dolor sit amet...</p> -->
+        </div>
+      <% end %>
+    <% end %>
+  
+  </div>
+
+  <div class="feature" id="3">
+    <h2>USERS GROUPS</h2>
+    <%= render partial: '/groups/show_groups' %>
+  </div>
+  <div class="nav-options">
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+  </div>
+	</div>
+</div>
+
 
 <script class="private-profile-template" type="text/x-handlebars-template">  
   
   <h2>Public Profile</h2>
-    <p>user:{{user.username}}</p>
+  <table>
+  	<caption>{{user.username}} Profile</caption>
+  	<thead>
+  		<tr>
+  			<th>Info:</th>
+		    <td>{{user_avatar_url}}</td>
+		    <td>{{created_at}}</td>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+  		{{#user}}
+      <td>{{game_img_url}}</td>
+			<td>{{games.game_name}}</td>
+    {{/user}}
+     	<td>{{user.username}}</td>
+  		</tr>
+  	</tbody>
+  </table>
+
     
-    {{user.user_avatar_url}} 
-    {{user.created_at}}
+    	{{user.groups.group_name}}
+			{{user.groups.group_logo_url}}
+			{{user.groups.group_tagline}}
     
-    {{#user_games}}
-      {{game_name}}
-    {{/user_games}}
 
   
 </script>
