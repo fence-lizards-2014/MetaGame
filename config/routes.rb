@@ -1,5 +1,13 @@
 Metagame::Application.routes.draw do
 
+  resources :users do
+             resources :messages do
+               collection do
+                 post :delete_selected
+               end
+             end
+           end
+
   root to: 'users#index'
   resources :users
   resources :games

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140708034047) do
+ActiveRecord::Schema.define(:version => 20140708232035) do
 
   create_table "events", :force => true do |t|
     t.string   "event_name"
@@ -68,6 +68,18 @@ ActiveRecord::Schema.define(:version => 20140708034047) do
     t.datetime "updated_at",        :null => false
   end
 
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.boolean  "sender_deleted",    :default => false
+    t.boolean  "recipient_deleted", :default => false
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "read_at"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.text     "post_content"
     t.integer  "group_id"
@@ -116,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20140708034047) do
   create_table "users", :force => true do |t|
     t.string   "user_steam_id"
     t.string   "username"
+    t.string   "login"
     t.string   "password_hash"
     t.string   "user_email"
     t.string   "user_avatar_url"

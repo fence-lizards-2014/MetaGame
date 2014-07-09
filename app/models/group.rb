@@ -1,6 +1,8 @@
 class Group < ActiveRecord::Base
   attr_accessible :group_description, :group_logo_url, :group_name, :group_tagline
-  
+
+  has_private_messages
+
   has_many :users
   has_many :group_users, through: :users
 
@@ -11,7 +13,7 @@ class Group < ActiveRecord::Base
 
   has_many :games
   has_many :posts
-  
+
   validates :group_name, presence: true, uniqueness: true
   validates :group_description, presence: true
   validates :group_logo_url, presence: true

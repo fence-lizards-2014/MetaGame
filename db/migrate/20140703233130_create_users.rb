@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :user_steam_id
       t.string :username
+      t.string :login
       t.string :password_hash
       t.string :user_email
       t.string :user_avatar_url
