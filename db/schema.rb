@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
     t.text    "tourney_rules"
     t.integer "tourney_max_players"
     t.boolean "winner",              :default => false
+    t.string  "tourney_url"
     t.integer "event_id"
     t.integer "game_id"
   end
@@ -128,7 +129,6 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
   create_table "users", :force => true do |t|
     t.string   "user_steam_id"
     t.string   "username"
-    t.string   "login"
     t.string   "password_hash"
     t.string   "user_email"
     t.string   "user_avatar_url"
