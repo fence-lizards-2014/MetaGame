@@ -2,28 +2,15 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
   end
 
   def show
     @post = Post.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
   end
 
   def new
     @post = Post.new
     @group = current_group
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
   end
 
   def edit
@@ -34,23 +21,23 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     if @post.save && current_group.users.include?(current_user)
       current_group.posts << @post
-      redirect_to group_path(current_group), notice: 'Post was successfully created.' 
+      flash[:notice] = 'Your post has been successfully created!'
+      redirect_to group_path(current_group)
     else
-      redirect_to group_path(current_group), notice: "Post content cannot be blank"
+      flash[:notice] = "Post content cannot be blank"
+      redirect_to group_path(current_group)
     end
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find params[:id]
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update_attributes params[:post]
+      flash[:notice] = 'Your post has been successfully updated!'
+      redirect_to posts_path
+    else
+      flash[:notice] = 'Something went wrong!'
+      render 'posts/edit'
     end
   end
 
@@ -58,9 +45,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+    redirect_to posts_path
   end
 end
