@@ -13,6 +13,9 @@ gem 'nifty-generators'
 gem 'simple-private-messages', '0.0.0', :git => 'git://github.com/jongilbraith/simple-private-messages.git'
 
 
+# FireChat
+gem 'firebase_token_generator'
+
 gem 'pg'
 gem 'bcrypt'
 gem 'omniauth-steam'
