@@ -6,14 +6,43 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find params[:id]
+    @user = User.find(params[:id])
     if current_user.id == @user.id
       session[:group_id] = nil
+      
+      @user_ajax = []
       @games = @user.games
+      @groups = @user.groups
+      @events = @user.events
+
+
+
+      @user_ajax << @user
+      @user_ajax << @games
+      @user_ajax << @groups
+      @user_ajax << @events
+      
+      p "%" * 200
+      p "user_ajax"
+      p @user_ajax
+      
+      if request.xhr? == 0
+        p "()()"*100
+        p "in xhr controller"
+        respond_to do |format|
+          p "format json"
+          format.json {render json: @user_ajax }
+        end
+      else
+        p "@"*100
+        p "in else render show"
+        render :show
+      end
     else
       render :error
     end
   end
+
 
   def new
     @user = User.new
@@ -21,8 +50,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
-    p "*" * 75
-    p params
+    # p "*" * 75
+    # p params
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
       @user.login = params[:user][:username]

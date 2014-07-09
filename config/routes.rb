@@ -9,7 +9,6 @@ Metagame::Application.routes.draw do
            end
 
   root to: 'users#index'
-  resources :users
   resources :games
   resources :groups
   resources :posts
