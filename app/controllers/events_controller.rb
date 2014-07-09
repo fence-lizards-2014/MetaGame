@@ -53,7 +53,9 @@ class EventsController < ApplicationController
   def search
     #refactor for multiple event
     @event = Event.find(:all, :conditions => ['event_name LIKE ?', "%#{params['search']}%"]).first
-    redirect_to events_path if @game == nil 
+    if @event == nil 
+      redirect_to events_path
+    end
     if session[:group_id]
       @group = Group.find session[:group_id]
       @group.events << @event
@@ -68,7 +70,6 @@ class EventsController < ApplicationController
   def add_user_event
     event = Event.find params[:id]
     Event.assign_user_to_event event, current_user
-
     redirect_to root_path
   end
 
