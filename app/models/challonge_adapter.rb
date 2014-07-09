@@ -25,6 +25,10 @@ class ChallongeAdapter
 		self.class.post "/tournaments/#{@url}/participants.json?#{get_ids}&participant[name]=#{username}"
 	end
 
+	def start_tournament
+		self.class.post "/tournaments/#{@url}/start.json?#{get_ids}"
+	end
+
 	private
 
 	def get_name

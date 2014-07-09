@@ -19,4 +19,10 @@ class TournamentsController < ApplicationController
 			render action: 'new'
 		end
 	end
+
+	def start
+		@tourney = Tournament.find(params[:id])
+		challonge = ChallongeAdapter.new(@tourney.tourney_name, params[:url]).start_tournament
+		redirect_to event_path(@tourney.event_id)
+	end
 end	

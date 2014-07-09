@@ -40,8 +40,10 @@
   <%= @event.event_zipcode %>
 </p>
 
-<iframe src=<%= "http://challonge.com/#{@tourney.tourney_url}/module"%> width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
-
+<% if @tourney %>
+<%= link_to "Start Tournament",  start_tournament_path({id: @tourney.id, url: @tourney.tourney_url}), method: :post %>
+  <iframe src=<%= "http://challonge.com/#{@tourney.tourney_url}/module"%> width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

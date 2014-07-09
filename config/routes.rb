@@ -23,4 +23,5 @@ Metagame::Application.routes.draw do
   post '/adduserevent/:id', to: 'events#add_user_event', as: :add_user_event
   post "/searchgames", to: "games#search", as: :search_games
   post "/searchevents", to: "events#search", as: :search_events
+  post '/start_tourney', to: "tournaments#start", as: :start_tournament
 end
