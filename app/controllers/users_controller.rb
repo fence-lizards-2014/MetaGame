@@ -21,8 +21,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
+    p "*" * 75
+    p params
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
+      @user.login = params[:user][:username]
 
       if @user.save
         session[:id] = @user.id
@@ -45,7 +48,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    
+
     if @user.update_attributes params[:user]
       flash[:notice] = "User has been successfully updated!"
       redirect_to user_path @user

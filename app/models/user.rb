@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   attr_accessible :password_hash, :user_bio, :user_email, :username, :user_zipcode, :user_steam_id, :user_avatar_url, :id, :created_at, :updated_at, :confirm_pw
   attr_accessor :confirm_pw
 
+  has_private_messages
+
 	has_many :user_friends
 	has_many :friends, through: :user_friends, source: :user, class_name: "User"
 
@@ -54,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def self.make_api_data_calls steam_id
-    { summary: (SteamAdapter.new(steam_id).get_player_summaries).parsed_response, 
+    { summary: (SteamAdapter.new(steam_id).get_player_summaries).parsed_response,
       games: (SteamAdapter.new(steam_id).get_games).parsed_response }
   end
 
