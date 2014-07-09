@@ -65,33 +65,31 @@
 <script class="private-profile-template" type="text/x-handlebars-template">  
   
   <h2>Public Profile</h2>
-  <<table>
-  	<caption>User Profile</caption>
+  <table>
+  	<caption>{{user.username}} Profile</caption>
   	<thead>
   		<tr>
-  			<th>header</th>
+  			<th>Info:</th>
+		    <td>{{user_avatar_url}}</td>
+		    <td>{{created_at}}</td>
   		</tr>
   	</thead>
   	<tbody>
   		<tr>
-  			<td>data</td>
+  		{{#user}}
+      <td>{{game_img_url}}</td>
+			<td>{{games.game_name}}</td>
+    {{/user}}
+     	<td>{{user.username}}</td>
   		</tr>
   	</tbody>
   </table>
-    user:{{user.username}}
-    {{user.user_avatar_url}} 
-    {{user.created_at}}
 
-    {{#user_games}}
-      {{game_img_url}}
-			{{game_name}}
-    {{/user_games}}
-
-    {{#user_groups}}
-    	{{group_name}}
-			{{group_logo_url}}
-			{{group_tagline}}
-    {{/user_groups}}
+    
+    	{{user.groups.group_name}}
+			{{user.groups.group_logo_url}}
+			{{user.groups.group_tagline}}
+    
 
   
 </script>

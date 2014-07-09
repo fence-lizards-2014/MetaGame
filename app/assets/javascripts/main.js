@@ -40,11 +40,12 @@ var handleBarListener = function() {
       setTimeout(function(){$(".private-profile-handlebars").fadeIn();}, 1000);
       var templateIndexSource = $(".private-profile-template").html();
       // debugger;
-      console.log(templateIndexSource);
+      // console.log(templateIndexSource);
       var template = Handlebars.compile(templateIndexSource);
-      console.log(template);
+      // console.log(template);
       // console.log(indexHTML);
-          var indexHTML = template({user: data[0], user_games: data[1][0], user_groups: data[2][0], user_events: data[3][0]});
+      var indexHTML = template({user: data});
+      // var indexHTML = template({user: data[0], user_games: data[1][0], user_groups: data[2][0], user_events: data[3][0]});
       $(".private-profile-handlebars").append(indexHTML);
       $(".private-profile-handlebars").hide();
 

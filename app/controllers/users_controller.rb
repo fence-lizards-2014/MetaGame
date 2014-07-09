@@ -10,18 +10,21 @@ class UsersController < ApplicationController
     if current_user.id == @user.id
       session[:group_id] = nil
       
-      @user_ajax = []
+      # @user_ajax = []
       @games = @user.games
       @groups = @user.groups
       @events = @user.events
 
-
-
-      @user_ajax << @user
-      @user_ajax << @games
-      @user_ajax << @groups
-      @user_ajax << @events
       
+
+      # @user_ajax << @user
+      # @user_ajax << @games
+      # @user_ajax << @groups
+      # @user_ajax << @events
+      
+      # format.json { render json: @post.to_json(:include => :comments) }
+
+
       p "%" * 200
       p "user_ajax"
       p @user_ajax
@@ -31,7 +34,7 @@ class UsersController < ApplicationController
         p "in xhr controller"
         respond_to do |format|
           p "format json"
-          format.json {render json: @user_ajax }
+          format.json {render json: @user.to_json(include: [:games, :groups, :events]) }
         end
       else
         p "@"*100
