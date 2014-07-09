@@ -36,7 +36,7 @@ var handleBarListener = function() {
     $(".ajax-private-profile-button").on("ajax:success", function(event, data, status, xhr){
       console.log("INSIDE ajax-private-profile-button");
       console.log(data);
-      // $(".old-profile").fadeOut("slow");
+      $(".old-profile").fadeOut("slow");
       setTimeout(function(){$(".private-profile-handlebars").fadeIn();}, 1000);
       var templateIndexSource = $(".private-profile-template").html();
       // debugger;
