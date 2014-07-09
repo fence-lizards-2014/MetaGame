@@ -5,7 +5,10 @@ class EventsController < ApplicationController
   end
 
   def show
+
     @event = Event.find params[:id]
+    @tourney = @event.tournaments.first unless @event.tournaments.empty?
+    p @tourney
   end
 
   def new

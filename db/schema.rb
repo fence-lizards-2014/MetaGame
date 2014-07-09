@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20140708034047) do
     t.text    "tourney_rules"
     t.integer "tourney_max_players"
     t.boolean "winner",              :default => false
+    t.string  "tourney_url"
     t.integer "event_id"
     t.integer "game_id"
   end
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20140708034047) do
     t.text     "user_bio"
     t.integer  "group_id"
     t.integer  "event_id"
+    t.integer  "tournament_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

@@ -5,7 +5,7 @@ class CreateTournaments < ActiveRecord::Migration
   		t.text :tourney_rules
   		t.integer :tourney_max_players
   		t.boolean :winner, default: false
-
+      t.string :tourney_url
   		t.belongs_to :event
   		t.belongs_to :game
   	end

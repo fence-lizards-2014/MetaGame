@@ -11,18 +11,18 @@ class ChallongeAdapter
 	INVALID_TITLE = 'No such game exists! Please try again!'
 	INVALID_ID = 'No such console exists!'
 
-	def initialize name
+	def initialize name, url
 		@key = "hn1jLWtDsTypCdusMxMus5U5sXaW8YMELn7FaU5l"
 		@name = URI.escape name
-		@url = SecureRandom.hex(8)
+		@url = url
 	end
 
 	def create_tournament
 		self.class.post "/#{get_type}/?#{get_ids}&#{get_name}&#{get_url}"
 	end
 
-	def add_participants
-		self.class.get "/#{game_type}/?#{format}&#{get_ids}&#{filter}&#{field_list}"  || OpenStruct.new(query_id: INVALID_ID)
+	def add_participant(username)
+		self.class.post "/tournaments/#{@url}/participants.json?#{get_ids}&participant[name]=#{username}"
 	end
 
 	private
