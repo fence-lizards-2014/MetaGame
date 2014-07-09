@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
   create_table "users", :force => true do |t|
     t.string   "user_steam_id"
     t.string   "username"
+    t.string   "login"
     t.string   "password_hash"
     t.string   "user_email"
     t.string   "user_avatar_url"

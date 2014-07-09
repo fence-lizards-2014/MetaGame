@@ -4,11 +4,8 @@
 	<%= text_field_tag "search", nil, placeholder: "Search games..." %>
 	<%= submit_tag "Search" %>
 <% end %>
-<%= link_to 'Leave Group', remove_user_path(@group.id), method: :post %>
 
-<%= link_to "Create Event", new_event_path %>
-
-
+<%= button_to "Create Event", new_event_path %>
 
 <div class="body" style="overflow-y: scroll; height: 400px;">
   <div class="feature" id="1">
@@ -26,22 +23,14 @@
 
 		<div class="feature">
 			<p>
-			  <b>Group description:</b>
-			  <%= @group.group_description %>
-			</p>
-		</div>
-
-		<div class="feature">
-			<p>
-			  <b>Group logo url:</b>
-			  <%= @group.group_logo_url %>
-			</p>
-		</div>
-
-		<div class="feature">
-			<p>
 			  <b>Group tagline:</b>
 			  <%= @group.group_tagline %>
+			</p>
+		</div>
+		<div class="feature">
+			<p>
+			  <b>Group description:</b>
+			  <%= @group.group_description %>
 			</p>
 		</div>
 	</div>
@@ -57,6 +46,11 @@
   	</div>
   <% end %>
 	  <div class="nav-options">
+	  	<% if current_user.groups.include?(@group) %>
+				<%= button_to 'Leave Group', remove_user_path(@group.id), method: :post %>
+			<% else %>
+				<%= button_to "Join Group", add_user_path(@group),  method: :post %>
+			<% end %>
 			<%= link_to 'Edit', edit_group_path(@group) %> |
 			<%= link_to 'Back', groups_path %>
 		</div>
