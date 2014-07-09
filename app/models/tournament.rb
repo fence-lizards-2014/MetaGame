@@ -8,4 +8,9 @@ class Tournament < ActiveRecord::Base
 	validates :tourney_name, presence: true
 	validates :tourney_rules, presence: true
 	validates :tourney_max_players, presence: true
+
+	def self.assign_to_assoc tourney, event
+		tourney.users << event.users
+		event.tournaments << tourney
+	end
 end

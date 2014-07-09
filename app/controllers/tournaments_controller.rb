@@ -12,8 +12,7 @@ class TournamentsController < ApplicationController
 		challonge = ChallongeAdapter.new(tourney.tourney_name, tourney.tourney_url)
 		if tourney.save
 			challonge.create_tournament
-			tourney.users << event.users
-			event.tournaments << tourney
+			Tournament.assign_to_assoc tourney, event
 			redirect_to event_path event, notice: 'Event was successfully created with a tournament.'
 		else
 			render action: 'new'
