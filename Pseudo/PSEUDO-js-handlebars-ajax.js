@@ -138,5 +138,82 @@
 </body>
 </html>
 
+// OLD INDEX APPLICATION
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metagame</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script src="/assets/handlebars.js"></script>
+</head>
+	<body class="body-container container">
+	  <%= render partial: "layouts/header" %>
+	  <div><%= yield %></div>
+	   <!-- render partial: "layouts/footer" -->
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// hb user show template
+// 
+
+<script class="private-profile-template" type="text/x-handlebars-template">  
+  
+  <h2>Public Profile</h2>
+  <table>
+  	<caption>{{user.username}} Profile</caption>
+  	<thead>
+  		<tr>
+  			<th>Info:</th>
+		    <td>{{user_avatar_url}}</td>
+		    <td>{{created_at}}</td>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+  		{{#user}}
+      <td>{{game_img_url}}</td>
+			<td>{{games.game_name}}</td>
+    {{/user}}
+     	<td>{{user.username}}</td>
+  		</tr>
+  	</tbody>
+  </table>
+
+    
+    	{{user.groups.group_name}}
+			{{user.groups.group_logo_url}}
+			{{user.groups.group_tagline}}
+    
+
+  
+</script>
+
+<!-- HandleBars Insertion Div -->
+<div class="private-profile-handlebars">
+</div>
+
+
+
+
+
+
+
 
 
