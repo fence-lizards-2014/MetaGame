@@ -71,4 +71,19 @@ class GroupsController < ApplicationController
    
     redirect_to root_path
   end
+
+  def my_groups
+    @user_games = current_user.games
+    @my_groups = current_user.groups
+    @news_groups = []
+    all_groups = Group.all 
+    all_groups.each do |group|
+      @user_games.each do |game|
+        if group.games.include?(game) && !current_user.groups.include?(group)
+          @news_groups << group 
+        end
+      end
+    end
+    render "groups/my_groups"
+  end
 end

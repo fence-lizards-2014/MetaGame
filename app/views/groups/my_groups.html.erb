@@ -1,0 +1,11 @@
+<h2 class=""> My groups </h2>
+<% @my_groups.each do |group| %>
+	<p> <%= link_to group.group_name, group_path(group) %> </p>
+<% end %>
+
+<% unless @news_groups.empty? %>
+<h2> Suggested Groups </h2>
+	<% @news_groups.each do |group| %>
+		<p> <%= link_to group.group_name, group_path(group) %>  <%= button_to "Join Group", add_user_path(group), method: :post %></p>
+	<% end %>
+<% end %>
