@@ -1,3 +1,4 @@
+require 'ostruct'
 
 class SessionsController < ApplicationController
 
@@ -28,8 +29,8 @@ class SessionsController < ApplicationController
 	
 
 	def sign_in_attempt
-		@user = User.find_by_username(params[:user][:username])
-		if @user.password == params[:user][:password_hash]
+		@user = User.find_by_username params[:user][:username]
+		if @user && @user.password == params[:user][:password_hash]
 			session[:id] = @user.id
 			redirect_to root_path
 		else
