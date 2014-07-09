@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
     t.text    "tourney_rules"
     t.integer "tourney_max_players"
     t.boolean "winner",              :default => false
+    t.string  "tourney_url"
     t.integer "event_id"
     t.integer "game_id"
   end

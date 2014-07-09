@@ -33,6 +33,9 @@ class Event < ActiveRecord::Base
 
   def self.assign_user_to_event event, user
     event.users << user
+    event.tournaments.each do |tourney|
+      ChallongeAdapter.new(tourney.tourney_name, tourney.tourney_url).add_participant(user.username)
+    end
     user.events << event
   end
 

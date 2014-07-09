@@ -14,6 +14,10 @@
           <td><%= link_to "MetaMessenger", user_messages_path(current_user.id) %> <br></td>
       		<td><%= link_to "Logout", logout_path %></td>
         </tr>
+        <tr>
+          <td><%= link_to "Private Profile AJAX!", user_path(current_user.id), remote: true, class: "ajax-private-profile-button" %></td>
+          <td><%= link_to "Public Profile AJAX!", user_path(1), remote: true, class: "ajax-public-profile-button" %></td>
+        </tr>
       </table>
     <% else %>
       <table>

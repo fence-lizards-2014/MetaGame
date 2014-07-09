@@ -5,7 +5,10 @@ class EventsController < ApplicationController
   end
 
   def show
+
     @event = Event.find params[:id]
+    @tourney = @event.tournaments.first unless @event.tournaments.empty?
+    p @tourney
   end
 
   def new
@@ -19,7 +22,12 @@ class EventsController < ApplicationController
     if @event.save
       Event.assign_assoc_to_event @event, @group, current_user
       flash[:notice] = 'Event has successfully been created!'
-      Event.check_event_type @event.event_type_id ? (redirect_to new_event_tournament_path @event) : (redirect_to event_path @event)
+      if @event.event_type_id == 1
+        redirect_to new_event_tournament_path @event
+      else
+        redirect_to event_path @event
+      end
+      # (Event.check_event_type @event.event_type_id == true) ? (redirect_to new_event_tournament_path @event) : (redirect_to event_path @event)
     else
       flash[:error] = 'Something went wrong!'
       render 'events/new'
@@ -45,7 +53,9 @@ class EventsController < ApplicationController
   def search
     #refactor for multiple event
     @event = Event.find(:all, :conditions => ['event_name LIKE ?', "%#{params['search']}%"]).first
-    redirect_to events_path if @game == nil 
+    if @event == nil 
+      redirect_to events_path
+    end
     if session[:group_id]
       @group = Group.find session[:group_id]
       @group.events << @event
@@ -60,7 +70,6 @@ class EventsController < ApplicationController
   def add_user_event
     event = Event.find params[:id]
     Event.assign_user_to_event event, current_user
-
     redirect_to root_path
   end
 
@@ -70,4 +79,6 @@ class EventsController < ApplicationController
 
     redirect_to events_path
   end
+
+
 end
