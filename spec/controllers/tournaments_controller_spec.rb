@@ -12,10 +12,16 @@ describe TournamentsController do
 	end
 
 	context 'POST #create' do
-		it 'should increase the database count by 1 if valid params' do
+		it 'should increase the database count by 1 when valid params' do
 			expect {
 				post :create, event_id: event, tournament: { tourney_name: "Tourney", tourney_rules: "Win", tourney_max_players: 10 }
 			}.to change { Tournament.count }.by(1)
+		end
+
+		it 'should not increase the database count when invalid params' do
+			expect {
+				post :create, event_id: event, tournament: { fake_params: "I am fake." }
+			}.to change { Tournament.count }
 		end
 	end
 	
