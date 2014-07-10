@@ -1,28 +1,31 @@
 
-<div class="container">
+<div class="container container-trans">
   <div class="container-fluid">
   
-    <section class="float-left pad-left">
-      <%= form_tag("/searchgames", method: :get) do |u| %>
-        <%= text_field_tag "search", nil, placeholder: "Search games..." %>
-        <%= submit_tag "Search", class: "button-warning" %>
-      <% end %>
-    </section>
+
+  
+  <h4 class="container-fluid centered">
+    <%= form_tag("/searchgames") do |u| %>
+      <%= text_field_tag "search", nil, placeholder: "Search games...", class: "container-search" %>
+      <%= submit_tag "Search", class: "btn button-purple" %>
+    <% end %>
+  
+  </h4>
+  <h2 class="centered">Full Games List</h2>
+  <p class="purple-text centered">Check out the full list of games below, or search to add  specific title.</p>
+
   </div>
-  <h1 class="white-text centered">Games</h1>
-  <hr>
-  <h2 class="centered">Full List<p class="lead white-text">Check out the full list of games below, or search for a specific title.</p></h2>
   <div class="row">
     <% cache do %>
       <% @games.each do |game| %>
         <div class="col-lg-4 col-sm-6 col-xs-12">
           <section class="game-image img-responsive"><%= link_to image_tag(game.game_img_url), game_path(game) %>
-          <span class="yellow-text"><%= game.game_name %></span></section>
+          <span class="purple-text centered"><%= game.game_name %></span></section>
         </div>  
       <% end %>
     <% end %>
   </div>
-  <hr>
-  <br><br>  
+
+  <br><br>
 </div>
 
