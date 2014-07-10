@@ -7,7 +7,6 @@ class GamesController < ApplicationController
   end
 
   def show
-    p 'back in the show'
     @game = Game.find params[:id]  
   end
 
@@ -52,9 +51,6 @@ class GamesController < ApplicationController
 
   def search
     @games = Game.search_games params['search']
-    if @games == nil
-      redirect_to user_path current_user
-    end
 
     if @games
       @games.sort! { |game1, game2| game1.game_name <=> game2.game_name }

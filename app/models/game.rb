@@ -38,12 +38,16 @@ class Game < ActiveRecord::Base
       games
     else
       @returned_game = GiantBombAdapter.new(title).search.parsed_response["results"][0]#["description"]    
-      game = Game.create(game_name: @returned_game["name"],
-                  game_description: @returned_game["description"],
-                  game_img_url: @returned_game['image']["screen_url"],
-                  game_icon_url: @returned_game['image']['icon_url'])
-      games = []
-      games << game
+      if @returned_game
+        game = Game.create(game_name: @returned_game["name"],
+                    game_description: @returned_game["description"],
+                    game_img_url: @returned_game['image']["screen_url"],
+                    game_icon_url: @returned_game['image']['icon_url'])
+        games = []
+        games << game if game
+      else
+        []
+      end
     end
   end
 end
