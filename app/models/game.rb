@@ -42,6 +42,8 @@ class Game < ActiveRecord::Base
                   game_description: @returned_game["description"],
                   game_img_url: @returned_game['image']["screen_url"],
                   game_icon_url: @returned_game['image']['icon_url'])
+      games = []
+      games << game
     end
   end
 end

@@ -52,12 +52,11 @@ class GamesController < ApplicationController
 
   def search
     @games = Game.search_games params['search']
-
     if @games == nil
       redirect_to user_path current_user
     end
 
-    if @games.kind_of?(Array)
+    if @games
       @games.sort! { |game1, game2| game1.game_name <=> game2.game_name }
     end
     
