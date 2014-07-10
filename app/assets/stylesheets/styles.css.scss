@@ -6,9 +6,13 @@
   border: 1px solid red;
 }*/
 
-.body {
+body {
   padding-bottom: 15%;
+  background-image: url('hixs_pattern_evolution.png');
+  background-size: auto, cover;
+  background-repeat: repeat;
 }
+
 
 .body-container {
   color: red;
@@ -45,6 +49,10 @@
   color: #fff;
   text-decoration: none;
   color: #1E1291;
+}
+
+.navbar.transparent.navbar-inverse .navbar-inner {
+   background: rgba(0,0,0,0.4);
 }
 
 .nav-options {
@@ -172,6 +180,12 @@ margin: auto auto;
     background: rgb(28, 184, 65); /* this is a green */
 }
 
+.button-purple {
+    background: purple; /* this is a green */
+    color: white;
+    border-radius: 10px;
+}
+
 .button-error {
     background: rgb(202, 60, 60); /* this is a maroon */
 }
@@ -211,6 +225,10 @@ margin: auto auto;
 
 .yellow-text {
   color: yellow;
+}
+
+.purple-text {
+  color: purple;
 }
 
 .black-bg {
@@ -335,3 +353,30 @@ section {
   margin: auto;
   text-align: right;
 }
+
+.container-trans {
+  background-color: gray;
+  filter: alpha(opacity=70);
+  -moz-opacity:.70;
+  opacity:.70;
+  border-radius: 10px;
+}
+
+.container-trans a{
+  color:purple;
+}
+
+.container-search {
+  width: 40%;
+  padding: .7%;
+  border-radius: 15px;
+  border: 1px ridge purple;
+}
+
+
+
+
+
+
+
+

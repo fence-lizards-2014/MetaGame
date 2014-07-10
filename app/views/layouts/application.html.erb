@@ -19,7 +19,7 @@
 
 <!-- <div class="nav-bar-resp"> -->
 
-		<div class="container-fluid brand img-responsive"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></div>
+		<div class="container-fluid brand img-responsive black-bg"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></div>
 
 
     <nav class="navbar navbar-inverse" role="navigation">
@@ -40,7 +40,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <% if current_user %>
             <!-- <div class="collapse navbar-collapse navbar-ex1-collapse"> -->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav transparent">
                     <li><%= link_to "Home", root_path %>
                     </li>
                     <li><%= link_to "Games", games_path %>
