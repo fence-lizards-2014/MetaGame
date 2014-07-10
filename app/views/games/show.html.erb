@@ -15,11 +15,6 @@
 		<div class="game_info"
 			<p class="white-text"><%= @game.game_description.html_safe %></p>
 		</div>
-	<% elsif @returned_game  %>
-		<div class="game_info">
-			<% cache do %>
-				<p class="white-text"> <%= @returned_game.html_safe %></p>
-			<% end %>
 	<% else %>
 		<h2>Please enter a valid game title.</h2>
 	<% end  %>

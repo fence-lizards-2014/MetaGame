@@ -6,5 +6,5 @@
 		<% end  %>
 	</ul>
 <% else  %>
-	<%= link_to "#{@games}", confirm_games_path(game), method: :post %>
+	<%= link_to "#{@games.game_name}", confirm_games_path(@games), method: :post %>
 <% end %>

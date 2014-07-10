@@ -7,25 +7,8 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find params[:id]
-    p @game
-    if @game.game_description 
-      current_user.games << @game if @game
-      p 'inside the if'
-    else
-      p 'inside the else'
-      if @game.game_steam_appid
-        game_steam_appid = @game.game_steam_appid
-      end
-
-      @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]#["description"]    
-      game = Game.create(game_name: @returned_game["name"],
-                  game_description: @returned_game["description"],
-                  game_img_url: @returned_game['image']["screen_url"],
-                  game_icon_url: @returned_game['image']['icon_url'])
-      game.update_attributes(game_steam_appid: game_steam_appid)
-      @returned_game = @returned_game["description"]
-    end
+    p 'back in the show'
+    @game = Game.find params[:id]  
   end
 
   def new
@@ -80,6 +63,10 @@ class GamesController < ApplicationController
   def confirm
     game = Game.find params[:id]
     redirect_to game_path(game)
+  end
+
+  def addgame
+    
   end
 end
 
