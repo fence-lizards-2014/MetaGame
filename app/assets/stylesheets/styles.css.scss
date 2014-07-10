@@ -259,11 +259,15 @@ margin: auto auto;
 
 .nav > li > a {
   padding-top: 0px;
+  padding-bottom: 15px;
 }
 
 .navbar {
   padding-top: 0px;
   padding-bottom: 0px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }
 
 .navbar-default {
