@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if current_user.id == @user.id
       session[:group_id] = nil
       
       # @user_ajax = []
@@ -41,9 +40,6 @@ class UsersController < ApplicationController
         p "in else render show"
         render :show
       end
-    else
-      render :error
-    end
   end
 
 
@@ -55,6 +51,11 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     # p "*" * 75
     # p params
+    if params[:id] != current_user.id
+      current_user.friends << User.find params[:id]
+      redirect_to user_path current_user
+    end
+
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
       @user.login = params[:user][:username]

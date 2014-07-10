@@ -10,13 +10,13 @@
 
   <h1><%= @event.event_name %></h1>
 
-  <p>
-    <b>Event game title:</b>
-    <%= @event.event_game_title %>
-  </p>
+  <% if @game %>
+      <%= link_to image_tag(@game.game_img_url), game_path(@game)  %>
+  <% end %>
+    <h3><%= @event.event_game_title %></h3>
 
   <p>
-    <b>Event description:</b>
+    <b>Event Description:</b>
     <%= @event.event_description %>
   </p>
 
@@ -44,14 +44,6 @@
     <b>Event zipcode:</b>
     <%= @event.event_zipcode %>
   </p>
-</div>
-
-<div class="game_show_on_event">
-  <% if @game %>
-    <tr>
-      <%= link_to image_tag(@game.game_img_url), game_path(@game)  %>
-    </tr>
-  <% end %>
 </div>
 
 <% if @tourney %>

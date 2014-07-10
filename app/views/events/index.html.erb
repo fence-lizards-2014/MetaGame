@@ -7,7 +7,8 @@
         <ol>
           <% @user_events.each do |event| %>
             <li>
-              <%= link_to "#{event.event_name}", event_path(event) %></td> 
+              <%= link_to "#{event.event_name}", event_path(event) %>
+              <%= link_to "#{User.find(event.user_id).username}", user_path(User.find(event.user_id)) %> 
             </li>
           <% end %>
         </ol>
@@ -24,6 +25,7 @@
         <% @events.each do |event| %>
           <li>
             <%= link_to "#{event.event_name}", event_path(event) %>
+            <%= link_to "#{User.find(event.user_id).username}", user_path(User.find(event.user_id)) %> 
           </li>
         <% end %>
       </ul>
