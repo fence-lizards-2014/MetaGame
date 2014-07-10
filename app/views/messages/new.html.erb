@@ -1,33 +1,22 @@
-<div class="container centered container-trans">
+<div class="centered container-trans margin-1">
+      
+      <h1>Compose New Message:</h1>
+
       <form class="form-horizontal" role="form">
-        <%= form_for @message, :url => user_messages_path(@user) do |f| %>
-        
-        <div class="row-fluid col-md-8 container">
-          <p>
-          	<%= f.text_field :to, placeholder: "To whom:", class: "text-left col-md-8 control-label container-search" %>
-          </p>
-        </div>
-
-        <div class="row-fluid col-md-8">
-          <p>
-            <%= f.text_field :subject, placeholder: "Subject:", class: "container-search col-md-8 control-label"  %>
-          </p>
-        </div>
-
-        <div class="row-fluid col-md-8">
-          <p>
-              <%= f.text_area :body, placeholder: "Message Body:", class: "container-search col-md-8 control-label"  %>
-          </p>
-        </div>
-
-        <div class="row-fluid col-md-8">
-          <p>
-              <%= submit_tag "Send", class: "col-md-8 btn button-purple"  %>
-          </p>
-        </div>
-
+        <%= form_for @message, url: user_messages_path(@user) do |f| %>
+          <div class="form-group">
+            <div class="field container-fluid">
+              <%= f.text_field :to, placeholder: "To whom:", class: "text-left col-md-8  container-search" %>
+            </div>
+            <div class="field container-fluid">
+              <%= f.text_field :subject, placeholder: "Subject:", class: "text-left container-search col-md-8"  %>
+            </div>
+            <div class="field container-fluid wide">
+              <%= f.text_area :body, placeholder: "Message Body:", class: "text-left container-search"  %>
+            </div>
+              <%= submit_tag "Send Message", class: "btn button-purple"  %>
+          </div>
         <% end %>
       </form>
-    </div>
-  
+
 </div>
