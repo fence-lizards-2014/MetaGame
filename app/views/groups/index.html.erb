@@ -1,5 +1,7 @@
 <h2 class=""> My groups </h2>
 <div class="container-fluid">
+    <%= button_to "Browse Groups", show_groups_path, method: :get, class: "pull-right btn-primary" %>
+
     <% @my_groups.each do |group| %>
         <div class="media">
             <a class="pull-left" href=<%=group_path(group)%>>
@@ -9,7 +11,7 @@
             <h4 class="media-heading white-text"><%= group.group_name%></h4>
             <p class="white-text"><%= group.group_tagline %></p>
         </div>
-    </div>
+</div>
     <% end %>
 
     <% unless @news_groups.empty? %>
@@ -18,5 +20,4 @@
             <p> <%= link_to group.group_name, group_path(group) %>  <%= button_to "Join Group", add_user_path(group), method: :post %></p>
         <% end %>
     <% end %>
-    <%= button_to "Browse Groups", show_groups_path, method: :get %>
 </div>
