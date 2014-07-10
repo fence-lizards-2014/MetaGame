@@ -31,8 +31,9 @@
 	</div>
 	<div class="users_list">
 	<h2 class="media_heading"> Users in this group </h2>
+
 	<% @users.each do |user| %>
-		<p class="white-text"><%=link_to user.username, user_path(user) %> </p>
+		<p class="white-text"><%=button_to user.username, user_path(user), method: :get %> </p>
 	<% end %>
 	</div>
 
