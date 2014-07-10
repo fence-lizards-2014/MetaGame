@@ -5951,8 +5951,8 @@ button.close {
 .pager:after,
 .panel-body:after,
 .modal-footer:after {
-  clear: both;
-}
+/*  clear: both;
+*/}
 .center-block {
   display: block;
   margin-right: auto;
