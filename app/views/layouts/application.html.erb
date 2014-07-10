@@ -22,7 +22,7 @@
 		<div class="container-fluid brand img-responsive"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></div>
 
 
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
 
 
 
@@ -59,9 +59,10 @@
             <% else %>
             	<table class="container-fluid">
 				        <tr>
-				          <td><%= render "sessions/signin" %></td>
-				          <td><%= button_to "Sign Up", new_user_path, id: "signup-button", class: "btn button-success btn-success", method: :get%></td>
-
+                            <div class="container">
+				                <td><%= render "sessions/signin" %></td>
+				                <td><%= button_to "Sign Up", new_user_path, id: "signup-button", class: "btn btn-success", method: :get%></td>
+                            </div>
 				        </tr>
 				      </table>
 				    <% end %>
