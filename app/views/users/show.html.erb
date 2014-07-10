@@ -1,62 +1,52 @@
-<h1 class="title">USERS#SHOW</h1>
-<div class="body" style="overflow-y: scroll; height: 400px;">
-
-  <div class="nav-options">
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to "Create Event", new_event_path %> |
-    <%= link_to 'Back', users_path %> 
-  </div>
-  <div class="old-profile">
-	  <div class="feature" id="1">
-	    <h3>Profile Info</h3>
-
-	    <p id="notice"><%= notice %></p>
-
-	    <p>
-	      <b>User name:</b>
-	      <%= @user.username %>
-	    </p>
-
-	    <p>
-	      <b>User email:</b>
-	      <%= @user.user_email %>
-	    </p>
-
-	    <p>
-	      <b>User bio:</b>
-	      <%= @user.user_bio %>
-	    </p>
-
-	    <p>
-	      <b>User zipcode:</b>
-	      <%= @user.user_zipcode %>
-	    </p>
-
-
-	    <%= link_to image_tag("http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_large_noborder.png"), '/auth/steam' %>
-	  </div>
-
-  <div class="feature" id="2">
-    <h2>USERS GAMES</h2>
-    <% cache do %>
-      <% @games.each do |game| %>
-        <div class="one-third column feature">
-        <%= link_to image_tag(game.game_img_url), game_path(game) %>
-          <p><%= game.game_name %></p>
-          <!-- <p>Lorem ipsum dolor sit amet...</p> -->
-        </div>
-      <% end %>
-    <% end %>
+<div class="container">
+  <h1 class="title"><%= current_user.username%></h1>
+  <div class="body" style="overflow-y: scroll; height: 400px;">
   
+  
+  <div class="row=4">
+    <%= link_to image_tag("http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_large_noborder.png"), '/auth/steam', class: 'col-md-3' %>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: "col-md-3 btn btn btn-default" %>
+    <%= link_to "Create Event", new_event_path, class: "col-md-3 btn btn btn-default" %>   
+    <%= link_to 'Feed', users_path, class: "col-md-3 btn btn btn-default" %> 
+  </div>
+  <br>
+  <br>
+
+
+  <div class="container row=6 bg-primary">
+    <%= notice %>
+    <h3 class>Profile Info</h3>
+    
+    <dl class='list-unstyled'>
+      <dt>Username</dt>
+     <dd class=""> <%= @user.username %> </dd>
+    
+     <dt>Email</dt>
+     <dd class=""> <%= @user.user_email %> </dd>
+    
+     <dt>Bio</dt>
+     <dd class=""> <%= @user.user_bio %> </dd>
+    </dl>
+    
   </div>
 
-  <div class="feature" id="3">
+  <h2>USERS GAMES</h2>
+    <div class='row'>
+      <% cache do %>
+        <% @games.each do |game| %>
+          <div class="col-lg-4 col-sm-6 col-xs-12">
+            <section class="game-image"> <%= link_to image_tag(game.game_img_url), game_path(game) %>
+            <span class="yellow-text"><%= game.game_name %></span></section>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
     <h2>USERS GROUPS</h2>
     <%= render partial: '/groups/show_groups' %>
   </div>
-  <div class="nav-options">
+  
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
-  </div>
-	</div>
+
 </div>
