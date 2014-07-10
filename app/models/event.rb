@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :event_active, :event_date, :event_description, :event_game_title, :event_location, :event_name, :event_type_id, :event_zipcode, :user_id
+  attr_accessible :event_active, :event_date, :event_description, :event_game_title, :event_location, :event_name, :event_type, :event_zipcode, :user_id
   
   has_many :groups
   has_many :groups_events, through: :events
@@ -39,10 +39,6 @@ class Event < ActiveRecord::Base
     user.events << event
   end
 
-  def self.check_event_type id
-    id == 1
-  end
-
   private
 
   def valid_date?
@@ -50,11 +46,5 @@ class Event < ActiveRecord::Base
       errors.add(:event_date, "date can't be in the past")
     end
   end
-
-  # def check_type_id?
-  #   if event_type_id == 1
-  #     tourney_form
-  #   end
-  # end
 
 end
