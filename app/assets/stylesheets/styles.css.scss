@@ -1,8 +1,6 @@
-
-/* {
+/** {
   border: 1px solid red;
-}
-*/
+}*/
 
 .body {
   padding-bottom: 15%;
@@ -61,7 +59,7 @@
 
 .splash-buttons {
   /*position: relative;*/
-  /*right: 5%*/;
+  /*right: 5%;*/
   /*margin-right: 30px;*/
   /*float: right;*/
   display: inline;
@@ -198,11 +196,11 @@ margin: auto auto;
   background-color: black;
 }
 
-.game-image img{
+.game-image img {
 	width: 100%;
 }
 
-.usergroup{
+.usergroup {
 	color: black;
 	text-decoration: none;
 	list-style: none;
@@ -230,7 +228,7 @@ margin: auto auto;
 
 
 
-.game-image img{
+.game-image img {
     display: block;
     overflow: hidden;
     background-size: cover;
@@ -241,14 +239,27 @@ margin: auto auto;
 
 
 
-.border-white{
+.border-white {
   border:3px solid white;
   border-radius:10px;
 }
 
+.brand {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 
 .container-fluid img {
   max-width: 100%;
+}
+
+.nav > li > a {
+  padding-top: 0px;
+}
+
+.navbar {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .navbar-default {
@@ -286,7 +297,7 @@ section {
 
 #new_user {
   position: relative;
-  padding-top: 3x;
+  padding-top: 3px;
 }
 
 .text_area {
