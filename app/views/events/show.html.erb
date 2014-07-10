@@ -1,8 +1,10 @@
 
-<%= button_to 'Edit', edit_event_path(@event) %> |
 <%= button_to 'Back', events_path %>
 <% if @event.user_id == current_user.id %>
-  <%= button_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>  %>
+  <%= button_to 'Edit', edit_event_path(@event), method: :get %> |
+  <%= button_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% else %>
+  <%= button_to 'Join', add_user_event_path(@event.id), method: :post %> 
 <% end %>
 
 <div class="white-text">

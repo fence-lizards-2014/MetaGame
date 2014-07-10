@@ -105,9 +105,11 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
     t.boolean "admin"
   end
 
-  create_table "user_events", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+  create_table "user_events", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_friends", :id => false, :force => true do |t|
