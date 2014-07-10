@@ -79,13 +79,13 @@ class GroupsController < ApplicationController
     group = Group.find params[:id]
     Group.assign_user_to_group group, current_user
    
-    redirect_to users_path
+    redirect_to groups_path
   end
 
   def remove_user
     group = Group.find params[:id]
     Group.remove_user_to_group group, current_user
    
-    redirect_to root_path
+    redirect_to groups_path
   end
 end
