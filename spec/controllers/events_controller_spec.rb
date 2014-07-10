@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe EventsController do
    let!(:user) { FactoryGirl.create :user }
-  
-  let(:valid_attributes) { { "event_name" => "MyString", "event_game_title" => "example", "event_description" => "a description", "event_zipcode" => 12345, "event_date" => "3/3/2050", "event_location" => "San Francisco" } }
-  let(:valid_session) { {} }
+   let(:valid_attributes) { { "event_name" => "MyString", "event_game_title" => "example", "event_description" => "a description", "event_zipcode" => 12345, "event_date" => "3/3/2050", "event_location" => "San Francisco" } }
+   let(:valid_session) { {} }
 
   describe "GET index" do
     it "assigns all events as @events" do
