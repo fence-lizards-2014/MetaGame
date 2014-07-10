@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
   def index
-    p 'index'
-    p session[:id]
     session[:group_id] = nil
     @games = current_user.games if current_user
   end
@@ -47,9 +45,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
-    # p "*" * 75
-    # p params
-    
 
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
@@ -76,13 +71,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-
-    if @user.update_attributes params[:user]
-      flash[:notice] = "User has been successfully updated!"
-      redirect_to user_path @user
+    real_user = current_user
+    if real_user && @user.id != current_user.id
+      real_user.friends << @user
+      redirect_to user_path(real_user)
     else
-      flash[:error] = "Something went wrong!"
-      render 'users/edit'
+      if @user.update_attributes params[:user]
+        flash[:notice] = "User has been successfully updated!"
+        redirect_to user_path @user
+      else
+        flash[:error] = "Something went wrong!"
+        render 'users/edit'
+      end
     end
   end
 
@@ -107,6 +107,10 @@ class UsersController < ApplicationController
     else
       redirect_to new_password_path
     end
+  end
+
+  def show_groups
+    @groups = Group.all
   end
 
   def addgame
