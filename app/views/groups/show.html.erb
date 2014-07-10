@@ -8,56 +8,63 @@
 
 <%= button_to "Create Event", new_event_path %>
 <% end %>
-<div class="container">
-<div style="overflow-y: scroll; height: 400px;">
-  <div id="1">
-    <h3>Group Info</h3>
+  	  <div class="nav-options-group-join">
+  	  	<% if current_user.groups.include?(@group) %>
+  				<%= button_to 'Leave Group', remove_user_path(@group.id), method: :post, class: "btn-primary" %>
+  			<% else %>
+  				<%= button_to "Join Group", add_user_path(@group),  method: :post, class: "btn-primary"%>
+  			<% end %>
+  		</div>
+<div class="container row=6 bg-primary">
+  <div style="overflow-y: scroll; height: 400px;">
+    <div id="1">
+      <h3>Group Info</h3>
 
-		<p id="notice"><%= notice %></p>
-		<div>
-      <%= image_tag(@group.group_logo_url, class: "group-logo-large") %>
-			<p class="white-text">
-			  <b>Group name:</b>
-			  <%= @group.group_name %>
-			</p>
-		</div>
-			<p class="white-text">
-			  <b>Group tagline:</b>
-			  <%= @group.group_tagline %>
-			</p>
-		<div>
-			<p class="white-text">
-			  <b>Group description:</b>
-			  <%= @group.group_description %>
-			</p>
-		</div>
-	</div>
-	<div class="users_list">
-	<h2 class="media_heading"> Users in this group </h2>
-
-	<% @users.each do |user| %>
-		<p class="white-text"><%= button_to user.username, user_path(user), method: :get %> </p>
-	<% end %>
-	</div>
-
-	<% if @group.users.include?(current_user) %>
-  	<%= render partial: "posts/form" %>
-  <% end %>
-
-  <% @posts.each do |post| %>
-  	<%= @poster.username %>
-  	<div class="post_content">
-  		<p> <%= post.post_content %> </p>
-  	</div>
-  <% end %>
-	  <div class="nav-options">
-	  	<% if current_user.groups.include?(@group) %>
-				<%= button_to 'Leave Group', remove_user_path(@group.id), method: :post, class: "btn-primary" %>
-			<% else %>
-				<%= button_to "Join Group", add_user_path(@group),  method: :post, class: "btn-primary"%>
-			<% end %>
-		</div>
+      <p id="notice"><%= notice %></p>
+      <div>
+        <%= image_tag(@group.group_logo_url, class: "group-logo-large") %>
+        <p class="white-text">
+          <b>Group name:</b>
+          <%= @group.group_name %>
+        </p>
+      </div>
+        <p class="white-text">
+          <b>Group tagline:</b>
+          <%= @group.group_tagline %>
+        </p>
+      <div>
+        <p class="white-text">
+          <b>Group description:</b>
+          <%= @group.group_description %>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
+<br>
+<div class="container row=6 bg-primary">
+  <div style="overflow-y: scroll; height: 400px;">
+    <div class="users_list">
+      <h2 class="media_heading"> Users in this group </h2>
+
+      <% @users.each do |user| %>
+        <p class="white-text"><%= button_to user.username, user_path(user), method: :get %> </p>
+      <% end %>
+    </div>
+
+    <% if @group.users.include?(current_user) %>
+      <%= render partial: "posts/form" %>
+    <% end %>
+
+    <% @posts.each do |post| %>
+      <%= @poster.username %>
+      <div class="post_content">
+        <p> <%= post.post_content %> </p>
+      </div>
+    <% end %>
+    </div>
+</div>
+
 
 
 

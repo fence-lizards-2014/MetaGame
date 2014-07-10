@@ -48,12 +48,16 @@
 }
 
 .nav-options {
-
   text-align: center;
   width: 30%;
   margin: 5% 5% 5% 65%;
   border-radius: 3px;
   background-color: #B8B8B8;
+}
+
+.nav-options-group-join {
+  text-align: center;
+  margin: 3% 3% 3% 93%;
 }
 
 .nav-options a {
@@ -184,7 +188,7 @@ margin: auto auto;
     background: rgb(66, 184, 221); /* this is a light blue */
 }
 
-.white-text p {
+.white-text {
   color: white;
 }
 
@@ -230,8 +234,6 @@ margin: auto auto;
   width: 200px;
 }
 
-
-
 .game-image img {
     display: block;
     overflow: hidden;
@@ -240,8 +242,6 @@ margin: auto auto;
     height: 200px;
     float: left;
 }
-
-
 
 .border-white {
   border:3px solid white;
@@ -322,6 +322,10 @@ section {
   width: 80%;
   margin: auto;
   text-align: right;
+}
+
+.games-height {
+  height: 60px;
 }
 
 .user_events {
