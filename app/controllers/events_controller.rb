@@ -2,13 +2,16 @@ class EventsController < ApplicationController
  
   def index
     @events = Event.all
+    @user_events = Event.where(user_id: current_user.id) if current_user
+    if @user_events
+      @user_events.sort! { |date1, date2| date1.event_date <=> date2.event_date }
+    end
   end
 
   def show
-
     @event = Event.find params[:id]
     @tourney = @event.tournaments.first unless @event.tournaments.empty?
-    p @tourney
+    @game = Game.find_by_game_name(@event.event_game_title)
   end
 
   def new
@@ -22,12 +25,11 @@ class EventsController < ApplicationController
     if @event.save
       Event.assign_assoc_to_event @event, @group, current_user
       flash[:notice] = 'Event has successfully been created!'
-      if @event.event_type_id == 1
+      if @event.event_type == "Tournament"
         redirect_to new_event_tournament_path @event
       else
         redirect_to event_path @event
       end
-      # (Event.check_event_type @event.event_type_id == true) ? (redirect_to new_event_tournament_path @event) : (redirect_to event_path @event)
     else
       flash[:error] = 'Something went wrong!'
       render 'events/new'
@@ -42,8 +44,12 @@ class EventsController < ApplicationController
     @event = Event.find params[:id]
 
     if @event.update_attributes params[:event]
-      flash[:notice] = 'Event has successfully been updated!'
-      redirect_to event_path @event
+      if @event.event_type == "Tournament"
+        redirect_to new_event_tournament_path @event
+      else
+        flash[:notice] = 'Event has successfully been updated!'
+        redirect_to event_path @event
+      end
     else
       flash[:error] = 'Something went wrong!'
       render 'events/edit'

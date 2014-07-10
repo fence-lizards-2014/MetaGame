@@ -1,8 +1,10 @@
 class GroupsController < ApplicationController
 
   def index
-    @user_games = current_user.games
-    @my_groups = current_user.groups
+    if current_user
+      @user_games = current_user.games
+      @my_groups = current_user.groups
+    end
     @news_groups = []
     all_groups = Group.all 
     all_groups.each do |group|
