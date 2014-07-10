@@ -31,4 +31,8 @@ class Game < ActiveRecord::Base
                   game_playtime_forever: game["playtime_forever"])
     end
   end
+
+  def self.search_games title
+    Game.where{game_name =~ "%#{title}%"}
+  end
 end

@@ -51,20 +51,27 @@ class GamesController < ApplicationController
   end
 
   def search
-    #refactor for multiple game
-    @game = Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first 
-    if @game == nil 
-      redirect_to user_path(current_user)
-    end
-    if session[:group_id]
-      @group = Group.find session[:group_id]
-      @group.games << @game
-      redirect_to group_path session[:group_id]
-    else
-      @user = User.find session[:id]
-      @user.games << @game
-      redirect_to games_path
-    end
+    @game = Game.search_games params['search']
+    p @game
+
+
+    redirect_to root_path
+    # if @game == nil 
+    #   redirect_to user_path(current_user)
+    # end
+    # if session[:group_id]
+    #   @group = Group.find session[:group_id]
+    #   @group.games << @game
+    #   redirect_to group_path session[:group_id]
+    # else
+    #   @user = User.find session[:id]
+    #   @user.games << @game
+    #   redirect_to games_path
+    # end
+  end
+
+  def confirm_search
+
   end
 end
 

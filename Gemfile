@@ -19,6 +19,7 @@ gem 'omniauth-steam'
 gem 'figaro'
 gem 'httparty'
 gem 'json'
+gem 'squeel'
 
 group :production do
   gem 'newrelic_rpm'
