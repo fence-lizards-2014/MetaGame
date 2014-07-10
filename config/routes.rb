@@ -31,5 +31,6 @@ Metagame::Application.routes.draw do
   post "/searchgames", to: "games#search", as: :search_games
   post "/searchevents", to: "events#search", as: :search_events
   post '/start_tourney', to: "tournaments#start", as: :start_tournament
-  get '/mygroups', to: "groups#my_groups", as: :my_groups
+  get '/show_groups', to: "groups#show_groups", as: :show_groups
+  put '/users/:id', to: 'users#update', as: :add_friend
 end

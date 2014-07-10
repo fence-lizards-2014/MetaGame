@@ -7,15 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if current_user.id == @user.id
       session[:group_id] = nil
-      
-      # @user_ajax = []
       @games = @user.games
       @groups = @user.groups
       @events = @user.events
-
-      
 
       # @user_ajax << @user
       # @user_ajax << @games
@@ -41,9 +36,6 @@ class UsersController < ApplicationController
         p "in else render show"
         render :show
       end
-    else
-      render :error
-    end
   end
 
 
@@ -53,8 +45,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
-    # p "*" * 75
-    # p params
+
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
       @user.login = params[:user][:username]
@@ -80,13 +71,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-
-    if @user.update_attributes params[:user]
-      flash[:notice] = "User has been successfully updated!"
-      redirect_to user_path @user
+    real_user = current_user
+    if real_user && @user.id != current_user.id
+      real_user.friends << @user
+      redirect_to user_path(real_user)
     else
-      flash[:error] = "Something went wrong!"
-      render 'users/edit'
+      if @user.update_attributes params[:user]
+        flash[:notice] = "User has been successfully updated!"
+        redirect_to user_path @user
+      else
+        flash[:error] = "Something went wrong!"
+        render 'users/edit'
+      end
     end
   end
 
@@ -113,10 +109,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_groups
+    @groups = Group.all
+  end
+
   def addgame
-    current_user
+    @user = current_user
     @game = Game.find params[:id]
-    @current_user.games << @game
+    @user.games << @game
 
     redirect_to user_path(current_user)
   end
