@@ -40,7 +40,7 @@ describe Event do
 		it { should allow_mass_assignment_of :event_game_title }
 		it { should allow_mass_assignment_of :event_location }
 		it { should allow_mass_assignment_of :event_name }
-		it { should allow_mass_assignment_of :event_type_id }
+		it { should allow_mass_assignment_of :event_type }
 		it { should allow_mass_assignment_of :event_zipcode }
 	end
 end

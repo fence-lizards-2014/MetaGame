@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
     t.string   "event_location"
     t.boolean  "event_active",      :default => true
     t.datetime "event_date"
-    t.integer  "event_type_id"
+    t.string   "event_type"
     t.integer  "event_zipcode"
     t.integer  "user_id"
     t.integer  "group_id"

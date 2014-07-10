@@ -1,3 +1,10 @@
+
+<%= button_to 'Edit', edit_event_path(@event) %> |
+<%= button_to 'Back', events_path %>
+<% if @event.user_id == current_user.id %>
+  <%= button_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>  %>
+<% end %>
+
 <div class="white-text">
   <p id="notice"><%= notice %></p>
 
@@ -30,7 +37,7 @@
 
   <p>
     <b>Event type:</b>
-    <%= @event.event_type_id %>
+    <%= @event.event_type %>
   </p>
 
   <p>
@@ -39,10 +46,16 @@
   </p>
 </div>
 
+<div class="game_show_on_event">
+  <% if @game %>
+    <tr>
+      <%= link_to image_tag(@game.game_img_url), game_path(@game)  %>
+    </tr>
+  <% end %>
+</div>
+
 <% if @tourney %>
 <%= link_to "Start Tournament",  start_tournament_path({id: @tourney.id, url: @tourney.tourney_url}), method: :post %>
   <iframe src=<%= "http://challonge.com/#{@tourney.tourney_url}/module"%> width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
 <% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
