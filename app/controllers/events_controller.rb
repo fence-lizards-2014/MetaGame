@@ -24,7 +24,8 @@ class EventsController < ApplicationController
     if @event.save
       Event.assign_assoc_to_event @event, @group, current_user
       flash[:notice] = 'Event has successfully been created!'
-      if @event.event_type_id == 1
+      p @event.event_type_id
+      if @event.event_type_id == 2
         redirect_to new_event_tournament_path @event
       else
         redirect_to event_path @event

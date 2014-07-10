@@ -12,20 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :event_name %><br />
-    <%= f.text_field :event_name %>
+    <%= f.text_field :event_name, placeholder: 'Event Name...' %>
   </div>
   <div class="field">
-    <%= f.label :event_game_title %><br />
-    <%= f.text_field :event_game_title %>
+    <%= f.text_field :event_game_title, placeholder: 'Name of Game to Play...' %>
   </div>
   <div class="field">
-    <%= f.label :event_description %><br />
-    <%= f.text_field :event_description %>
+    <%= f.text_field :event_description, placeholder: 'Event Description...' %>
   </div>
   <div class="field">
-    <%= f.label :event_location %><br />
-    <%= f.text_field :event_location %>
+    <%= f.text_field :event_location, placeholder: 'Event Location...' %>
+  </div>
+  <div class="field">
+    <%= f.number_field :event_zipcode, placeholder: 'Zipcode of Location' %>
   </div>
   <div class="field">
     <%= f.label :event_active %><br />
@@ -36,12 +35,7 @@
     <%= f.datetime_select :event_date %>
   </div>
   <div class="field">
-    <%= f.label :event_type_id %><br />
-    <%= f.number_field :event_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :event_zipcode %><br />
-    <%= f.number_field :event_zipcode %>
+    <%= f.select :event_type_id, ["", "Tournament","In Game", "Recruitment"] %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,37 +1,36 @@
-<div class="user_events">
+<section>
 
-  <% if @user_events && @user_events.length > 0 %>
-      <h1>Events You are Attending</h1>
-      <ol>
-        <% @user_events.each do |event| %>
+  <div class="user_events">
+
+    <% if @user_events && @user_events.length > 0 %>
+        <h1>Events You are Attending</h1>
+        <ol>
+          <% @user_events.each do |event| %>
+            <li>
+              <%= link_to "#{event.event_name}", event_path(event) %></td> 
+            </li>
+          <% end %>
+        </ol>
+    <% else %>
+      <h1>Currently No Events Scheduled</h1>
+    <% end  %>
+
+  </div>
+
+  <div class="all_events">
+    <% if @events %>
+      <h1>Events Board</h1>
+      <ul>
+        <% @events.each do |event| %>
           <li>
-            <%= link_to "#{event.event_name}", event_path(event) %></td> 
+            <%= link_to "#{event.event_name}", event_path(event) %>
           </li>
         <% end %>
-      </ol>
-  <% else %>
-    <h1>Currently No Events Scheduled</h1>
-  <% end  %>
+      </ul>
+    <% else %>
+      <h1>Event Board is Empty!</h1>
+    <% end %>
+  </div>
 
-</div class="all_events">
-
-  <% if @events %>
-    <h1>Events Board</h1>
-    <ul>
-      <% @events.each do |event| %>
-        <li>
-          <%= link_to "#{event.event_name}", event_path(event) %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <h1>Event Board is Empty!</h1>
-  <% end %>
-
-<div>
-
-
-
-</div>
-
+</section>
 <%= link_to 'New Event', new_event_path %>
