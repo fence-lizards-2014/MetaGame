@@ -1,6 +1,8 @@
-/** {
+
+/* {
   border: 1px solid red;
-}*/
+}
+*/
 
 .body {
   padding-bottom: 15%;
@@ -188,14 +190,62 @@ margin: auto auto;
   color: gray;
 }
 
+.yellow-text {
+  color: yellow;
+}
+
 .black-bg {
   background-color: black;
 }
+
+.game-image img{
+	width: 100%;
+}
+
+.usergroup{
+	color: black;
+	text-decoration: none;
+	list-style: none;
+}
+
+.centered {
+  text-align: center;
+}
+
+/*
+.game-image img{
+  height: 100%;
+}*/
+
+
+.float-left {
+  float: left;
+  margin-right: 200px;
+}
+
+.float-right {
+  float: right;
+  width: 200px;
+}
+
+
+
+.game-image img{
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    /*width: 100%;*/
+    height: 200px;
+    float: left;
+}
+
+
 
 .border-white{
   border:3px solid white;
   border-radius:10px;
 }
+
 
 .container-fluid img {
   max-width: 100%;
@@ -218,11 +268,40 @@ margin: auto auto;
   background-image: none;
 }
 
+section {
+  position: relative;
+  width: 80%;
+  height: 300px;
+  margin: auto;
+  padding: 10px;
+}
 
+.signup_fields {
+  float: right;
+}
 
+.navbar.transparent.navbar-inverse .navbar-inner {
+   background: rgba(0,0,0,0.4);
+}
 
+#new_user {
+  position: relative;
+  padding-top: 3x;
+}
 
+.text_area {
+  float: right;
+  padding-left: 15px;
+}
 
+.field {
+  padding-bottom: 40px;
+}
 
+.new_user_welcome {
+  width: 80%;
+  margin: auto;
+  text-align: right;
+}
 
 

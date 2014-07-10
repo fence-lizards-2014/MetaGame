@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
     zipgroup['zip_codes'].each {|zip| y << zip['zip_code'] }
     return ziparray
   end
-
+  
   def self.check_steam_id(user, steam_id, image)
     if user.user_steam_id != steam_id
       user.update_attributes user_steam_id: steam_id, user_avatar_url: image

@@ -1,3 +1,4 @@
+<div class="container">
 <h1 class="title">SESSIONS#SIGNIN</h1>
 <%= flash[:notice] %>
 <%= form_for User.new, url: sign_in_attempt_path, method: :post do |u| %>
@@ -8,3 +9,4 @@
 	<%= u.submitx :Submit %>
 <% end %>
 <h4 class="nav-brand"><%= link_to "Create a new account", new_user_path %></h4>
+</div>
