@@ -246,6 +246,28 @@ margin: auto auto;
   border-radius:10px;
 }
 
+
+.container-fluid img {
+  max-width: 100%;
+}
+
+.navbar-default {
+  background-image: none;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  background-image: none;
+  background-repeat: no-repeat;
+}
+
+.navbar-inverse {
+  background-image: none;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  background-image: none;
+}
+
 section {
   position: relative;
   width: 80%;
@@ -281,7 +303,5 @@ section {
   margin: auto;
   text-align: right;
 }
-
-
 
 
