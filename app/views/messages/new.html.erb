@@ -1,17 +1,33 @@
-<%= form_for @message, :url => user_messages_path(@user) do |f| %>
-  <p>
-    To:<br />
-		<%= f.text_field :to %>
-  </p>
-  <p>
-    Subject:<br />
-    <%= f.text_field :subject %>
-    </p>
-    <p>
-      Message<br />
-      <%= f.text_area :body %>
-    </p>
-    <p>
-      <%= submit_tag "Send" %>
-    </p>
-<% end %>
+<div class="container centered container-trans">
+      <form class="form-horizontal" role="form">
+        <%= form_for @message, :url => user_messages_path(@user) do |f| %>
+        
+        <div class="row-fluid col-md-8 container">
+          <p>
+          	<%= f.text_field :to, placeholder: "To whom:", class: "text-left col-md-8 control-label container-search" %>
+          </p>
+        </div>
+
+        <div class="row-fluid col-md-8">
+          <p>
+            <%= f.text_field :subject, placeholder: "Subject:", class: "container-search col-md-8 control-label"  %>
+          </p>
+        </div>
+
+        <div class="row-fluid col-md-8">
+          <p>
+              <%= f.text_area :body, placeholder: "Message Body:", class: "container-search col-md-8 control-label"  %>
+          </p>
+        </div>
+
+        <div class="row-fluid col-md-8">
+          <p>
+              <%= submit_tag "Send", class: "col-md-8 btn button-purple"  %>
+          </p>
+        </div>
+
+        <% end %>
+      </form>
+    </div>
+  
+</div>
