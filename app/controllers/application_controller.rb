@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # protect_from_forgery
   
 	def current_user
 		@current_user ||= User.find_by_id(session[:id]) if session[:id]
