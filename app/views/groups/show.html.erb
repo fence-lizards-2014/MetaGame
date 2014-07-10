@@ -1,10 +1,13 @@
 
-<%= form_tag("/searchgames") do |u| %>
-	<%= text_field_tag "search", nil, placeholder: "Search games..." %>
-	<%= submit_tag "Search" %>
-<% end %>
+<% if @group.admins.include?(current_user) %>
+	<%= form_tag("/searchgames") do |u| %>
+		<%= text_field_tag "search", nil, placeholder: "Search games..." %>
+		<%= submit_tag "Search" %>
+	<% end %>
+
 
 <%= button_to "Create Event", new_event_path %>
+<% end %>
 <div class="container">
 <div style="overflow-y: scroll; height: 400px;">
   <div id="1">
@@ -33,7 +36,7 @@
 	<h2 class="media_heading"> Users in this group </h2>
 
 	<% @users.each do |user| %>
-		<p class="white-text"><%=button_to user.username, user_path(user), method: :get %> </p>
+		<p class="white-text"><%= button_to user.username, user_path(user), method: :get %> </p>
 	<% end %>
 	</div>
 
@@ -49,11 +52,9 @@
   <% end %>
 	  <div class="nav-options">
 	  	<% if current_user.groups.include?(@group) %>
-				<%= button_to 'Leave Group', remove_user_path(@group.id), method: :post %>
-			<%= link_to 'Edit', edit_group_path(@group) %> |
-			<%= link_to 'Back', groups_path %>
+				<%= button_to 'Leave Group', remove_user_path(@group.id), method: :post, class: "btn-primary" %>
 			<% else %>
-				<%= button_to "Join Group", add_user_path(@group),  method: :post %>
+				<%= button_to "Join Group", add_user_path(@group),  method: :post, class: "btn-primary"%>
 			<% end %>
 		</div>
 </div>
