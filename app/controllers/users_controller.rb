@@ -51,8 +51,8 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     # p "*" * 75
     # p params
-    if params[:id] != current_user.id
-      current_user.friends << User.find params[:id]
+    if current_user && params[:id] != current_user.id
+      current_user.friends << (User.find(params[:id]))
       redirect_to user_path current_user
     end
 

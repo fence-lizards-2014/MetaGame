@@ -3,7 +3,9 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @user_events = Event.where(user_id: current_user.id) if current_user
-    @user_events.sort! { |date1, date2| date1.event_date <=> date2.event_date }
+    if @user_events
+      @user_events.sort! { |date1, date2| date1.event_date <=> date2.event_date }
+    end
   end
 
   def show
