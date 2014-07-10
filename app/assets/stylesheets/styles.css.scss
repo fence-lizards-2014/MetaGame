@@ -197,11 +197,32 @@ margin: auto auto;
   border-radius:10px;
 }
 
+section {
+  position: relative;
+  width: 80%;
+  height: 300px;
+  margin: auto;
+  padding: 10px;
+}
 
+.signup_fields {
+  float: right;
+}
 
+.text_area {
+  float: right;
+  padding-left: 15px;
+}
 
+.field {
+  padding-bottom: 40px;
+}
 
-
+.new_user_welcome {
+  width: 80%;
+  margin: auto;
+  text-align: right;
+}
 
 
 

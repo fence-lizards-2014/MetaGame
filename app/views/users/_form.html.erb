@@ -11,35 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+<div class="new_user_welcome">
+  <p>
+    <h1>Let's Create Your New</h1>
+    <h2> Account To Get Started</h2>
+  </p>
+</div>
+
+<section>
+  <div class="text_area">
+    <div class="field">
+      <%= f.text_area :user_bio, placeholder: "Your bio...", cols: "60", rows: "10" %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   </div>
-  <% if current_user %>
-    <%= link_to "Change Password", new_password_path %>
-  <% else %>
-  <div class="field">
-    <%= f.label :password_hash %><br />
-    <%= f.password_field :password_hash %>
+  <div class="signup_fields">
+    <div class="field">
+      <%= f.text_field :username, placeholder: "Username..." %>
+    </div>
+    <% if current_user %>
+      <%= link_to "Change Password", new_password_path %>
+    <% else %>
+    <div class="field">
+      <%= f.password_field :password_hash, placeholder: "Password..." %>
+    </div>
+     <div class="field">
+      <%= f.password_field :confirm_pw, placeholder: "Confirm Password..." %>
+    </div>
+    <% end %>
+    <div class="field">
+      <%= f.text_field :user_email, placeholder: "Email..." %>
+    </div>
+    <div class="field">
+      <%= f.number_field :user_zipcode, placeholder: "Zipcode..." %>
+    </div>
   </div>
-   <div class="field">
-    <%= f.label "confirm password" %><br />
-    <%= f.password_field :confirm_pw %>
-  </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :user_email %><br />
-    <%= f.text_field :user_email %>
-  </div>
-  <div class="field">
-    <%= f.label :user_bio %><br />
-    <%= f.text_area :user_bio %>
-  </div>
-  <div class="field">
-    <%= f.label :user_zipcode %><br />
-    <%= f.number_field :user_zipcode %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</section>
 <% end %>
