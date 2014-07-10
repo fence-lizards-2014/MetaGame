@@ -1,23 +1,27 @@
+
 <div class="container-fluid container-trans">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Game name:</b>
-  <%= @game.game_name %>
-</p>
+	<p>
+	  <b>Game name:</b>
+	  <%= @game.game_name %>
+	</p>
 
-<p>
-  <b>Game img icon url:</b>
-  <%= @game.game_img_url %>
-</p>
-<%= link_to 'Add Game', addgame_path(@game.id), method: "post" %>
-<div class="game_info">
-	<% cache do %>
-		<p class="white-text"> <%= @returned_game.html_safe %></p>
-	<% end %>
-
-</div>
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+	<p>
+	  <b>Game img icon url:</b>
+	  <%= @game.game_img_url %>
+	</p>
+	<%= link_to 'Add Game', addgame_path(@game.id), method: "post" %>
+	<% if @game  %>
+		<div class="game_info"
+			<p class="white-text"><%= @game.game_description.html_safe %></p>
+		</div>
+	<% else %>
+		<h2>Please enter a valid game title.</h2>
+	<% end  %>
+	</div>
+	
+	<%= link_to 'Edit', edit_game_path(@game) %> |
+	<%= link_to 'Back', games_path %>
 </div>
 
