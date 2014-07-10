@@ -8,16 +8,23 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find params[:id]
-    if @game
-      current_user.games << @game 
+    p @game
+    if @game.game_description 
+      current_user.games << @game if @game
+      p 'inside the if'
     else
-      @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]    
-      p @returned_game
-      # Game.create(game_name: @returned_game.game_name,
-      #             game_steam_appid: game["appid"], 
-      #             game_img_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_logo_url"]}.jpg", 
-      #             game_icon_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_icon_url"]}.jpg", 
-      #             game_playtime_forever: game["playtime_forever"])
+      p 'inside the else'
+      if @game.game_steam_appid
+        game_steam_appid = @game.game_steam_appid
+      end
+
+      @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]#["description"]    
+      game = Game.create(game_name: @returned_game["name"],
+                  game_description: @returned_game["description"],
+                  game_img_url: @returned_game['image']["screen_url"],
+                  game_icon_url: @returned_game['image']['icon_url'])
+      game.update_attributes(game_steam_appid: game_steam_appid)
+      @returned_game = @returned_game["description"]
     end
   end
 
@@ -62,31 +69,16 @@ class GamesController < ApplicationController
 
   def search
     @games = Game.search_games params['search']
-    p @games
-    if @games
+    if @games.kind_of?(Array)
       @games.sort! { |game1, game2| game1.game_name <=> game2.game_name }
     end
-
+    
     render 'games/search'
-    # if @game == nil 
-    #   redirect_to user_path(current_user)
-    # end
-    # if session[:group_id]
-    #   @group = Group.find session[:group_id]
-    #   @group.games << @game
-    #   redirect_to group_path session[:group_id]
-    # else
-    #   @user = User.find session[:id]
-    #   @user.games << @game
-    #   redirect_to games_path
-    # end
+
   end
 
   def confirm
-    p 'inside the confirm'
-    p params
     game = Game.find params[:id]
-    p game
     redirect_to game_path(game)
   end
 end
