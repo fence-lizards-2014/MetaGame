@@ -19,7 +19,7 @@
 
 <section>
   
-  <div class="signup_fields">
+  <div class="signup_fields center">
     <div class="field col-md-8">
       <%= f.text_field :username, placeholder: "Username...", class: "col-md-8 control-label" %>
     </div>
@@ -42,9 +42,7 @@
     <div class="field col-md-8">
       <%= f.number_field :user_zipcode, placeholder: "Zipcode...", class: "col-md-8 control-label" %>
     </div>
-  </div>
-  <div class="col-md-8">
-    <%= f.submit "Create User", class: "btn btn-default- btn-primary" %>
+  <%= f.submit "Create User", class: "btn btn-default- btn-primary" %>
   </div>
 </div>
 </section>

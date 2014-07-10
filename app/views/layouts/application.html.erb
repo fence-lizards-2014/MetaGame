@@ -57,10 +57,10 @@
                     </li>
                 </ul>
             <% else %>
-            	<table>
+            	<table class="container-fluid">
 				        <tr>
 				          <td><%= render "sessions/signin" %></td>
-				          <td><%= button_to "Sign Up", new_user_path, id: "signup-button", class: "btn-primary", method: :get%></td>
+				          <td><%= button_to "Sign Up", new_user_path, id: "signup-button", class: "btn button-success btn-success", method: :get%></td>
 
 				        </tr>
 				      </table>

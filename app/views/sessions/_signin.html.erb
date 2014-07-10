@@ -1,9 +1,9 @@
 <%= flash[:notice] %>
-<div class="container pad-down-50">
+<div class="container-fluid">
 <%= form_for User.new, url: sign_in_attempt_path, method: :post, id: "signin-form" do |u| %>
 	<%= u.text_field :username, placeholder: "Username" %>
 	<%= u.password_field :password_hash, placeholder: "Password" %>
-	<%= u.submit :Submit, class: "btn-success" %>
+	<%= u.submit :Submit, class: "btn btn-primary button-primary" %>
 <% end %>
 
 </div>
