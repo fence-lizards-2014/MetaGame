@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
  
   def index
+    @user = current_user if current_user
     @events = Event.all
     @user_events = Event.where(user_id: current_user.id) if current_user
     if @user_events
@@ -37,14 +38,14 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.find params[:id]
   end
 
   def update
     @event = Event.find params[:id]
 
     if @event.update_attributes params[:event]
-      if @event.event_type == "Tournament"
+      if @event.event_type == Event.check_type(@event.event_type)
         redirect_to new_event_tournament_path @event
       else
         flash[:notice] = 'Event has successfully been updated!'

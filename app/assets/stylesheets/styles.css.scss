@@ -269,6 +269,7 @@ margin: auto auto;
 }
 
 section {
+  border: 1px red solid;
   position: relative;
   width: 80%;
   height: 300px;
@@ -304,4 +305,13 @@ section {
   text-align: right;
 }
 
+.user_events {
+  float: right;
+  padding-right: 100px;
+}
+
+.all_events {
+  float: left;
+  left: 0;
+}
 

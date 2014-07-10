@@ -3,34 +3,34 @@
   <div class="user_events">
 
     <% if @user_events && @user_events.length > 0 %>
-        <h1>Events You are Attending</h1>
+        <h3>Attending</h3>
         <ol>
           <% @user_events.each do |event| %>
             <li>
               <%= link_to "#{event.event_name}", event_path(event) %>
-              <%= link_to "#{User.find(event.user_id).username}", user_path(User.find(event.user_id)) %> 
+              by <%= link_to "#{User.find(event.user_id).username}", user_path(User.find(event.user_id)) %> 
             </li>
           <% end %>
         </ol>
     <% else %>
-      <h1>Currently No Events Scheduled</h1>
+      <h3><%= "#{@user.username}'s" %> Events</h3>
     <% end  %>
 
   </div>
 
   <div class="all_events">
     <% if @events %>
-      <h1>Events Board</h1>
+      <h3>Events Board</h3>
       <ul>
         <% @events.each do |event| %>
           <li>
             <%= link_to "#{event.event_name}", event_path(event) %>
-            <%= link_to "#{User.find(event.user_id).username}", user_path(User.find(event.user_id)) %> 
+            by <%= link_to "#{User.find(event.user_id).username}", user_path(User.find(event.user_id)) %> 
           </li>
         <% end %>
       </ul>
     <% else %>
-      <h1>Event Board is Empty!</h1>
+      <h3>Event Board is Empty!</h3>
     <% end %>
   </div>
 

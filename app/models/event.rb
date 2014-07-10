@@ -7,8 +7,8 @@ class Event < ActiveRecord::Base
 	has_many :admins
   has_many :user_admins, through: :admins
 	
-  has_many :users
-  has_many :user_events, through: :events
+  has_many :user_events
+  has_many :users, through: :user_events
 
   has_many :tournaments, dependent: :destroy
 
@@ -37,6 +37,10 @@ class Event < ActiveRecord::Base
       ChallongeAdapter.new(tourney.tourney_name, tourney.tourney_url).add_participant(user.username)
     end
     user.events << event
+  end
+
+  def self.check_type type
+    (type == "Tournament") ? true : false
   end
 
   private
