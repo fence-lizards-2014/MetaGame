@@ -63,7 +63,7 @@ class GamesController < ApplicationController
     else
       @user = User.find session[:id]
       @user.games << @game
-      redirect_to root_path
+      redirect_to games_path
     end
   end
 end

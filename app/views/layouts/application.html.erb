@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-		<%= stylesheet_link_tag "application", :media => "all" %>
+	   <%= stylesheet_link_tag "application", :media => "all" %>
 	  <%= javascript_include_tag "application" %>
   	<script src="/assets/handlebars.js"></script>
     <meta charset="utf-8">
@@ -27,7 +27,7 @@
 
 
         <!-- </div> -->
-    
+
         <!-- <div class="container-fluid brand black-bg img-responsive"> -->
     <!-- <nav class="navbar navbar-default" role="navigation"> -->
 
@@ -35,7 +35,7 @@
 <!-- <div class="navbar transparent navbar"> -->
    <!-- <nav class="navbar-inner"> -->
 
-          
+
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <% if current_user %>
@@ -50,6 +50,8 @@
                     <li><%= link_to "Groups", groups_path %>
                     </li>
                     <li><%= link_to "#{current_user.username}", user_path(current_user) %>
+                    </li>
+                    <li><%= link_to "Messages", user_messages_path(current_user.id) %>
                     </li>
                     <li><%= link_to "Logout", logout_path %>
                     </li>

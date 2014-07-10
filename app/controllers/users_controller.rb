@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def index
     session[:group_id] = nil
+    # session[:id] = nil
     @games = current_user.games if current_user
   end
 

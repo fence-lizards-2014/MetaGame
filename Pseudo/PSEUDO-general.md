@@ -388,3 +388,20 @@ BOOTSTRAP dropdown
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
       </ul>
       </div>
+
+
+
+
+
+
+
+
+
+Chris Steam News CALL
+
+<p> test text </p>
+
+
+<% if current_user.user_steam_id %>
+  <%= SteamAdapter.new(current_user.user_steam_id).news %>
+<%end%>
