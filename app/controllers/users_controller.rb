@@ -51,10 +51,7 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     # p "*" * 75
     # p params
-    if current_user && params[:id] != current_user.id
-      current_user.friends << (User.find(params[:id]))
-      redirect_to user_path current_user
-    end
+    
 
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
