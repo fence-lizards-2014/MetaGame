@@ -1,8 +1,8 @@
 
 
+/*
 
-
-/** {
+* {
   border: 1px solid red;
 }*/
 
@@ -30,7 +30,6 @@ body {
 
 .container img {
   max-width: 100%;
-  max-height: 10%;
 }
 
 .navbar {
@@ -57,7 +56,7 @@ body {
 
 .nav-options {
   text-align: center;
-  width: 30%;
+  width: 20%;
   margin: 5% 5% 5% 65%;
   border-radius: 3px;
   background-color: #B8B8B8;
@@ -323,7 +322,7 @@ margin: auto auto;
 }
 
 section {
-  border: 1px red solid;
+  /*border: 1px red solid;*/
   position: relative;
   width: 80%;
   height: 300px;
@@ -347,6 +346,10 @@ section {
 .text_area {
   float: right;
   padding-left: 15px;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .field {
@@ -393,4 +396,20 @@ section {
   left: 0;
 }
 
+.inline {
+  display: inline;
+}
+
+.inline-button {
+  padding-right: 10;
+  margin-right: 50%;
+}
+
+.wide {
+  max-width: 100%;
+}
+
+.margin-1 {
+  margin: 1%;
+}
 
