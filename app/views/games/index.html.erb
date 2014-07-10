@@ -5,7 +5,7 @@
 
   
   <h4 class="container-fluid centered">
-    <%= form_tag("/searchgames") do |u| %>
+    <%= form_tag("/searchgames", method: :get) do |u| %>
       <%= text_field_tag "search", nil, placeholder: "Search games...", class: "container-search" %>
       <%= submit_tag "Search", class: "btn button-purple" %>
     <% end %>

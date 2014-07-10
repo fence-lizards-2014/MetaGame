@@ -66,9 +66,15 @@ class GamesController < ApplicationController
   end
 
   def addgame
-    game = Game.find params[:id]
-    current_user.games << game
-    redirect_to user_path current_user
+    p session[:group_id]
+      game = Game.find params[:id]
+    if session[:group_id] == nil
+      current_user.games << game
+      redirect_to user_path current_user
+    else
+      current_group.games << game
+      redirect_to group_path current_group
+    end
   end
 end
 

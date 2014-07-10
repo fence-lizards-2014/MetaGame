@@ -4,7 +4,7 @@
   
   <% if current_user.id == @user.id  %>
     <div class="row=4">
-      <%= link_to image_tag("http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_large_noborder.png"), '/auth/steam', class: 'col-md-3' %>
+      <%= button_to "Import your Steam games", '/auth/steam', class: 'col-md-3 btn btn-success' %>
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "col-md-3 btn btn btn-default" %>
       <%= link_to "Create Event", new_event_path, class: "col-md-3 btn btn btn-default" %>   
       <%= link_to 'Feed', users_path, class: "col-md-3 btn btn btn-default" %> 
@@ -43,9 +43,6 @@
       <% end %>
     </div> 
   </div>
-  <div class="nav-options">
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
-  </div>
+  
 	</div>
 </div>
