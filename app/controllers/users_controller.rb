@@ -9,7 +9,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     session[:group_id] = nil
-    @games = @user.games
+    u_games = UserGame.where(user_id: @user.id)
+    @games = []
+    if u_games
+      u_games.each do |game|
+        result = Game.find(game.game_id)
+        @games << result if result
+      end
+    end
     @groups = @user.groups
     @events = UserEvent.where(user_id: @user.id)
 

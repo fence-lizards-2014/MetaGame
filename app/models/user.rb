@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 	has_many :user_friends
 	has_many :friends, through: :user_friends, source: :user, class_name: "User"
 
-  has_many :games
-	has_many :user_games, through: :games
+  has_many :user_games
+	has_many :games, through: :user_games
 
 	has_many :groups
   has_many :user_groups, through: :groups

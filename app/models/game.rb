@@ -3,8 +3,8 @@ require 'json'
 class Game < ActiveRecord::Base
   attr_accessible :game_img_url, :game_name, :game_playtime_2weeks, :game_playtime_forever, :game_description, :game_steam_appid, :game_icon_url
 
-  has_many :users
-  has_many :user_games, through: :users
+  has_many :user_games
+  has_many :games, through: :user_games
 
   has_many :groups
   has_many :group_games, through: :groups
