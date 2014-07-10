@@ -1,0 +1,11 @@
+
+<% if @games %>
+	<ul>
+		<% @games.each do |game| %>
+			<li><%= link_to "#{game.game_name}", confirm_games_path(game), method: :post %></li>
+		<% end  %>
+	</ul>
+<% else  %>
+
+<%=  %>
+<% end %>

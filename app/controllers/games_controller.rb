@@ -8,7 +8,17 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find params[:id]
-    @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]    
+    if @game
+      current_user.games << @game 
+    else
+      @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]    
+      p @returned_game
+      # Game.create(game_name: @returned_game.game_name,
+      #             game_steam_appid: game["appid"], 
+      #             game_img_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_logo_url"]}.jpg", 
+      #             game_icon_url: "http://media.steampowered.com/steamcommunity/public/images/apps/#{game["appid"]}/#{game["img_icon_url"]}.jpg", 
+      #             game_playtime_forever: game["playtime_forever"])
+    end
   end
 
   def new
@@ -51,11 +61,13 @@ class GamesController < ApplicationController
   end
 
   def search
-    @game = Game.search_games params['search']
-    p @game
+    @games = Game.search_games params['search']
+    p @games
+    if @games
+      @games.sort! { |game1, game2| game1.game_name <=> game2.game_name }
+    end
 
-
-    redirect_to root_path
+    render 'games/search'
     # if @game == nil 
     #   redirect_to user_path(current_user)
     # end
@@ -70,8 +82,12 @@ class GamesController < ApplicationController
     # end
   end
 
-  def confirm_search
-
+  def confirm
+    p 'inside the confirm'
+    p params
+    game = Game.find params[:id]
+    p game
+    redirect_to game_path(game)
   end
 end
 
