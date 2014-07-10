@@ -17,14 +17,15 @@
 
 <body class = "black-bg">
 
-	
-		<div class="container-fluid brand black-bg img-responsive"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></div>
-	
-		  
+<!-- <div class="nav-bar-resp"> -->
+
+		<div class="container-fluid brand img-responsive"><%= link_to image_tag("metagame.png", :alt => "MetaGame"), root_path %></div>
+
+
     <nav class="navbar navbar-default" role="navigation">
             <!-- Collect the nav links, forms, and other content for toggling -->
             <% if current_user %>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <!-- <div class="collapse navbar-collapse navbar-ex1-collapse"> -->
                 <ul class="nav navbar-nav">
                     <li><%= link_to "Home", root_path %>
                     </li>
@@ -47,15 +48,16 @@
 				        </tr>
 				      </table>
 				    <% end %>
-            </div>
+            <!-- </div> -->
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+<!-- </div> -->
 
     <div class="container">
 	  		<div><%= yield %></div>
-        
+
     <!-- /.container -->
 
     <footer class="black-bg">
