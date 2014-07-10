@@ -27,6 +27,10 @@ class SteamAdapter
 		self.class.get "/#{get_type_player_service}/GetOwnedGames/#{v1}/#{get_single_id}&#{format}&#{app_info}" || OpenStruct.new(user: NOT_VALID_USER, steam_id: NOT_VALID_STEAM_ID)
 	end
 
+	def news
+		self.class.get "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0001/?appid=300&count=3&maxlength=300&format=json"
+	end
+
 	private
 
 	def get_type_player_service
