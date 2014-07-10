@@ -7,10 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-      session[:group_id] = nil
-      @games = @user.games
-      @groups = @user.groups
-      @events = @user.events
+    session[:group_id] = nil
+    @games = @user.games
+    @groups = @user.groups
+    @events = UserEvent.where(user_id: @user.id)
 
       # @user_ajax << @user
       # @user_ajax << @games
@@ -24,18 +24,18 @@ class UsersController < ApplicationController
       p "user_ajax"
       p @user_ajax
       
-      if request.xhr? == 0
-        p "()()"*100
-        p "in xhr controller"
-        respond_to do |format|
-          p "format json"
-          format.json {render json: @user.to_json(include: [:games, :groups, :events]) }
-        end
-      else
-        p "@"*100
-        p "in else render show"
-        render :show
+    if request.xhr? == 0
+      p "()()"*100
+      p "in xhr controller"
+      respond_to do |format|
+        p "format json"
+        format.json {render json: @user.to_json(include: [:games, :groups, :events]) }
       end
+    else
+      p "@"*100
+      p "in else render show"
+      render :show
+    end
   end
 
 

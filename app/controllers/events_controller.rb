@@ -3,7 +3,14 @@ class EventsController < ApplicationController
   def index
     @user = current_user if current_user
     @events = Event.all
-    @user_events = Event.where(user_id: current_user.id) if current_user
+    u_events = UserEvent.where(user_id: current_user.id) if current_user
+    @user_events = []
+    if current_user
+      u_events.each do |event|
+        result = Event.find(event.event_id)
+        @user_events << result if result
+      end
+    end
     if @user_events
       @user_events.sort! { |date1, date2| date1.event_date <=> date2.event_date }
     end
@@ -21,9 +28,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new params[:event]
+    p @event
     @group = Group.find session[:group_id] if session[:group_id]
 
     if @event.save
+      @event.update_attributes(user_id: current_user.id)
       Event.assign_assoc_to_event @event, @group, current_user
       flash[:notice] = 'Event has successfully been created!'
       if @event.event_type == "Tournament"
