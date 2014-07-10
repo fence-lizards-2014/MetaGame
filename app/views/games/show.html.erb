@@ -8,10 +8,9 @@
 	</p>
 
 	<p>
-	  <b>Game img icon url:</b>
-	  <%= @game.game_img_url %>
+	  <%= image_tag( @game.game_img_url, class: "border-white") %>
 	</p>
-	<%= link_to 'Add Game', addgame_path(@game.id), method: "post" %>
+	<%= button_to 'Add Game', addgame_path(@game.id), method: "post", class: "btn btn-success" %>
 	<% if @game  %>
 		<div class="game_info"
 			<p class="white-text"><%= @game.game_description.html_safe %></p>
@@ -20,8 +19,5 @@
 		<h2>Please enter a valid game title.</h2>
 	<% end  %>
 	</div>
-	
-	<%= link_to 'Edit', edit_game_path(@game) %> |
-	<%= link_to 'Back', games_path %>
 </div>
 

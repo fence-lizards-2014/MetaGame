@@ -3,7 +3,7 @@
     <% @groups.each do |group| %>
         <div class="media">
             <a class="pull-left" href=<%=group_path(group)%>>
-            <img class="media-object border-white" src=<%="#{group.group_logo_url}"%> alt="...">
+            <img class="media-object border-white group_icon" src=<%="#{group.group_logo_url}"%> alt="...">
             </a>
         <div class="media-body">
             <h4 class="media-heading white-text"><%= group.group_name%></h4>

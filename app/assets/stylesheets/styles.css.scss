@@ -29,8 +29,8 @@ body {
 }*/
 
 .container img {
-  max-width: 100%;
-  max-height: 10%;
+  /*max-width: 100%;*/
+  /*max-height: 10%;*/
 }
 
 .navbar {
@@ -253,6 +253,11 @@ margin: auto auto;
   text-align: center;
 }
 
+.group_icon {
+  max-height:10%;
+  max-width:auto;
+}
+
 /*
 .game-image img{
   height: 100%;
@@ -323,7 +328,7 @@ margin: auto auto;
 }
 
 section {
-  border: 1px red solid;
+  /*border: 1px red solid;*/
   position: relative;
   width: 80%;
   height: 300px;
