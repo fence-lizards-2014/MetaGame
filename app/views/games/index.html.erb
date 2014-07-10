@@ -2,16 +2,21 @@
 <div class="container">
   <div class="container-fluid">
   
-    <section class="float-left pad-left">
-      <%= form_tag("/searchgames") do |u| %>
-        <%= text_field_tag "search", nil, placeholder: "Search games..." %>
-        <%= submit_tag "Search", class: "button-warning" %>
-      <% end %>
-    </section>
+    
+      
+    
   </div>
-  <h1 class="white-text centered">Games</h1>
+  
+  <h2 class="centered">Full List</h2>
+  
+  <p class="container gray-text centered">Check out the full list of games below, or search to add  specific title.</p>
   <hr>
-  <h2 class="centered">Full List<p class="lead white-text">Check out the full list of games below, or search for a specific title.</p></h2>
+  <h4 class="container-fluid centered">
+    <%= form_tag("/searchgames") do |u| %>
+      <%= text_field_tag "search", nil, placeholder: "Search games..." %>
+      <%= submit_tag "Search", class: "btn button-success" %>
+    <% end %>
+  </h4>
   <div class="row">
     <% cache do %>
       <% @games.each do |game| %>
@@ -23,6 +28,6 @@
     <% end %>
   </div>
   <hr>
-  <br><br>  
+  <br><br>
 </div>
 
