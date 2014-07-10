@@ -11,6 +11,7 @@ describe UsersController do
   let!(:user) { FactoryGirl.create :user }
   
 
+
   describe "GET show" do
     xit "assigns the requested user as @user---REFACTOR THIS TEST" do
       get :show, {:id => user.to_param}, valid_session
