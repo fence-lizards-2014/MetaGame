@@ -1,33 +1,21 @@
-<h1 class="title">GROUPS#INDEX</h1>
-<h1>Listing groups</h1>
+<h2 class=""> My groups </h2>
+<div class="container-fluid">
+    <% @my_groups.each do |group| %>
+        <div class="media">
+            <a class="pull-left" href=<%=group_path(group)%>>
+            <img class="media-object border-white" src=<%="#{group.group_logo_url}"%> alt="...">
+            </a>
+        <div class="media-body">
+            <h4 class="media-heading white-text"><%= group.group_name%></h4>
+            <p class="white-text"><%= group.group_tagline %></p>
+        </div>
+    </div>
+    <% end %>
 
-<table>
-  <tr>
-    <th>Group name</th>
-    <th>Group description</th>
-    <th>Group logo url</th>
-    <th>Group tagline</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= group.group_name %></td>
-    <td><%= group.group_description %></td>
-    <td><%= group.group_logo_url %></td>
-    <td><%= group.group_tagline %></td>
-    <td><%= link_to 'Join', add_user_path(group.id), method: :post %></td>
-    <td><%= link_to 'Leave', remove_user_path(group.id), method: :post %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Group', new_group_path %>
+    <% unless @news_groups.empty? %>
+    <h2> Suggested Groups </h2>
+        <% @news_groups.each do |group| %>
+            <p> <%= link_to group.group_name, group_path(group) %>  <%= button_to "Join Group", add_user_path(group), method: :post %></p>
+        <% end %>
+    <% end %>
+</div>

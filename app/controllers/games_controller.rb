@@ -17,7 +17,6 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new params[:game]
-
     if @game.save
       flash[:notice] = "Game was successfully created!"
       redirect_to game_path @game

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   def index
+    p 'index'
+    p session[:id]
     session[:group_id] = nil
     @games = current_user.games if current_user
   end
@@ -9,38 +11,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.id == @user.id
       session[:group_id] = nil
-      
-      # @user_ajax = []
       @games = @user.games
       @groups = @user.groups
       @events = @user.events
-
-      
-
-      # @user_ajax << @user
-      # @user_ajax << @games
-      # @user_ajax << @groups
-      # @user_ajax << @events
-      
-      # format.json { render json: @post.to_json(:include => :comments) }
-
-
-      p "%" * 200
-      p "user_ajax"
-      p @user_ajax
-      
-      if request.xhr? == 0
-        p "()()"*100
-        p "in xhr controller"
-        respond_to do |format|
-          p "format json"
-          format.json {render json: @user.to_json(include: [:games, :groups, :events]) }
-        end
-      else
-        p "@"*100
-        p "in else render show"
-        render :show
-      end
     else
       render :error
     end
@@ -53,8 +26,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
-    # p "*" * 75
-    # p params
     if params[:user][:password_hash] == params[:user][:confirm_pw]
       @user.password = params[:user][:password_hash]
       @user.login = params[:user][:username]
@@ -114,9 +85,9 @@ class UsersController < ApplicationController
   end
 
   def addgame
-    current_user
+    @user = current_user
     @game = Game.find params[:id]
-    @current_user.games << @game
+    @user.games << @game
 
     redirect_to user_path(current_user)
   end
