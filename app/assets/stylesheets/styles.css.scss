@@ -1,6 +1,7 @@
-/** {
+/* {
   border: 1px solid red;
-}*/
+}
+*/
 
 .body {
   padding-bottom: 15%;
@@ -188,15 +189,63 @@ margin: auto auto;
   color: gray;
 }
 
+.yellow-text {
+  color: yellow;
+}
+
 .black-bg {
   background-color: black;
 }
+
+
+
+.centered {
+  text-align: center;
+}
+
+/*
+.game-image img{
+  heig: 100%;
+}*/
+
+
+.float-left {
+  float: left;
+  margin-right: 200px;
+}
+
+.float-right {
+  float: right;
+  width: 200px;
+}
+
+
+
+.game-image img{
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    /*width: 100%;*/
+    height: 200px;
+    float: left;
+}
+
+
 
 .border-white{
   border:3px solid white;
   border-radius:10px;
 }
 
+
+.navbar.transparent.navbar-inverse .navbar-inner {
+   background: rgba(0,0,0,0.4);
+}
+
+#new_user {
+  position: relative;
+  padding-top: 3x;
+}
 
 
 
