@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
 	has_many :groups
   has_many :user_groups, through: :groups
 
-  has_many :events
-  has_many :user_events, through: :events
+  has_many :user_events
+  has_many :events, through: :user_events
   has_many :group_events, through: :events
 
   validates :username, presence: true, uniqueness: true

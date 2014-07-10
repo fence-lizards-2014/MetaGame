@@ -7,8 +7,8 @@ class Event < ActiveRecord::Base
 	has_many :admins
   has_many :user_admins, through: :admins
 	
-  has_many :users
-  has_many :user_events, through: :events
+  has_many :user_events
+  has_many :users, through: :user_events
 
   has_many :tournaments, dependent: :destroy
 
@@ -23,20 +23,22 @@ class Event < ActiveRecord::Base
   validates :event_date, presence: true
 
   def self.assign_assoc_to_event event, group, user
-    if group == nil
-      user.events << event
-    end
+    user.events << event
+    
     if group && group.admins.include?(user)
       group.events << event
     end
   end
 
   def self.assign_user_to_event event, user
-    event.users << user
+    user.events << event
     event.tournaments.each do |tourney|
       ChallongeAdapter.new(tourney.tourney_name, tourney.tourney_url).add_participant(user.username)
     end
-    user.events << event
+  end
+
+  def self.check_type type
+    (type == "Tournament") ? true : false
   end
 
   private
