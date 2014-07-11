@@ -3,15 +3,16 @@ class Group < ActiveRecord::Base
 
   has_private_messages
 
-  has_many :users
-  has_many :group_users, through: :users
+  has_many :user_groups
+  has_many :users, through: :user_groups
 
 	has_many :admins, class_name: "User"
 
   has_many :events
   has_many :group_events, through: :groups
 
-  has_many :games
+  has_many :group_games
+  has_many :games, through: :group_games
   has_many :posts
 
   validates :group_name, presence: true, uniqueness: true
