@@ -7,8 +7,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find params[:id]
-    @returned_game = GiantBombAdapter.new(@game.game_name).search.parsed_response["results"][0]["description"]    
+    @game = Game.find params[:id]  
   end
 
   def new
@@ -51,19 +50,29 @@ class GamesController < ApplicationController
   end
 
   def search
-    #refactor for multiple game
-    @game = Game.find(:all, :conditions => ['game_name LIKE ?', "%#{params['search']}%"]).first 
-    if @game == nil 
-      redirect_to user_path(current_user)
+    @games = Game.search_games params['search']
+
+    if @games
+      @games.sort! { |game1, game2| game1.game_name <=> game2.game_name }
     end
-    if session[:group_id]
-      @group = Group.find session[:group_id]
-      @group.games << @game
-      redirect_to group_path session[:group_id]
+    
+    render 'games/search'
+
+  end
+
+  def confirm
+    game = Game.find params[:id]
+    redirect_to game_path(game)
+  end
+
+  def addgame
+    game = Game.find params[:id]
+    if session[:group_id] == nil
+      current_user.games << game
+      redirect_to user_path current_user
     else
-      @user = User.find session[:id]
-      @user.games << @game
-      redirect_to games_path
+      current_group.games << game
+      redirect_to group_path current_group
     end
   end
 end

@@ -2,39 +2,39 @@ class UsersController < ApplicationController
 
   def index
     session[:group_id] = nil
-    # session[:id] = nil
     @games = current_user.games if current_user
   end
 
   def show
     @user = User.find(params[:id])
     session[:group_id] = nil
-    @games = @user.games
-    @groups = @user.groups
+    u_games = UserGame.where(user_id: @user.id)
+    @games = []
+    if u_games
+      u_games.each do |game|
+        result = Game.find(game.game_id)
+        @games << result if result
+      end
+    end
+
+    u_groups = UserGroup.where(user_id: @user.id)
+    @groups = []
+
+    if u_groups 
+      u_groups.each do |group|
+        result = Group.find(group.group_id)
+        @groups << result if result
+      end
+    end
+
     @events = UserEvent.where(user_id: @user.id)
 
-      # @user_ajax << @user
-      # @user_ajax << @games
-      # @user_ajax << @groups
-      # @user_ajax << @events
-      
-      # format.json { render json: @post.to_json(:include => :comments) }
-
-
-      p "%" * 200
-      p "user_ajax"
-      p @user_ajax
       
     if request.xhr? == 0
-      p "()()"*100
-      p "in xhr controller"
       respond_to do |format|
-        p "format json"
         format.json {render json: @user.to_json(include: [:games, :groups, :events]) }
       end
     else
-      p "@"*100
-      p "in else render show"
       render :show
     end
   end

@@ -28,7 +28,8 @@ Metagame::Application.routes.draw do
   post '/adduser/:id', to: 'groups#add_user', as: :add_user
   post '/removeuser/:id', to: 'groups#remove_user', as: :remove_user
   post '/adduserevent/:id', to: 'events#add_user_event', as: :add_user_event
-  post "/searchgames", to: "games#search", as: :search_games
+  get "/searchgames", to: "games#search", as: :search_games
+  post "/confirmgames/:id", to: "games#confirm", as: :confirm_games
   post "/searchevents", to: "events#search", as: :search_events
   post '/start_tourney', to: "tournaments#start", as: :start_tournament
   get '/show_groups', to: "groups#show_groups", as: :show_groups

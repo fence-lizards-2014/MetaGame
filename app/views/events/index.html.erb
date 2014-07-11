@@ -1,4 +1,4 @@
-<section>
+<div class="container-fluid container-trans">
 
   <div class="user_events">
 
@@ -18,7 +18,7 @@
 
   </div>
 
-  <div class="all_events">
+  <div>
     <% if @events %>
       <h3>Events Board</h3>
       <ul>
@@ -33,6 +33,5 @@
       <h3>Event Board is Empty!</h3>
     <% end %>
   </div>
-
-</section>
-<%= link_to 'New Event', new_event_path %>
+</div>
+<%= link_to 'New Event', new_event_path, class: "btn button-purple pull-right" %>
