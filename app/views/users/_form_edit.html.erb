@@ -15,14 +15,14 @@
     <% end %>
 
     
-    <div class="signup_fields centered container-fluid container-trans">
+    <div class="">
       <div class="form-group">
-        <%= f.text_field :username, placeholder: "Username...", class: "container-search text-left" %>
-      </div>
+        <%= f.submit "Update User", class: "btn btn-primary" %>
       <% if current_user %>
         <%= button_to "Change Password", new_password_path, class: "btn btn-warning" %>
       <% else %>
-      
+        <%= f.text_field :username, placeholder: "Username...", class: "container-search text-left" %>
+      </div>
       <div class="new_user_welcome">
         <p>
           <h2>Create a New Account To Get Started</h2>
@@ -40,12 +40,12 @@
         <%= f.text_field :user_email, placeholder: "Email...", class: "container-search text-left" %>
       </div>
       <div class="field container-fluid">
-        <%= f.text_area :user_bio, placeholder: "Your bio...", cols: "40", rows: "8", class: "control-label col-md-8" %>
+        <%= f.text_area :user_bio, placeholder: "Your bio...", cols: "40", rows: "8", class: "container-search text-left" %>
       </div>
       <div class="field container-fluid">
         <%= f.number_field :user_zipcode, placeholder: "Zipcode...", class: "container-search text-left" %>
       </div>
-    <%= f.submit "Update User", class: "btn btn-primary" %>
+      
     <% end %>
     </div>
   </form>
