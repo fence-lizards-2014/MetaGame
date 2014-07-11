@@ -1,8 +1,9 @@
 class UserGames < ActiveRecord::Migration
   def change
-  	create_table :user_games, id: false do |t|
+  	create_table :user_games do |t|
   		t.integer :user_id
   		t.integer :game_id
+  		t.timestamps
   	end
   end
 end

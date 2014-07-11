@@ -118,9 +118,11 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
     t.integer "admin_id"
   end
 
-  create_table "user_games", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "game_id"
+  create_table "user_games", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_groups", :id => false, :force => true do |t|
