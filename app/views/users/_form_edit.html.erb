@@ -1,49 +1,53 @@
-<%= form_for @user, class: "form-horizontal center" do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="container-fluid centered container-trans margin-1">
+    <h1>Editing user</h1>
+<form class="form-group">
+  <%= form_for @user, class: "form-horizontal center" do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<div class="new_user_welcome">
-  <p>
-    <h2>Create a New Account To Get Started</h2>
-  </p>
-</div>
-
-<section>
-  
-  <div class="signup_fields center">
-    <div class="field col-md-8">
-      <%= f.text_field :username, placeholder: "Username...", class: "col-md-8 control-label" %>
-    </div>
-    <% if current_user %>
-      <%= link_to "Change Password", new_password_path %>
-    <% else %>
-    <div class="field col-md-8">
-      <%= f.password_field :password_hash, placeholder: "Password...", class: "col-md-8 control-label" %>
-    </div>
-     <div class="field col-md-8">
-      <%= f.password_field :confirm_pw, placeholder: "Confirm Password...", class: "col-md-8 control-label" %>
-    </div>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-    <div class="field col-md-8">
-      <%= f.text_field :user_email, placeholder: "Email...", class: "col-md-8 control-label" %>
+
+    
+    <div class="">
+      <div class="form-group">
+        <%= f.submit "Update User", class: "btn btn-primary" %>
+      <% if current_user %>
+        <%= button_to "Change Password", new_password_path, class: "btn btn-warning" %>
+      <% else %>
+        <%= f.text_field :username, placeholder: "Username...", class: "container-search text-left" %>
+      </div>
+      <div class="new_user_welcome">
+        <p>
+          <h2>Create a New Account To Get Started</h2>
+        </p>
+      </div>
+
+      <div class="field container-fluid">
+        <%= f.password_field :password_hash, placeholder: "Password...", class: "container-search text-left" %>
+      </div>
+       <div class="field container-fluid">
+        <%= f.password_field :confirm_pw, placeholder: "Confirm Password...", class: "container-search text-left" %>
+      </div>
+      <% end %>
+      <div class="field container-fluid">
+        <%= f.text_field :user_email, placeholder: "Email...", class: "container-search text-left" %>
+      </div>
+      <div class="field container-fluid">
+        <%= f.text_area :user_bio, placeholder: "Your bio...", cols: "40", rows: "8", class: "container-search text-left" %>
+      </div>
+      <div class="field container-fluid">
+        <%= f.number_field :user_zipcode, placeholder: "Zipcode...", class: "container-search text-left" %>
+      </div>
+      
+    <% end %>
     </div>
-    <div class="field col-md-8">
-      <%= f.text_area :user_bio, placeholder: "Your bio...", cols: "40", rows: "8", class: "control-label col-md-8" %>
-    </div>
-    <div class="field col-md-8">
-      <%= f.number_field :user_zipcode, placeholder: "Zipcode...", class: "col-md-8 control-label" %>
-    </div>
-  <%= f.submit "Update User", class: "btn btn-default- btn-primary" %>
-  </div>
+  </form>
 </div>
-</section>
-<% end %>
+
