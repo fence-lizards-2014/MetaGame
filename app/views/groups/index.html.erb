@@ -1,13 +1,13 @@
 
-<div class="container-fluid container-trans">
+<div class="container container-trans">
     <%= button_to "Browse Groups", show_groups_path, method: :get, class: " btn button-purple pull-right btn-primary" %>
     <h2 class=""> My groups </h2>
     <div class="container-fluid">
 
         <% @my_groups.each do |group| %>
-            <div class="media">
+            <div class="media img-responsive">
                 <a class="pull-left" href=<%=group_path(group)%>>
-                <img class="media-object border-white group_icon" src=<%="#{group.group_logo_url}"%> alt="...">
+                <img class="img-responsive border-white" src=<%="#{group.group_logo_url}"%> alt="...">
                 </a>
             <div class="media-body">
                 <h4 class="media-heading white-text"><%= group.group_name%></h4>
@@ -19,7 +19,7 @@
         <% unless @news_groups.empty? %>
         <h2> Suggested Groups </h2>
             <% @news_groups.each do |group| %>
-                <section class="img-responsive">
+                <section class="container img-responsive">
                     <%= link_to group.group_name, group_path(group)%>  
                     <%= button_to "Join Group", add_user_path(group), method: :post %>
                 </section>

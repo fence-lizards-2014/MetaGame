@@ -1,6 +1,7 @@
 <div class="container-fluid container-trans">
   <h1 class="title centered"><%= @user.username%></h1>
-  <div class="body" style="overflow-y: scroll; height: 400px;">
+    <div class="body" style="overflow-X: scroll; height: 500px;">
+
   
   <% if current_user.id == @user.id  %>
     <div class="row=4">
@@ -28,21 +29,18 @@
      <dt>Bio</dt>
      <dd class=""> <%= @user.user_bio %> </dd>
     </dl>
-    
   </div>
 
   <h2>USERS GAMES</h2>
-    <div class='row'>
+    <div class='container row'>
       <% cache do %>
         <% @games.each do |game| %>
-          <div class="col-lg-4 col-sm-6 col-xs-12">
-            <section class="img-responsive"> <%= link_to image_tag(game.game_img_url), game_path(game) %>
-            <span class="purple-text"><%= game.game_name %></span></section>
+          <div class="container pull-right col-lg-6 col-sm-6 col-xs-12 img-responsive purple-text">
+            <%= link_to image_tag(game.game_img_url), game_path(game) %>
+            <%= game.game_name %>
           </div>
         <% end %>
       <% end %>
     </div> 
   </div>
-  
-	</div>
 </div>
