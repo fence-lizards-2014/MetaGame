@@ -1,7 +1,6 @@
 <div class="container-fluid container-trans">
 
 
-  <%= button_to 'Back', events_path, class: "btn button-purple" %>
   <% if @event.user_id == current_user.id %>
     <%= button_to 'Edit', edit_event_path(@event), method: :get, class: "btn button-purple"  %> |
     <%= button_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn button-purple"  %>

@@ -1,5 +1,5 @@
-<div class="container">
-  <h1 class="title"><%= @user.username%></h1>
+<div class="container-fluid container-trans">
+  <h1 class="title centered"><%= @user.username%></h1>
   <div class="body" style="overflow-y: scroll; height: 400px;">
   
   <% if current_user.id == @user.id  %>
@@ -14,7 +14,7 @@
   <br>
 
 
-  <div class="container row=6 bg-primary">
+  <div class="container row=6">
     <%= notice %>
     <h3 class>Profile Info</h3>
     
@@ -37,7 +37,7 @@
         <% @games.each do |game| %>
           <div class="col-lg-4 col-sm-6 col-xs-12">
             <section class="game-image"> <%= link_to image_tag(game.game_img_url), game_path(game) %>
-            <span class="yellow-text"><%= game.game_name %></span></section>
+            <span class="purple-text"><%= game.game_name %></span></section>
           </div>
         <% end %>
       <% end %>
