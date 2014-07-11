@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :user_games
 	has_many :games, through: :user_games
 
-	has_many :groups
-  has_many :user_groups, through: :groups
+	has_many :user_groups
+  has_many :groups, through: :user_groups
 
   has_many :user_events
   has_many :events, through: :user_events
