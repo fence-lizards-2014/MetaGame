@@ -11,13 +11,5 @@ describe TournamentsController do
 			expect(response).to render_template :new
 		end
 	end
-
-	context 'POST #create' do
-		xit 'should increase the database count by 1 when valid params' do
-			expect {
-				post :create, event_id: event, tournament: valid_attributes
-			}.to change { Tournament.count }.by(1)
-		end
-	end
 	
 end

@@ -5,15 +5,7 @@ describe GroupsController do
   let(:user) { FactoryGirl.create :user }
   let(:valid_attributes) { { "group_name" => "MyString", "group_description" => "a description", "group_logo_url" => "www.google.com", "group_tagline" => "advanced" } }
   let(:valid_session) { {} }
-
-  describe "GET index" do
-    xit "assigns all groups as @groups" do
-      session[:id] = 1
-      group = Group.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:groups).should eq([group])
-    end
-  end
+  
 
   describe "GET show" do
     it "assigns the requested group as @group" do

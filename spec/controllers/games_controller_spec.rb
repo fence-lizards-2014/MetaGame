@@ -13,15 +13,6 @@ describe GamesController do
     end
   end
 
-  describe "GET show" do
-    #disabled due to API calls on show
-    xit "assigns the requested game as @game" do
-      game = Game.create! valid_attributes
-      get :show, {id: game.to_param}, valid_session
-      assigns(:game).should eq(game)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new game as @game" do
       get :new, {}, valid_session

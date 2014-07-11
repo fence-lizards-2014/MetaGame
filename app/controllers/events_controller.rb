@@ -28,7 +28,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new params[:event]
-    p @event
     @group = Group.find session[:group_id] if session[:group_id]
 
     if @event.save
