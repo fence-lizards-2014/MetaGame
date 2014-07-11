@@ -125,9 +125,11 @@ ActiveRecord::Schema.define(:version => 20140708232035) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "user_groups", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+  create_table "user_groups", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

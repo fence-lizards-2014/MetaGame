@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   def index
     session[:group_id] = nil
-    # session[:id] = nil
     @games = current_user.games if current_user
   end
 
@@ -17,7 +16,17 @@ class UsersController < ApplicationController
         @games << result if result
       end
     end
-    @groups = @user.groups
+
+    u_groups = UserGroup.where(user_id: @user.id)
+    @groups = []
+
+    if u_groups 
+      u_groups.each do |group|
+        result = Group.find(group.group_id)
+        @groups << result if result
+      end
+    end
+
     @events = UserEvent.where(user_id: @user.id)
 
       

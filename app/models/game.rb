@@ -6,8 +6,9 @@ class Game < ActiveRecord::Base
   has_many :user_games
   has_many :games, through: :user_games
 
-  has_many :groups
-  has_many :group_games, through: :groups
+  has_many :group_games
+  has_many :games, through: :group_games
+  
   has_many :tournaments
 
 
