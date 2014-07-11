@@ -1,1 +1,29 @@
+<!--  Carousel - consult the Twitter Bootstrap docs at
+      http://twitter.github.com/bootstrap/javascript.html#carousel -->
 
+<div class="col-md-8 white-text push_right "><strong>Check Out Some Games Other Users Are Playing</strong></div><br><br><br>
+<div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
+  
+      <% gamez = Game.all %>
+  <div class="carousel-inner ">
+    <div class="item active"><!-- class of active since it's the first item -->
+      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+
+    </div>
+    <div class="item">
+      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+
+    </div>
+    <div class="item">
+      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+
+    </div>
+    <div class="item">
+      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+    </div>
+  </div><!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+    <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+</div><!-- /.carousel -->
