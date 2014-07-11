@@ -185,9 +185,13 @@ margin: auto auto;
 }
 
 .button-purple {
-    background: purple; /* this is a green */
+    background: #4C2D7C; /* this is a green */
     color: white;
     border-radius: 10px;
+}
+
+.button-purple :hover{
+  color: white;
 }
 
 .button-error {

@@ -1,55 +1,58 @@
+<div class="container-fluid container-trans">
 
-<%= button_to 'Back', events_path %>
-<% if @event.user_id == current_user.id %>
-  <%= button_to 'Edit', edit_event_path(@event), method: :get %> |
-  <%= button_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% else %>
-  <%= button_to 'Join', add_user_event_path(@event.id), method: :post %> 
-<% end %>
 
-<div class="white-text">
-  <p id="notice"><%= notice %></p>
-
-  <h1><%= @event.event_name %></h1>
-
-  <% if @game %>
-      <%= link_to image_tag(@game.game_img_url), game_path(@game)  %>
+  <%= button_to 'Back', events_path, class: "btn button-purple" %>
+  <% if @event.user_id == current_user.id %>
+    <%= button_to 'Edit', edit_event_path(@event), method: :get, class: "btn button-purple"  %> |
+    <%= button_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn button-purple"  %>
+  <% else %>
+    <%= button_to 'Join', add_user_event_path(@event.id), method: :post, class: "btn button-purple"  %> 
   <% end %>
-    <h3><%= @event.event_game_title %></h3>
 
-  <p>
-    <b>Event Description:</b>
-    <%= @event.event_description %>
-  </p>
+  <div class="white-text">
+    <p id="notice"><%= notice %></p>
 
-  <p>
-    <b>Event location:</b>
-    <%= @event.event_location %>
-  </p>
+    <h1><%= @event.event_name %></h1>
 
-  <p>
-    <b>Event active:</b>
-    <%= @event.event_active %>
-  </p>
+    <% if @game %>
+        <%= link_to image_tag(@game.game_img_url), game_path(@game)  %>
+    <% end %>
+      <h3><%= @event.event_game_title %></h3>
 
-  <p>
-    <b>Event date:</b>
-    <%= @event.event_date %>
-  </p>
+    <p>
+      <b>Event Description:</b>
+      <%= @event.event_description %>
+    </p>
 
-  <p>
-    <b>Event type:</b>
-    <%= @event.event_type %>
-  </p>
+    <p>
+      <b>Event location:</b>
+      <%= @event.event_location %>
+    </p>
 
-  <p>
-    <b>Event zipcode:</b>
-    <%= @event.event_zipcode %>
-  </p>
+    <p>
+      <b>Event active:</b>
+      <%= @event.event_active %>
+    </p>
+
+    <p>
+      <b>Event date:</b>
+      <%= @event.event_date %>
+    </p>
+
+    <p>
+      <b>Event type:</b>
+      <%= @event.event_type %>
+    </p>
+
+    <p>
+      <b>Event zipcode:</b>
+      <%= @event.event_zipcode %>
+    </p>
+  </div>
+
+  <% if @tourney %>
+  <%= link_to "Start Tournament",  start_tournament_path({id: @tourney.id, url: @tourney.tourney_url}), method: :post %>
+    <iframe src=<%= "http://challonge.com/#{@tourney.tourney_url}/module"%> width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+  <% end %>
+
 </div>
-
-<% if @tourney %>
-<%= link_to "Start Tournament",  start_tournament_path({id: @tourney.id, url: @tourney.tourney_url}), method: :post %>
-  <iframe src=<%= "http://challonge.com/#{@tourney.tourney_url}/module"%> width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
-<% end %>
-
