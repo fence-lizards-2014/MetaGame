@@ -19,7 +19,7 @@
     <% cache do %>
       <% @games.each do |game| %>
         <div class="col-lg-4 col-sm-6 col-xs-12">
-          <section class="game-image img-responsive"><%= link_to image_tag(game.game_img_url), game_path(game) %>
+          <section class="img-responsive"><%= link_to image_tag(game.game_img_url), game_path(game) %>
           <span class="purple-text centered"><%= game.game_name %></span></section>
         </div>  
       <% end %>
