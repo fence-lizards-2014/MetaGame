@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     User.check_steam_id user, session[:current_user][:uid], session[:current_user][:image]
     return_responses = User.make_api_data_calls user.user_steam_id
     Game.parse_steam_games(return_responses, user)
-	  
+
 	  redirect_to user_path user
 	end
 
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 	def signin
 		render partial: "/sessions/signin"
 	end
-	
+
 
 	def sign_in_attempt
 		@user = User.find_by_username params[:user][:username]
