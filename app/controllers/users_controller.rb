@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     session[:group_id] = nil
     @games = current_user.games if current_user
+    @all_games = Game.all
   end
 
   def show

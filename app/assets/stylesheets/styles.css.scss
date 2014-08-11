@@ -434,5 +434,30 @@ section {
   margin: 1%;
 }
 
+.carousel {
+  margin:0 auto;
+}
+
+.small {
+  max-height:35px;
+  max-width:auto;
+}
+
+.center {
+  padding-left:1.5em;
+}
+
+.width25 {
+  max-width:25%;
+}
+
+a.purple-hover:hover {
+  background-color:#4C2D7C;
+  color:white;
+}
+
+.margin5 {
+  margin:0 1.5em 0 1.5em;
+}
 
 
