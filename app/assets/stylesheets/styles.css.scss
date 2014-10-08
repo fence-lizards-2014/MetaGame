@@ -1,9 +1,9 @@
 
 
-/*
-* {
-  border: 1px solid red;
-}*/
+
+// * {
+//   border: 1px solid red;
+// }
 
 body {
   padding-bottom: 15%;
@@ -460,4 +460,14 @@ a.purple-hover:hover {
   margin:0 1.5em 0 1.5em;
 }
 
+.red {
+  background-color: red;
+  border: 1px solid yellow;
+}
+
+.col-centered {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
 

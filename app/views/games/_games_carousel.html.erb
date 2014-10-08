@@ -1,6 +1,6 @@
 	<!-- Get this logic out of view. -->
 <% @all_games[0..20].each do |game| %>
-	<div class="item center margin5">
-	  <%= image_tag(game.game_img_url) %>
+	<div class="item">
+	  <%= image_tag(game.game_img_url, class: "image-responsive col-md-12") %>
 	</div>
 <% end %>
