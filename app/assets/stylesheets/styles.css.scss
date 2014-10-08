@@ -460,4 +460,16 @@ a.purple-hover:hover {
   margin:0 1.5em 0 1.5em;
 }
 
+.red {
+  background-color: red;
+  border: 1px solid yellow;
+}
+
+.col-centered {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
+}
 
