@@ -7,19 +7,27 @@
       <% gamez = Game.all %>
   <div class="carousel-inner ">
     <div class="item active"><!-- class of active since it's the first item -->
-      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+      <% if image = gamez[rand(1..9)] %>
+        <%= image_tag(image.game_img_url) %>
+      <% end %>
 
     </div>
     <div class="item">
-      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+      <% if image = gamez[rand(1..9)] %>
+        <%= image_tag(image.game_img_url) %>
+      <% end %>
 
     </div>
     <div class="item">
-      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+      <% if image = gamez[rand(1..9)] %>
+        <%= image_tag(image.game_img_url) %>
+      <% end %>
 
     </div>
     <div class="item">
-      <%= image_tag(gamez[rand(1..9)].game_img_url) %>
+      <% if image = gamez[rand(1..9)] %>
+        <%= image_tag(image.game_img_url) %>
+      <% end %>
     </div>
   </div><!-- /.carousel-inner -->
   <!--  Next and Previous controls below
